@@ -1,18 +1,20 @@
 <div class="row row-lg-eq-height">
-  <div class="card card_largest_with_image grid-item">
-    <img class="card-img-top" src="../../../assets/images/post_1.jpg" alt="https://unsplash.com/@cjtagupa">
-    <div class="card-body">
-      <div class="card-title"><span style="color: rgba(0,0,0,1);">{{section.name}}</span></div>
+    <div class="card card_largest_with_image grid-item">
+        <img *ngIf="section.imagen != ''" class="card-img-top" src="{{config.serverNodeLocation}}images/imageForText/{{section.imagen}}">
+        <div class="card-body">
+            <div class="card-title" style="text-align: center;"><span style="color: rgba(0,0,0,1);">{{section.nombre}}</span></div>
 
-      <div class="tab-content">
-        <div class="container">
-          <p class="card-text ">{{section.text}}</p>
+            <div class="tab-content">
+                <div class="container">
+                    <p class="card-text" [innerHTML]="section.descripcion" style="color: black;">
+
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="section_content">
-    <div class="grid clearfix">
+    <div class="section_content">
+        <div class="grid clearfix">
+        </div>
     </div>
-  </div>
 </div>

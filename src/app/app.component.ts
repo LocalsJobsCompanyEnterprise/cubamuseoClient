@@ -14,6 +14,7 @@ export class AppComponent {
 
   constructor(private router: Router, private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService) {
     this.categoryType = new Subject <string>();
+    this.categoryType.next('collection')
   }
 
   updateBreadcrumb(): void {
