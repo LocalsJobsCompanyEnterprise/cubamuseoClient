@@ -1,0 +1,30 @@
+<div *ngFor="let item of gallerylist">
+  <div class="card card_default card_small_with_background grid-item">
+    <div class="card_background" style="background-image:url(../../../../../assets/images/post_11.jpg)"></div>
+    <div class="card-body" *ngIf="section=== 'tales'; then tale" > </div>
+    <div class="card-body" *ngIf="section=== 'store'; then store" > </div>
+    <div class="card-body" *ngIf="section=== 'vpost'; then item" > </div>
+    <div class="card-body" *ngIf="level===1; then item" > </div>
+    <div class="card-body" *ngIf="level===2; then text" > </div>
+      <ng-template #item>
+        <div class="card-title card-title-small"><a [routerLink]="['/item', item.id, section]">How Did van Gogh’s Turbulent Mind Depict
+          One of the Most Complex Concepts in Physics?</a>
+        </div>
+      </ng-template>
+      <ng-template #text>
+        <div class="card-title card-title-small"><a [routerLink]="['/text', item.id,level,component,section]">How Did van Gogh’s Turbulent Mind Depict
+          One of the Most Complex Concepts in Physics?</a>
+        </div>
+      </ng-template>
+      <ng-template #tale>
+        <div class="card-title card-title-small"><a [routerLink]="['/tale', item.id]">How Did van Gogh’s Turbulent Mind Depict
+        One of the Most Complex Concepts in Physics?</a></div>
+      </ng-template>
+        <ng-template #store>
+          <div class="card-title card-title-small"><a [routerLink]="['/store', item.id]">How Did van Gogh’s Turbulent Mind Depict
+          One of the Most Complex Concepts in Physics?</a></div>
+        </ng-template>
+      
+   
+  </div>
+</div>
