@@ -1,22 +1,22 @@
 <!-- Similar Posts -->
 <div class="container">
-  <div *ngFor="let item of categoryList" class="row d-flex flex-row align-items-end">
-    <!-- Similar Post -->
-    <!-- Hay que poner la img  -->
-    <div *ngIf="section === 'collection'; then collection else otherSection"></div>
-    <ng-template #collection>
-      <div class="col-lg-3 col-md-6 similar_post_col">
-        <div class="similar_post trans_200">
-          <a [routerLink]="['/text',item.id,level,component,section]">{{item.name}}</a>
-        </div>
-      </div>
-    </ng-template>
-    <ng-template #otherSection>
-      <div class="col-lg-3 col-md-6 similar_post_col">
-        <div class="similar_post trans_200">
-          <a [routerLink]="['/gallery',item.id,level,component,section]">{{item.name}}</a>
-        </div>
-      </div>
-    </ng-template>
-  </div>
+    <div *ngFor="let item of categoryList" class="row d-flex flex-row align-items-end">
+        <!-- Similar Post -->
+        <!-- Hay que poner la img  -->
+        <div *ngIf="section === 'collection'; then collection else otherSection"></div>
+        <ng-template #collection>
+            <div class="col-lg-3 col-md-6 similar_post_col">
+                <div class="similar_post trans_200">
+                    <a [routerLink]="['/text',item.id,level,component,section]">{{item.nombre}}</a>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #otherSection>
+            <div class="col-lg-3 col-md-6 similar_post_col">
+                <div class="similar_post trans_200">
+                    <a [routerLink]="['/gallery',item.id,level,component,section]">{{item.nombre}}</a>
+                </div>
+            </div>
+        </ng-template>
+    </div>
 </div>

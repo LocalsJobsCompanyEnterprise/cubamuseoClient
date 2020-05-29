@@ -74,6 +74,7 @@ constructor(private collection: CollectionServiceService, private samples: Sampl
   initCategories() {
     this.categoryType.subscribe(
       data => {
+        console.log(data);
         switch(data) {
           case "collection": {
             return this.getCategoryListCollection();

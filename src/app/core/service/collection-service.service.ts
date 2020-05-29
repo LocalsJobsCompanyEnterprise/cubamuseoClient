@@ -52,6 +52,6 @@ export class CollectionServiceService {
 
   
   getCollectionsCategories() {
-    return this.http.get(this.config.serverNodeLocation + 'api/collection/getCategories');
+    return this.http.get(this.config.serverNodeLocation + 'section/');
   }
 }
