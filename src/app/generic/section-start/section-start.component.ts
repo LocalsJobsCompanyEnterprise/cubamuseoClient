@@ -7,6 +7,7 @@ import { AlertService } from './../../alert/alert.service';
 import { VpostServiceService } from './../../core/service/vpost-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ConfigServiceService } from 'src/app/core/service/config-service.service';
 
 @Component({
   selector: 'app-section-start',
@@ -15,29 +16,46 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 })
 export class SectionStartComponent implements OnInit {
 
-sectionId: number;
-section:any;
-mySubscription: any;
-fatherLevel: number;
-father: any;
-level: number;
+  sectionId: number;
+  section: any;
+  mySubscription: any;
+  fatherLevel: number;
+  father: any;
+  level: number;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private collection: CollectionServiceService, private samples: SamplesServiceService,
-    private tales: TalesServiceService, private vPost: VpostServiceService,
-    private store: StoreServiceService, private alerts: AlertService, private router: Router, private enviromentVariables: EnviromentVariableServiceService) {
-      
+  constructor(private activatedRoute: ActivatedRoute,
+    private collection: CollectionServiceService,
+    private samples: SamplesServiceService,
+    private tales: TalesServiceService,
+    private vPost: VpostServiceService,
+    private store: StoreServiceService,
+    private alerts: AlertService,
+    private router: Router,
+    private enviromentVariables: EnviromentVariableServiceService,
+    public config: ConfigServiceService) {
+    this.section = {
+      nombre: "",
+      descripcion: "",
+      imagen: ""
+    }
+
+    this.sectionId = 1;
+
     this.activatedRoute.params.subscribe(val => {
-      this.sectionId = val.id;
-      console.log(this.sectionId);
+      if (val.id)
+        this.sectionId = val.id;
+
+      this.initHome();
+
     });
-    
-    this.initHome();
+
+
 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
-    
+
     this.mySubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Trick the Router into believing it's last link wasn't previously loaded
@@ -45,50 +63,26 @@ level: number;
       }
     });
 
-    
-    this.enviromentVariables.setLevel(this.fatherLevel ,this.father , this.section);
- 
+
+    this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.section);
+
   }
 
 
-  getLevel(){
+  getLevel() {
     let data = window.localStorage['level'];
-    if(data){
+    if (data) {
       data = JSON.parse(data);
       this.level = data;
     }
   }
 
-  initHome() {
-    switch (this.sectionId) {
-      // collection
-      case 1: {
-        return this.getHomeCollection();
-      }
-      case undefined: {
-        return this.getHomeCollection();
-      }
-      // tale
-      case 2: {
-        return this.getHomeTales();
-      }
-      // sample
-      case 3: {
-        return this.getHomeSamples();
-      }
-      // vpost
-      case 6: {
-        return this.getHomeVpost();
-      }
-      // store
-      case 7: {
-        return this.getHomeStore();
-      }
-    }
+  initHome() {  
+      return this.getHomeCollection(this.sectionId);
   }
 
-  getHomeCollection() {
-    this.collection.getCollectionHome(1).subscribe(
+  getHomeCollection(id) {
+    this.collection.getCollectionHome(id).subscribe(
       data => {
         this.section = data;
       }, error => {

@@ -6,7 +6,7 @@ import { TalesServiceService } from './../../core/service/tales-service.service'
 import { SamplesServiceService } from './../../core/service/samples-service.service';
 import { CollectionServiceService } from './../../core/service/collection-service.service';
 import { Router } from '@angular/router';
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 
 
@@ -16,83 +16,76 @@ import { Subject } from 'rxjs';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-categoryList: any[];
-category: string;
-fatherLevel: number;
-father: 'start';
-level: number;
-section: any;
-component: 'category';
+  categoryList: any[];
+  category: string;
+  fatherLevel: number;
+  father: 'start';
+  level: number;
+  section: any;
+  component: 'category';
 
 
-@Input() categoryType: Subject <string>;
+  @Input() categoryType: Subject<string>;
 
 
 
-constructor(private collection: CollectionServiceService, private samples: SamplesServiceService,
-  private tales: TalesServiceService, private vPost: VpostServiceService,
-  private store: StoreServiceService, private alerts: AlertService, private enviromentVariables: EnviromentVariableServiceService) {
+  constructor(private collection: CollectionServiceService, private samples: SamplesServiceService,
+    private tales: TalesServiceService, private vPost: VpostServiceService,
+    private store: StoreServiceService, private alerts: AlertService, private enviromentVariables: EnviromentVariableServiceService) {
 
     this.categoryList = [];
-    this.categoryType = new Subject <string>();
-    this.category = ' ';
-    this.initCategories();
-    this.getFatherLevel();
-    this.getSection();
-    this.enviromentVariables.setLevel(this.fatherLevel ,this.father , this.section);
+    this.category = 'collection';
+
+    this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.section);
 
   }
 
-  getSection(){
-    this.categoryType.subscribe(
-      data =>{
-        this.section=data;
-      });
+  getSection() {
+
+    this.section = this.category;
+
   }
 
-  getFatherLevel(){
-    this.categoryType.subscribe(
-       data =>{
-         if(data === "collection" || data === "samples"){
-           this.fatherLevel = 4;
-         }
-         else {
-           this.fatherLevel = 3;
-         }
-       }
-    );
+  getFatherLevel() {
+    if (this.categoryType)
+
+      if (this.category === "collection" || this.category === "samples") {
+        this.fatherLevel = 4;
+      }
+      else {
+        this.fatherLevel = 3;
+      }
+
   }
 
-  getLevel(){
+  getLevel() {
     let data = window.localStorage['level'];
-    if(data){
+    if (data) {
       data = JSON.parse(data);
       this.level = data;
     }
   }
 
   initCategories() {
-    this.categoryType.subscribe(
-      data => {
-        switch(data) {
-          case "collection": {
-            return this.getCategoryListCollection();
-          }
-          case "samples": {
-            return this.getCategoryListSamples();
-          }
-          case "tale": {
-            return this.getCategoryListTales();
-          }
-          case "vpost": {
-            return this.getCategoryListVpost();
-          }
-          case "store": {
-            return this.getCategoryListStore();
-          }
-        }
+
+    switch (this.category) {
+      case "collection": {
+        return this.getCategoryListCollection();
       }
-    );
+      case "samples": {
+        return this.getCategoryListSamples();
+      }
+      case "tale": {
+        return this.getCategoryListTales();
+      }
+      case "vpost": {
+        return this.getCategoryListVpost();
+      }
+      case "store": {
+        return this.getCategoryListStore();
+      }
+    }
+
   }
 
   getCategoryListCollection() {
@@ -181,14 +174,24 @@ constructor(private collection: CollectionServiceService, private samples: Sampl
       }
     );
   }
+
   ngOnInit(): void {
+
     this.categoryType.subscribe(
       data => {
         this.category = data;
+        this.initCategories();
+        this.getFatherLevel();
+        this.getSection();
         console.log(this.category);
       }
     );
- 
+
+    this.initCategories();
+    this.getFatherLevel();
+    this.getSection();
+
+
     this.getLevel();
   }
 

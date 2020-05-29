@@ -17,7 +17,7 @@ export class CollectionServiceService {
    }
    //Texto e imagen de inicio de las colecciones
    getCollectionHome(id) {
-    return this.http.get(this.config.serverNodeLocation + 'api/collection/getHome/' + id);
+    return this.http.get(this.config.serverNodeLocation + 'text/' + id);
   }
 
    getCollectionById(id) {
@@ -52,6 +52,6 @@ export class CollectionServiceService {
 
   
   getCollectionsCategories() {
-    return this.http.get(this.config.serverNodeLocation + 'api/collection/getCategories');
+    return this.http.get(this.config.serverNodeLocation + 'section');
   }
 }
