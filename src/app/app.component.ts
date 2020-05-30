@@ -1,7 +1,15 @@
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ContactComponent } from './additional-content/contact/contact.component';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { Component } from '@angular/core';
+import { Component, ViewChild, Inject } from '@angular/core';
 import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -11,10 +19,22 @@ import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 export class AppComponent {
   title = 'CubamuseoClientV1';
   categoryType: Subject <string>;
-
-  constructor(private router: Router, private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService) {
+ 
+  
+  closeResult = '';
+  constructor(private modalService: NgbModal,
+    private router: Router, 
+    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService) {
     this.categoryType = new Subject <string>();
     this.categoryType.next('collection')
+  }
+
+ open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed`;
+    });
   }
 
   updateBreadcrumb(): void {

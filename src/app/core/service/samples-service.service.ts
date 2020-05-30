@@ -47,7 +47,7 @@ export class SamplesServiceService {
  }
 
  getSamplesCategories() {
-   return this.http.get(this.config.serverNodeLocation + 'category-stamp');
+   return this.http.get(this.config.serverNodeLocation + 'category-model');
  }
 
 }

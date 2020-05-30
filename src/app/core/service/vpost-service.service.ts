@@ -38,6 +38,6 @@ export class VpostServiceService {
   }
 
   getVpostCategories() {
-    return this.http.get(this.config.serverNodeLocation + 'api/vpost/getCategories');
+    return this.http.get(this.config.serverNodeLocation + 'category-postal');
   }
 }

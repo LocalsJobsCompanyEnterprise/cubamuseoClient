@@ -1,3 +1,4 @@
+import { MatDialogModule } from '@angular/material/dialog';
 import { RelatedSitesComponent } from './related-sites/related-sites.component';
 import { NewsComponent } from './news/news.component';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -15,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes), MatDialogModule],
+  exports: [RouterModule,MatDialogModule]
 })
 export class AdditionalContentRoutingModule { }

@@ -31,6 +31,6 @@ export class StoreServiceService {
   }
 
   getAdsCategories() {
-    return this.http.get(this.config.serverNodeLocation + 'api/store/getCategories');
+    return this.http.get(this.config.serverNodeLocation + 'shop-tematics');
   }
 }

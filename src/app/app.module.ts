@@ -1,3 +1,4 @@
+import {MatDialogModule} from "@angular/material/dialog";
 import { AdditionalContentModule } from './additional-content/additional-content.module';
 import { ContactComponent } from './additional-content/contact/contact.component';
 import { TalesModule } from './tales/tales.module';
@@ -17,6 +18,8 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {NgDynamicBreadcrumbModule} from "ng-dynamic-breadcrumb";
 import { NgbModule, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @NgModule({
   declarations: [
@@ -38,9 +41,14 @@ import { NgbModule, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-boots
     TranslateModule,
     NgDynamicBreadcrumbModule,
     AdditionalContentModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule
   ],
-  providers: [],
+  exports: [
+    MatDialogModule
+  ],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

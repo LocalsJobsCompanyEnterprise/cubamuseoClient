@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { MatDialogRef,MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
 
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-contact',
@@ -8,12 +13,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-
-
-  constructor() {
-   
+  constructor(public dialogRef: MatDialogRef<ContactComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    
    }
 
+   onNoClick(): void {
+    this.dialogRef.close();
+  }
+  
   ngOnInit(): void {
   }
 
