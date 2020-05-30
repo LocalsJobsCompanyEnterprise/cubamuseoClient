@@ -12,13 +12,13 @@ import { ItemComponent } from './item/item.component';
 import { GalleryListComponent } from './gallery-list/gallery-list.component';
 
 const routes: Routes = [
-  { path: 'gallery/:id/:level/:section', 
+  { path: 'gallery/:id/:sonLevel/:section', 
   data:{ 
     title: 'gallery',
     breadcrumb:[
       {
         label: 'Galeria {{section, id}} ',
-        url: 'gallery/:id/:level/:section'
+        url: 'gallery/:id/:sonLevel/:section'
       }
     ]
   }, 
@@ -39,13 +39,13 @@ const routes: Routes = [
   { path: 'zoom/:id', component: ZoomComponent },
   { path: 'item/:id/:section', component: ItemComponent },
 
-  { path: 'text/:id/:level/:section', 
+  { path: 'text/:id/:sonLevel/:section', 
   data:{
     title: 'Text',
     breadcrumb:[
       {
         label: '{{section,id}}',
-        url: 'text/:id/:level/:section'
+        url: 'text/:id/:sonLevel/:section'
       
       }
     ]

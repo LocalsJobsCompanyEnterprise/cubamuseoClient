@@ -22,7 +22,7 @@ export class CategoryComponent implements OnInit {
   fatherLevel: number;
   father: 'start';
   level: number;
-  section: any;
+
   component: string;
   sonLevel: number;
 
@@ -39,8 +39,6 @@ export class CategoryComponent implements OnInit {
     this.component = 'category'
     this.categoryList = [];
     this.category = 'collection';
-
-
 
   }
 
@@ -168,8 +166,8 @@ export class CategoryComponent implements OnInit {
     );
   }
 
-  setSonLevel(){
-    this.enviromentVariables.setLevel(this.level,this.component,this.category);
+  setSonLevel() {
+    this.enviromentVariables.setLevel(this.level, this.component, this.category);
   }
 
   getSonLevel() {
@@ -185,14 +183,17 @@ export class CategoryComponent implements OnInit {
     this.categoryType.subscribe(
       data => {
         this.category = data;
-        this.section = this.category;
         this.initCategories();
         this.getLevel();
         this.setSonLevel();
-      
+        this.getSonLevel();
       }
     );
 
+    this.initCategories();
+    this.getLevel();
+    this.setSonLevel();
+    this.getSonLevel();
   }
 
 }

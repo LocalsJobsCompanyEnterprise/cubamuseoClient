@@ -54,10 +54,8 @@ export class GalleryListComponent implements OnInit {
         this.level = val.sonLevel;
         this.section = val.section;
         console.log(this.itemId);
+        this.initGallery();
       }
-
-
-      this.initGallery();
 
     });
 
@@ -285,6 +283,7 @@ export class GalleryListComponent implements OnInit {
     this.itemId = this.tagItemId;
     this.foldername = this.folder;
     this.setSonLevel();
+    this.getSonLevel();
     this.initGallery();
 
   }
