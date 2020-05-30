@@ -7,7 +7,7 @@
         <ng-template #collection>
             <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
                 <div class="similar_post trans_200">
-                    <a [routerLink]="['/text',item.id,level,component,section]">
+                    <a [routerLink]="['/text',item.idSeccion,level,component,section]">
                         <p [innerHTML]="item.nombre"></p>
                     </a>
                 </div>

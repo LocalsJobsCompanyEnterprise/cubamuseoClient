@@ -1,0 +1,11 @@
+.grid-item {
+    width: 159px;
+    cursor: pointer;
+    margin: 4px;
+}
+
+.card-body {
+    padding: 5px;
+    text-align: center;
+    height: 60px;
+}

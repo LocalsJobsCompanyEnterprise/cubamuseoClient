@@ -1,3 +1,4 @@
+import { ConfigServiceService } from './../../core/service/config-service.service';
 import { Subject } from 'rxjs';
 import { EnviromentVariableServiceService } from './../../core/service/enviroment-variable-service.service';
 import { SamplesServiceService } from './../../core/service/samples-service.service';
@@ -16,277 +17,277 @@ import { ScrollEvent } from 'ngx-scroll-event';
   styleUrls: ['./gallery-list.component.css']
 })
 export class GalleryListComponent implements OnInit {
-gallerylist: any[];
-itemId: number;
-section:any;
-mySubscription: any;
-fatherLevel: number;
-father: any;
-level: number;
-bottomTop = 0;
-limit = 10;
-isScrollable: boolean = true;
-component: 'gallery';
-@Input() tagSection: Subject <string>;
-@Input() tagFatherLevel: Subject <number>;
-@Input() tagFather: Subject <number>;
-@Input() tagItemId: Subject <number>;
- 
-constructor(private activatedRoute: ActivatedRoute, private collection: CollectionServiceService, private samples: SamplesServiceService,
-  private tales: TalesServiceService, private vPost: VpostServiceService,
-  private store: StoreServiceService, private alerts: AlertService, private router: Router, private enviromentVariables: EnviromentVariableServiceService) {
-  
-  this.gallerylist = [];  
-  this.tagSection = new Subject <string>();
-  this.tagFatherLevel = new Subject <number>();
-  this.tagFather = new Subject <number>();
-  this.tagItemId = new Subject <number>();
-  
+  gallerylist: any[];
+  itemId: any;
+  section: any;
+  mySubscription: any;
+  fatherLevel: any;
+  father: any;
+  level: number;
+  bottomTop = 0;
+  limit = 10;
+  isScrollable: boolean = true;
+  component: string;
+  foldername:any;
 
-  this.activatedRoute.params.subscribe(val => {
-    if(val){
-      this.itemId = val.id;
-      this.fatherLevel = val.level;
-      this.father = val.component;
-      this.section = val.section;
-      console.log(this.itemId);
+  @Input() tagSection: Subject<string>;
+  @Input() tagFatherLevel: Subject<number>;
+  @Input() tagFather: Subject<number>;
+  @Input() tagItemId: Subject<number>;
+  @Input() folder: Subject<string>;
+
+  constructor(private activatedRoute: ActivatedRoute,
+    private collection: CollectionServiceService, 
+    private samples: SamplesServiceService,
+    private tales: TalesServiceService, 
+    private vPost: VpostServiceService,
+    private store: StoreServiceService, 
+    private alerts: AlertService, 
+    private router: Router, 
+    private enviromentVariables: EnviromentVariableServiceService,
+    public config: ConfigServiceService
+    ) {
+
+    this.gallerylist = [];
+    this.component = 'gallery'
+    this.activatedRoute.params.subscribe(val => {
+      if (val) {
+        this.itemId = val.id;
+        this.fatherLevel = val.level;
+        this.father = val.component;
+        this.section = val.section;
+        console.log(this.itemId);
+      }
+
+      this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.section);
+
+      this.initGallery();
+
+    });
+
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+      }
+    });
+
+    this.bottomTop = 0;
+    this.isScrollable = true;
+
+  }
+
+
+  initGallery() {
+    this.getLevel();
+    if (this.level === 1) {
+      if (this.section === 'vpost') {
+        return this.getVpostGallery();
+      }
+      else if (this.section === 'tales') {
+        return this.getTalesGallery();
+      }
+      else if (this.section === 'store') {
+        return this.getStoreGallery();
+      }
+      else if (this.section === 'collection') {
+        return this.getCollectionsGallery();
+      }
+      else if (this.section === 'samples') {
+        return this.getOneSampleGallery();
+      }
     }
-    else{
-    this.tagSection.subscribe(
-        data =>{
-          this.section=data;
+    else if (this.level === 2) {
+      if (this.section === 'collection') {
+        return this.getPagesGallery();
+      }
+      else {
+        return this.getSamplesGallery();
+      }
+    }
+  }
+
+  getVpostGallery() {
+    this.vPost.getVposts(this.bottomTop, this.itemId).subscribe(
+      data => {
+        let result: any = data;
+        this.gallerylist = [];
+        this.vPost.vpostList = [];
+        result.forEach(element => {
+          if (result.length < 10) {
+            this.isScrollable = false;
+          }
+          this.gallerylist.push(element);
+          this.vPost.vpostList.push(element);
         });
-    this.tagFather.subscribe(
-          data =>{
-            this.father=data;
-          });
-    this.tagFatherLevel.subscribe(
-          data =>{
-              this.fatherLevel=data;
-          });
-    this.tagItemId.subscribe(
-          data =>{
-              this.itemId=data;
-          });
-    }
-    
-  });
-  
-  this.initGallery();
 
-  this.router.routeReuseStrategy.shouldReuseRoute = function () {
-    return false;
-  };
-  
-  this.mySubscription = this.router.events.subscribe((event) => {
-    if (event instanceof NavigationEnd) {
-      // Trick the Router into believing it's last link wasn't previously loaded
-      this.router.navigated = false;
-    }
-  });
+      }, error => {
+        this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
+      }
+    );
+  }
 
-  this.enviromentVariables.setLevel(this.fatherLevel ,this.father , this.section);
-  this.bottomTop = 0;
-  this.isScrollable = true;
-  
-}
+  getTalesGallery() {
+    this.tales.getTales(this.bottomTop, this.itemId).subscribe(
+      data => {
+        let result: any = data;
+        this.gallerylist = [];
+        this.tales.taleList = [];
+        result.forEach(element => {
+          if (result.length < 10) {
+            this.isScrollable = false;
+          }
+          this.gallerylist.push(element);
+          this.tales.taleList.push(element);
+        });
+
+      }, error => {
+        this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
+      }
+    );
+  }
+
+  getStoreGallery() {
+    this.store.getAds(this.bottomTop, this.itemId).subscribe(
+      data => {
+        let result: any = data;
+        this.gallerylist = [];
+        this.store.adList = [];
+        result.forEach(element => {
+          if (result.length < 10) {
+            this.isScrollable = false;
+          }
+          this.gallerylist.push(element);
+          this.store.adList.push(element);
+        });
+
+      }, error => {
+        this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
+      }
+    );
+  }
+
+  getPagesGallery() {
+    this.collection.getSectionCategory(this.itemId).subscribe(
+      (data: any[]) => {
+        this.gallerylist = [];
+        data.forEach(element => {
+          this.collection.getCategoryById(element.idCategoria).subscribe(
+            data => {
+              this.gallerylist.push(data);
+              this.collection.collectionPagesList.push(data);
+            }
+          ), error => {
+            this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
+          }
+        });
 
 
-initGallery(){
-  this.getLevel();
-  if(this.level===1){
-    if(this.section === 'vpost'){
-      return this.getVpostGallery();
-    }
-    else if(this.section === 'tales'){
-      return this.getTalesGallery();
-    }
-    else if(this.section === 'store'){
-      return this.getStoreGallery();
-    }
-    else if (this.section === 'collection'){
-      return this.getCollectionsGallery();
-    }
-    else if (this.section === 'samples'){
-      return this.getOneSampleGallery();
+      }, error => {
+        this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
+      }
+    );
+  }
+
+  getSamplesGallery() {
+    this.samples.getSamples(this.bottomTop, this.itemId).subscribe(
+      data => {
+        let result: any = data;
+        this.gallerylist = [];
+        this.samples.samplesList = [];
+        result.forEach(element => {
+          if (result.length < 10) {
+            this.isScrollable = false;
+          }
+          this.gallerylist.push(element);
+          this.samples.samplesList.push(element);
+        });
+
+      }, error => {
+        this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
+      }
+    );
+  }
+
+  getCollectionsGallery() {
+    this.collection.getCollections(this.bottomTop, this.itemId).subscribe(
+      data => {
+        let result: any = data;
+        this.gallerylist = [];
+        this.collection.collectionList = [];
+        result.forEach(element => {
+          if (result.length < 10) {
+            this.isScrollable = false;
+          }
+          this.gallerylist.push(element);
+          this.collection.collectionList.push(element);
+        });
+
+      }, error => {
+        this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
+      }
+    );
+  }
+
+  getOneSampleGallery() {
+    this.samples.getSamplesGalleries(this.itemId).subscribe(
+      data => {
+        let result: any = data;
+        this.gallerylist = [];
+        this.samples.samplesGalleryList = [];
+        result.forEach(element => {
+          if (result.length < 10) {
+            this.isScrollable = false;
+          }
+          this.gallerylist.push(element);
+          this.samples.samplesGalleryList.push(element);
+        });
+
+      }, error => {
+        this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
+      }
+    );
+  }
+
+  getLevel() {
+    let data = window.localStorage['level'];
+    if (data) {
+      data = JSON.parse(data);
+      this.level = data;
     }
   }
-  else if(this.level===2){
-     if(this.section === 'collection'){
-      return this.getPagesGallery();
-    }
-    else {
-      return this.getSamplesGallery();
-    }
-  }
-}
 
-getVpostGallery(){
-  this.vPost.getVposts(this.bottomTop,this.itemId).subscribe(
-    data => {
-      let result: any = data;
-      this.gallerylist = [];
-      this.vPost.vpostList = [];
-      result.forEach(element => {
-        if (result.length < 10) {
-          this.isScrollable = false;
-        }
-        this.gallerylist.push(element);
-        this.vPost.vpostList.push(element);
-      });
-
-    }, error => {
-      this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
-    }
-  );
-}
-
-getTalesGallery(){
-  this.tales.getTales(this.bottomTop,this.itemId).subscribe(
-    data => {
-      let result: any = data;
-      this.gallerylist = [];
-      this.tales.taleList = [];
-      result.forEach(element => {
-        if (result.length < 10) {
-          this.isScrollable = false;
-        }
-        this.gallerylist.push(element);
-        this.tales.taleList.push(element);
-      });
-
-    }, error => {
-      this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
-    }
-  );
-}
-
-getStoreGallery(){
-  this.store.getAds(this.bottomTop,this.itemId).subscribe(
-    data => {
-      let result: any = data;
-      this.gallerylist = [];
-      this.store.adList = [];
-      result.forEach(element => {
-        if (result.length < 10) {
-          this.isScrollable = false;
-        }
-        this.gallerylist.push(element);
-        this.store.adList.push(element);
-      });
-
-    }, error => {
-      this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
-    }
-  );
-}
-
-getPagesGallery(){
-  this.collection.getCollectionPages(this.bottomTop,this.itemId).subscribe(
-    data => {
-      let result: any = data;
-      this.gallerylist = [];
-      this.collection.collectionPagesList = [];
-      result.forEach(element => {
-        if (result.length < 10) {
-          this.isScrollable = false;
-        }
-        this.gallerylist.push(element);
-        this.collection.collectionPagesList.push(element);
-      });
-
-    }, error => {
-      this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
-    }
-  );
-}
-
-getSamplesGallery(){
-  this.samples.getSamples(this.bottomTop,this.itemId).subscribe(
-    data => {
-      let result: any = data;
-      this.gallerylist = [];
-      this.samples.samplesList = [];
-      result.forEach(element => {
-        if (result.length < 10) {
-          this.isScrollable = false;
-        }
-        this.gallerylist.push(element);
-        this.samples.samplesList.push(element);
-      });
-
-    }, error => {
-      this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
-    }
-  );
-}
-
-getCollectionsGallery(){
-  this.collection.getCollections(this.bottomTop,this.itemId).subscribe(
-    data => {
-      let result: any = data;
-      this.gallerylist = [];
-      this.collection.collectionList = [];
-      result.forEach(element => {
-        if (result.length < 10) {
-          this.isScrollable = false;
-        }
-        this.gallerylist.push(element);
-        this.collection.collectionList.push(element);
-      });
-
-    }, error => {
-      this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
-    }
-  );
-}
-
-getOneSampleGallery(){
-  this.samples.getSamplesGalleries(this.itemId).subscribe(
-    data => {
-      let result: any = data;
-      this.gallerylist = [];
-      this.samples.samplesGalleryList = [];
-      result.forEach(element => {
-        if (result.length < 10) {
-          this.isScrollable = false;
-        }
-        this.gallerylist.push(element);
-        this.samples.samplesGalleryList.push(element);
-      });
-
-    }, error => {
-      this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
-    }
-  );
-}
-
-getLevel(){
-  let data = window.localStorage['level'];
-  if(data){
-    data = JSON.parse(data);
-    this.level = data;
-  }
-}
-
-onScroll(event: ScrollEvent) {
-  if (event.isReachingBottom) {
-    if (this.isScrollable) {
-      this.bottomTop = this.bottomTop + 10;
-      this.initGallery(); 
+  onScroll(event: ScrollEvent) {
+    if (event.isReachingBottom) {
+      if (this.isScrollable) {
+        this.bottomTop = this.bottomTop + 10;
+        this.initGallery();
+      }
     }
   }
-}
 
-ngOnInit(): void {
-  this.bottomTop = 0;
-}
+  ngOnInit(): void {
+    this.bottomTop = 0;
+    this.section = this.tagSection;
+    this.father = this.tagFather;
+    this.fatherLevel = this.tagFatherLevel;
+    this.itemId = this.tagItemId;
+    this.foldername = this.folder;
+    this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.section);
 
-ngOnDestroy() {
-  if (this.mySubscription) {
-    this.mySubscription.unsubscribe();
+    this.initGallery();
+
   }
-}
+
+  ngOnDestroy() {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
+  }
 
 
 

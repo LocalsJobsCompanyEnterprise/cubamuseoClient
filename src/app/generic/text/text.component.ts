@@ -1,3 +1,4 @@
+import { ConfigServiceService } from './../../core/service/config-service.service';
 import { EnviromentVariableServiceService } from './../../core/service/enviroment-variable-service.service';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -16,74 +17,85 @@ import { VpostServiceService } from './../../core/service/vpost-service.service'
   styleUrls: ['./text.component.css']
 })
 export class TextComponent implements OnInit {
-  
+
   sectionId: number;
   itemId: number;
-  category:any;
+  category: any;
   pages: any;
   mySubscription: any;
   section: any;
   level: number;
   fatherLevel: number;
   father: any;
+  baseFolder: string;
 
-  constructor(private activatedRoute: ActivatedRoute, private collection: CollectionServiceService, private samples: SamplesServiceService,
-    private tales: TalesServiceService, private vPost: VpostServiceService,
-    private store: StoreServiceService, private alerts: AlertService, private router: Router, private enviromentVariables: EnviromentVariableServiceService) {
-      
+  constructor(private activatedRoute: ActivatedRoute,
+    private collection: CollectionServiceService,
+    private samples: SamplesServiceService,
+    private tales: TalesServiceService,
+    private vPost: VpostServiceService,
+    private store: StoreServiceService,
+    private alerts: AlertService,
+    private router: Router,
+    private enviromentVariables: EnviromentVariableServiceService,
+    public configService: ConfigServiceService) {
+    this.level = -1;
+
+
     this.activatedRoute.params.subscribe(val => {
       this.sectionId = val.id;
       this.category = val.section;
-      this.fatherLevel= val.level;
+      this.fatherLevel = val.level;
       this.father = val.component;
-      console.log(this.sectionId);
-      console.log(this.category);
-    });
-    
-    this.initContent();
+      this.baseFolder = val.baseFolder
+      this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.category);
+      this.initContent();
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      };
 
-
-    this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      return false;
-    };
-    
-    this.mySubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        // Trick the Router into believing it's last link wasn't previously loaded
-        this.router.navigated = false;
-      }
+      this.mySubscription = this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          // Trick the Router into believing it's last link wasn't previously loaded
+          this.router.navigated = false;
+        }
+      });
     });
 
-    this.enviromentVariables.setLevel(this.fatherLevel ,this.father , this.section);
+
 
   }
 
-  getLevel(){
+  getLevel() {
     let data = window.localStorage['level'];
-    if(data){
+    if (data) {
+      console.log(data);
       data = JSON.parse(data);
       this.level = data;
     }
   }
 
-  initContent(){
-  this.getLevel();
-  if(this.level=== 2 ){
-    this.getPageById();
-  }
-  else if(this.category === 'collection'){
-    this.getCollectionById();
-  }
-  else {
-    this.getSampleById();
-  }
-    
+  initContent() {
+    this.getLevel();
+    if (this.level === 2) {
+      this.getSectionById();
+    }
+    else if (this.category === 'collection') {
+      if (this.level === 1)
+        this.getCategoryById();
+      else if (this.level === 3)
+        this.getSectionById();
+    }
+    else {
+      this.getSampleById();
+    }
+
   }
 
-  
 
-  getPageById(){
-    this.collection.getCollectionPageById(this.sectionId).subscribe(
+
+  getSectionById() {
+    this.collection.getSectionById(this.sectionId).subscribe(
       data => {
         this.section = data;
       }, error => {
@@ -92,8 +104,8 @@ export class TextComponent implements OnInit {
     );
   }
 
-  getCollectionById(){
-    this.collection.getCollectionById(this.sectionId).subscribe(
+  getCategoryById() {
+    this.collection.getCategoryById(this.sectionId).subscribe(
       data => {
         this.section = data;
       }, error => {
@@ -102,7 +114,7 @@ export class TextComponent implements OnInit {
     );
   }
 
-  getSampleById(){
+  getSampleById() {
     this.samples.getSampleById(this.sectionId).subscribe(
       data => {
         this.section = data;
@@ -113,7 +125,7 @@ export class TextComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   ngOnDestroy() {

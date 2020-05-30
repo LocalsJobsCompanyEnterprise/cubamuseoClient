@@ -95,6 +95,10 @@ p a {
     transition: all 200ms ease;
 }
 
+p img {
+    width: 100%;
+}
+
 a,
 a:hover,
 a:visited,

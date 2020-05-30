@@ -16,13 +16,14 @@ import { Subject } from 'rxjs';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
+
   categoryList: any[];
   category: string;
   fatherLevel: number;
   father: 'start';
   level: number;
   section: any;
-  component: 'category';
+  component: string;
 
 
   @Input() categoryType: Subject<string>;
@@ -33,18 +34,14 @@ export class CategoryComponent implements OnInit {
     private tales: TalesServiceService, private vPost: VpostServiceService,
     private store: StoreServiceService, private alerts: AlertService, private enviromentVariables: EnviromentVariableServiceService) {
 
+    this.component = 'category'
     this.categoryList = [];
     this.category = 'collection';
 
-    this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.section);
+
 
   }
 
-  getSection() {
-
-    this.section = this.category;
-
-  }
 
   getFatherLevel() {
     if (this.categoryType)
@@ -180,18 +177,16 @@ export class CategoryComponent implements OnInit {
     this.categoryType.subscribe(
       data => {
         this.category = data;
+        this.section = this.category;
         this.initCategories();
         this.getFatherLevel();
-        this.getSection();
-        console.log(this.category);
+        this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.section);
       }
     );
 
     this.initCategories();
     this.getFatherLevel();
-    this.getSection();
-
-
+    this.section = this.category;
     this.getLevel();
   }
 

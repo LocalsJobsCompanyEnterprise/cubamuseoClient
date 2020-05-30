@@ -20,8 +20,12 @@ export class CollectionServiceService {
     return this.http.get(this.config.serverNodeLocation + 'text/' + id);
   }
 
-   getCollectionById(id) {
-     return this.http.get(this.config.serverNodeLocation + 'api/collection/getOne/' + id);
+  getCategoryById(id) {
+     return this.http.get(this.config.serverNodeLocation + 'category/' + id);
+   }
+
+   getSectionById(id){
+    return this.http.get(this.config.serverNodeLocation + 'section/' + id);
    }
 
 
@@ -44,6 +48,10 @@ export class CollectionServiceService {
 
   getCollectionPages(offset, id) {
     return this.http.post(this.config.serverNodeLocation + 'api/collection/getPagesWith', {id, offset});
+  }
+
+  getSectionCategory(id){
+    return this.http.get(this.config.serverNodeLocation + 'section-category/bySection/'+ id);
   }
 
   getCollectionCategoryById(id) {
