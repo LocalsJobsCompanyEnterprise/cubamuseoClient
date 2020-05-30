@@ -16,7 +16,9 @@ import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {NgDynamicBreadcrumbModule} from "ng-dynamic-breadcrumb";
 
 
-
+export function HttpLoaderFactory(http:HttpClient){
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -35,7 +37,16 @@ import {NgDynamicBreadcrumbModule} from "ng-dynamic-breadcrumb";
     CollectionModule,
     SamplesModule,
     TalesModule,
-    TranslateModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps:[
+          HttpClient
+        ]
+      }
+
+    }),
     NgDynamicBreadcrumbModule
 
   ],

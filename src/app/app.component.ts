@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Component, ViewChild, Inject } from '@angular/core';
 import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
+import { TranslateService } from '@ngx-translate/core';
 
 
 export interface DialogData {
@@ -21,11 +22,16 @@ export class AppComponent {
  
   
   closeResult = '';
-  constructor(private modalService: NgbModal,
+
+  constructor(public translate: TranslateService,private modalService: NgbModal,
     private router: Router, 
     private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService) {
     this.categoryType = new Subject <string>();
-    this.categoryType.next('collection')
+    this.categoryType.next('collection');
+    translate.addLangs(['en','es']);
+    translate.setDefaultLang('es');
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|es/) ? browserLang:'es');
   }
 
  open(content) {

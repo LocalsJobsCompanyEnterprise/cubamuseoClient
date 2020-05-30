@@ -38,8 +38,12 @@
                                             [routerLink]="['/store', '7']">Tienda</a></li>
                                 </ul>
                             </nav>
+                            <!-- <div >
+                                <select #langselect (change)="translate.use(langselect.value)">
+                                    <option *ngFor="let lang of translate.getLangs()" value="lang"></option>
+                                </select>
+                            </div> -->
                             <div class="search_container ml-auto">
-
                                 <form action="#">
                                     <input type="search" class="header_search_input" required="required"
                                         placeholder="Type to Search...">
