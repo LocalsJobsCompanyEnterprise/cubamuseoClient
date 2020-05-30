@@ -21,18 +21,16 @@ export class GalleryListComponent implements OnInit {
   itemId: any;
   section: any;
   mySubscription: any;
-  fatherLevel: any;
-  father: any;
-  level: number;
+  level: any;
   bottomTop = 0;
   limit = 10;
   isScrollable: boolean = true;
   component: string;
   foldername:any;
+  sonLevel:number;
 
   @Input() tagSection: Subject<string>;
-  @Input() tagFatherLevel: Subject<number>;
-  @Input() tagFather: Subject<number>;
+  @Input() tagLevel: Subject<number>;
   @Input() tagItemId: Subject<number>;
   @Input() folder: Subject<string>;
 
@@ -53,13 +51,11 @@ export class GalleryListComponent implements OnInit {
     this.activatedRoute.params.subscribe(val => {
       if (val) {
         this.itemId = val.id;
-        this.fatherLevel = val.level;
-        this.father = val.component;
+        this.level = val.sonLevel;
         this.section = val.section;
         console.log(this.itemId);
       }
 
-      this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.section);
 
       this.initGallery();
 
@@ -83,7 +79,7 @@ export class GalleryListComponent implements OnInit {
 
 
   initGallery() {
-    this.getLevel();
+   
     if (this.level === 1) {
       if (this.section === 'vpost') {
         return this.getVpostGallery();
@@ -253,13 +249,13 @@ export class GalleryListComponent implements OnInit {
     );
   }
 
-  getLevel() {
-    let data = window.localStorage['level'];
-    if (data) {
-      data = JSON.parse(data);
-      this.level = data;
-    }
-  }
+  // getLevel() {
+  //   let data = window.localStorage['level'];
+  //   if (data) {
+  //     data = JSON.parse(data);
+  //     this.level = data;
+  //   }
+  // }
 
   onScroll(event: ScrollEvent) {
     if (event.isReachingBottom) {
@@ -270,15 +266,25 @@ export class GalleryListComponent implements OnInit {
     }
   }
 
+  setSonLevel() {
+    this.enviromentVariables.setLevel(this.level, this.component, this.section);
+  }
+  getSonLevel() {
+    let data = window.localStorage['level'];
+    if (data) {
+      data = JSON.parse(data);
+      this.sonLevel = data;
+    }
+  }
+
+
   ngOnInit(): void {
     this.bottomTop = 0;
     this.section = this.tagSection;
-    this.father = this.tagFather;
-    this.fatherLevel = this.tagFatherLevel;
+    this.level = this.tagLevel;
     this.itemId = this.tagItemId;
     this.foldername = this.folder;
-    this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.section);
-
+    this.setSonLevel();
     this.initGallery();
 
   }

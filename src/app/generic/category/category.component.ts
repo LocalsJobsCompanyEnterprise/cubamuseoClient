@@ -24,6 +24,8 @@ export class CategoryComponent implements OnInit {
   level: number;
   section: any;
   component: string;
+  sonLevel: number;
+
 
 
   @Input() categoryType: Subject<string>;
@@ -43,25 +45,19 @@ export class CategoryComponent implements OnInit {
   }
 
 
-  getFatherLevel() {
+  getLevel() {
     if (this.categoryType)
 
       if (this.category === "collection" || this.category === "samples") {
-        this.fatherLevel = 4;
+        this.level = 3;
       }
       else {
-        this.fatherLevel = 3;
+        this.level = 2;
       }
 
   }
 
-  getLevel() {
-    let data = window.localStorage['level'];
-    if (data) {
-      data = JSON.parse(data);
-      this.level = data;
-    }
-  }
+
 
   initCategories() {
 
@@ -172,6 +168,18 @@ export class CategoryComponent implements OnInit {
     );
   }
 
+  setSonLevel(){
+    this.enviromentVariables.setLevel(this.level,this.component,this.section);
+  }
+
+  getSonLevel() {
+    let data = window.localStorage['level'];
+    if (data) {
+      data = JSON.parse(data);
+      this.sonLevel = data;
+    }
+  }
+
   ngOnInit(): void {
 
     this.categoryType.subscribe(
@@ -179,15 +187,12 @@ export class CategoryComponent implements OnInit {
         this.category = data;
         this.section = this.category;
         this.initCategories();
-        this.getFatherLevel();
-        this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.section);
+        this.getLevel();
+        this.setSonLevel();
+      
       }
     );
 
-    this.initCategories();
-    this.getFatherLevel();
-    this.section = this.category;
-    this.getLevel();
   }
 
 }

@@ -6,8 +6,8 @@
         <div *ngIf="section === 'collection'; then collection else otherSection"></div>
         <ng-template #collection>
             <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
-                <div class="similar_post trans_200">
-                    <a [routerLink]="['/text',item.idSeccion,level,component,section]">
+                <div class="similar_post trans_200" (click)="getSonLevel()">
+                    <a [routerLink]="['/text',item.idSeccion,sonLevel,section]">
                         <p [innerHTML]="item.nombre"></p>
                     </a>
                 </div>
@@ -15,8 +15,8 @@
         </ng-template>
         <ng-template #otherSection>
             <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
-                <div class="similar_post trans_200">
-                    <a [routerLink]="['/gallery',item.id,level,component,section]">
+                <div class="similar_post trans_200" (click)="getSonLevel()">
+                    <a [routerLink]="['/gallery',item.id,sonLevel,section]">
                         <p [innerHTML]="item.nombre"></p>
                     </a>
                 </div>

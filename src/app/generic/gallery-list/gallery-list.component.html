@@ -24,8 +24,8 @@
     <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
         <img class="card-img-top" src="{{config.serverNodeLocation}}images/{{level}}/{{foldername}}/{{item.imagenGaleria}}/{{section}}/{{item.carpeta}}" alt="">
         <div class="card-body">
-            <div class="card-title card-title-small">
-                <a [routerLink]="['/text', item.idCategoria,level,component,section]">
+            <div class="card-title card-title-small" (click)="getSonLevel()">
+                <a [routerLink]="['/text', item.idCategoria,sonLevel,section]">
                     <p [innerHTML]="item.nombre"></p>
                 </a>
             </div>

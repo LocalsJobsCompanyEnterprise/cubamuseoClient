@@ -32,7 +32,7 @@ export class EnviromentVariableServiceService {
         window.localStorage.setItem('level', '3');
       }
       else if (father === 'category') {
-        if (fatherLevel == 3)
+        if (fatherLevel === 3)
           window.localStorage.setItem('level', '2');
         else
           window.localStorage.setItem('level', '3');

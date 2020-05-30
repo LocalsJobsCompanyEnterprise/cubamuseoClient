@@ -26,8 +26,9 @@ export class TextComponent implements OnInit {
   section: any;
   level: number;
   fatherLevel: number;
-  father: any;
   baseFolder: string;
+  component: string;
+  sonLevel: number;
 
   constructor(private activatedRoute: ActivatedRoute,
     private collection: CollectionServiceService,
@@ -41,14 +42,12 @@ export class TextComponent implements OnInit {
     public configService: ConfigServiceService) {
     this.level = -1;
 
-
+    this.component = 'gallery';
     this.activatedRoute.params.subscribe(val => {
       this.sectionId = val.id;
       this.category = val.section;
-      this.fatherLevel = val.level;
-      this.father = val.component;
+      this.level = val.sonLevel;
       this.baseFolder = val.baseFolder
-      this.enviromentVariables.setLevel(this.fatherLevel, this.father, this.category);
       this.initContent();
       this.router.routeReuseStrategy.shouldReuseRoute = function () {
         return false;
@@ -66,17 +65,17 @@ export class TextComponent implements OnInit {
 
   }
 
-  getLevel() {
-    let data = window.localStorage['level'];
-    if (data) {
-      console.log(data);
-      data = JSON.parse(data);
-      this.level = data;
-    }
-  }
+  // getLevel() {
+  //   let data = window.localStorage['level'];
+  //   if (data) {
+  //     console.log(data);
+  //     data = JSON.parse(data);
+  //     this.level = data;
+  //   }
+  // }
 
   initContent() {
-    this.getLevel();
+    // this.getLevel();
     if (this.level === 2) {
       this.getSectionById();
     }
@@ -92,6 +91,16 @@ export class TextComponent implements OnInit {
 
   }
 
+  setSonLevel() {
+    this.enviromentVariables.setLevel(this.level, this.component, this.section);
+  }
+  getSonLevel() {
+    let data = window.localStorage['level'];
+    if (data) {
+      data = JSON.parse(data);
+      this.sonLevel = data;
+    }
+  }
 
 
   getSectionById() {
@@ -125,7 +134,7 @@ export class TextComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.setSonLevel();
   }
 
   ngOnDestroy() {
