@@ -1,4 +1,3 @@
-import { ContactComponent } from './additional-content/contact/contact.component';
 import { SectionStartComponent } from './generic/section-start/section-start.component';
 import { TextComponent } from './generic/text/text.component';
 import { NgModule } from '@angular/core';

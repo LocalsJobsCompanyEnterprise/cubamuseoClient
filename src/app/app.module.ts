@@ -1,6 +1,3 @@
-import {MatDialogModule} from "@angular/material/dialog";
-import { AdditionalContentModule } from './additional-content/additional-content.module';
-import { ContactComponent } from './additional-content/contact/contact.component';
 import { TalesModule } from './tales/tales.module';
 import { SamplesModule } from './samples/samples.module';
 import { CollectionModule } from './collection/collection.module';
@@ -40,12 +37,11 @@ import { NgbModule, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-boots
     TalesModule,
     TranslateModule,
     NgDynamicBreadcrumbModule,
-    AdditionalContentModule,
     NgbModule,
-    MatDialogModule
+
   ],
   exports: [
-    MatDialogModule
+
   ],
   providers: [
   ],

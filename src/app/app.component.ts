@@ -1,10 +1,9 @@
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ContactComponent } from './additional-content/contact/contact.component';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Component, ViewChild, Inject } from '@angular/core';
 import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+
 
 export interface DialogData {
   animal: string;
