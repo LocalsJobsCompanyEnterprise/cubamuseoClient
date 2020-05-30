@@ -31,7 +31,7 @@ export class TalesServiceService {
   }
 
   getTalesCategories() {
-    return this.http.get(this.config.serverNodeLocation + 'api/tale/getCategories');
+    return this.http.get(this.config.serverNodeLocation + 'category-stamp');
   }
 
 }
