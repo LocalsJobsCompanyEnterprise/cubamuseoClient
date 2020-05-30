@@ -169,7 +169,7 @@ export class CategoryComponent implements OnInit {
   }
 
   setSonLevel(){
-    this.enviromentVariables.setLevel(this.level,this.component,this.section);
+    this.enviromentVariables.setLevel(this.level,this.component,this.category);
   }
 
   getSonLevel() {

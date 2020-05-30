@@ -2,8 +2,10 @@
     <div *ngIf="section=== 'tales'; then tale"> </div>
     <div *ngIf="section=== 'store'; then store"> </div>
     <div *ngIf="section=== 'vpost'; then item"> </div>
-    <!-- <div *ngIf="level===1; then item"> </div> -->
-    <div *ngIf="level===2; then text"> </div>
+    <div *ngIf="level===3 && section === 'collection'; then text"> </div>
+    <div *ngIf="level===2 && section === 'collection'; then item"> </div>
+    <div *ngIf="level===3 && section === 'samples'; then text"> </div>
+    <div *ngIf="level===2 && section === 'samples'; then item"> </div>
 </div>
 
 <ng-template #item>

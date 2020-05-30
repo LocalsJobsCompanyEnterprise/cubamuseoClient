@@ -92,7 +92,7 @@ export class TextComponent implements OnInit {
   }
 
   setSonLevel() {
-    this.enviromentVariables.setLevel(this.level, this.component, this.section);
+    this.enviromentVariables.setLevel(this.level, this.component, this.category);
   }
   getSonLevel() {
     let data = window.localStorage['level'];

@@ -1,6 +1,3 @@
-import {MatDialogModule} from "@angular/material/dialog";
-import { AdditionalContentModule } from './additional-content/additional-content.module';
-import { ContactComponent } from './additional-content/contact/contact.component';
 import { TalesModule } from './tales/tales.module';
 import { SamplesModule } from './samples/samples.module';
 import { CollectionModule } from './collection/collection.module';
@@ -17,7 +14,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {NgDynamicBreadcrumbModule} from "ng-dynamic-breadcrumb";
-import { NgbModule, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -39,13 +36,7 @@ import { NgbModule, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-boots
     SamplesModule,
     TalesModule,
     TranslateModule,
-    NgDynamicBreadcrumbModule,
-    AdditionalContentModule,
-    NgbModule,
-    MatDialogModule
-  ],
-  exports: [
-    MatDialogModule
+    NgDynamicBreadcrumbModule
   ],
   providers: [
   ],
