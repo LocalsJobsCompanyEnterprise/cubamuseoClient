@@ -76,19 +76,19 @@ export class TextComponent implements OnInit {
 
   initContent() {
     // this.getLevel();
-    if (this.level === 2) {
-      this.getSectionById();
-    }
-    else if (this.category === 'collection') {
-      if (this.level === 1)
-        this.getCategoryById();
-      else if (this.level === 3)
+    if (this.category === 'collection'){
+      if (this.level === 3) {
         this.getSectionById();
+      }
+      else if(this.level === 2){
+        this.getCategoryById();
+      }
     }
-    else {
-      this.getSampleById();
+    else if(this.category === 'samples') {
+      if(this.level === 2){
+        this.getSampleById();
+      }     
     }
-
   }
 
   setSonLevel() {

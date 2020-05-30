@@ -80,7 +80,7 @@ export class GalleryListComponent implements OnInit {
 
   initGallery() {
    
-    if (this.level === 1) {
+    if (this.level === 2) {
       if (this.section === 'vpost') {
         return this.getVpostGallery();
       }
@@ -97,7 +97,7 @@ export class GalleryListComponent implements OnInit {
         return this.getOneSampleGallery();
       }
     }
-    else if (this.level === 2) {
+    else if (this.level === 3) {
       if (this.section === 'collection') {
         return this.getPagesGallery();
       }
