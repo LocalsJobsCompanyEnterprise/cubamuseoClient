@@ -37,6 +37,10 @@ import {NgDynamicBreadcrumbModule} from "ng-dynamic-breadcrumb";
     TalesModule,
     TranslateModule,
     NgDynamicBreadcrumbModule
+
+  ],
+  exports: [
+
   ],
   providers: [
   ],
