@@ -3,11 +3,11 @@
     <div class="row d-flex flex-row align-items-end">
         <!-- Similar Post -->
         <!-- Hay que poner la img  -->
-        <div *ngIf="section === 'collection'; then collection else otherSection"></div>
+        <div *ngIf="category === 'collection'; then collection else otherSection"></div>
         <ng-template #collection>
             <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
-                <div class="similar_post trans_200" (click)="getSonLevel()">
-                    <a [routerLink]="['/text',item.idSeccion,sonLevel,section]">
+                <div class="similar_post trans_200">
+                    <a [routerLink]="['/text',item.idSeccion,sonLevel,category]">
                         <p [innerHTML]="item.nombre"></p>
                     </a>
                 </div>
@@ -15,8 +15,8 @@
         </ng-template>
         <ng-template #otherSection>
             <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
-                <div class="similar_post trans_200" (click)="getSonLevel()">
-                    <a [routerLink]="['/gallery',item.id,sonLevel,section]">
+                <div class="similar_post trans_200">
+                    <a [routerLink]="['/gallery',item.id,sonLevel,category]">
                         <p [innerHTML]="item.nombre"></p>
                     </a>
                 </div>

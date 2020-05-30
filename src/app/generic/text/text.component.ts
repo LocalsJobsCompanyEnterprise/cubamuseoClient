@@ -42,12 +42,11 @@ export class TextComponent implements OnInit {
     public configService: ConfigServiceService) {
     this.level = -1;
 
-    this.component = 'gallery';
+    this.component = 'text';
     this.activatedRoute.params.subscribe(val => {
       this.sectionId = val.id;
       this.category = val.section;
-      this.level = val.sonLevel;
-      this.baseFolder = val.baseFolder
+      this.level = parseInt(val.sonLevel);
       this.initContent();
       this.router.routeReuseStrategy.shouldReuseRoute = function () {
         return false;
@@ -76,18 +75,18 @@ export class TextComponent implements OnInit {
 
   initContent() {
     // this.getLevel();
-    if (this.category === 'collection'){
+    if (this.category === 'collection') {
       if (this.level === 3) {
         this.getSectionById();
       }
-      else if(this.level === 2){
+      else if (this.level === 2) {
         this.getCategoryById();
       }
     }
-    else if(this.category === 'samples') {
-      if(this.level === 2){
+    else if (this.category === 'samples') {
+      if (this.level === 2) {
         this.getSampleById();
-      }     
+      }
     }
   }
 
@@ -107,6 +106,11 @@ export class TextComponent implements OnInit {
     this.collection.getSectionById(this.sectionId).subscribe(
       data => {
         this.section = data;
+        let aux = {
+          level_3: this.section.nombre,
+          level_2: 'none'
+        }
+        window.localStorage.setItem('folderByLevel', JSON.stringify(aux));
       }, error => {
         this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
       }
@@ -117,6 +121,12 @@ export class TextComponent implements OnInit {
     this.collection.getCategoryById(this.sectionId).subscribe(
       data => {
         this.section = data;
+        let folderByLevel = JSON.parse(window.localStorage.getItem('folderByLevel'));
+        if (folderByLevel.level_2 != this.section.carpeta)          
+          folderByLevel.level_2 = this.section.carpeta
+        
+          this.baseFolder = folderByLevel.level_3;
+        window.localStorage.setItem('folderByLevel',JSON.stringify(folderByLevel)) ;
       }, error => {
         this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
       }
@@ -135,6 +145,7 @@ export class TextComponent implements OnInit {
 
   ngOnInit(): void {
     this.setSonLevel();
+    this.getSonLevel();
   }
 
   ngOnDestroy() {
