@@ -38,7 +38,7 @@
 
 <ng-template #text>
     <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
-        <img class="card-img-top" src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagenGaleria}}/{{section}}/{{item.carpeta}}" alt="">
+        <img class="card-img-top" src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/{{foldername}}" alt="">
         <div class="card-body">
             <div class="card-title card-title-small">
                 <a [routerLink]="['/text', item.idCategoria,sonLevel,section]">
