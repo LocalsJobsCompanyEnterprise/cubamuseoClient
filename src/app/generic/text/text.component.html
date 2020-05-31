@@ -1,6 +1,6 @@
 <div class="row row-lg-eq-height">
     <div class="card card_largest_with_image grid-item">
-        <img *ngIf="baseFolder" class="card-img-top" src="{{configService.serverNodeLocation}}images/{{level}}/{{section.nombre}}/{{section.imagen}}/{{category}}/{{baseFolder}}">
+        <img *ngIf="baseFolder" class="card-img-top" src="{{configService.serverNodeLocation}}images/{{level}}/{{section.carpeta}}/{{section.imagen}}/{{category}}/{{baseFolder}}">
         <img *ngIf="!baseFolder" class="card-img-top" src="{{configService.serverNodeLocation}}images/{{level}}/{{section.nombre}}/{{section.imagen}}/{{category}}/none">
         <div class="card-body">
             <div class="card-title"><span style="color: rgba(0,0,0,1);"><h3 [innerHTML]="section.titulo"></h3></span></div>

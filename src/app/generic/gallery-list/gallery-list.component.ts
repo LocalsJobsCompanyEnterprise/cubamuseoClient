@@ -28,6 +28,7 @@ export class GalleryListComponent implements OnInit {
   component: string;
   foldername:any;
   sonLevel:number;
+  baseFolder:string;
 
   @Input() tagSection: Subject<string>;
   @Input() tagLevel: Subject<number>;
@@ -72,7 +73,8 @@ export class GalleryListComponent implements OnInit {
 
     this.bottomTop = 0;
     this.isScrollable = true;
-
+    let folder:any = JSON.parse(window.localStorage.getItem('folderByLevel'));
+    this.baseFolder = folder.level_2;
   }
 
 
