@@ -1,3 +1,20 @@
 span {
     color: black;
 }
+
+.additional_content .row .col-sm-3 {
+    color: rgb(255, 255, 255);
+    margin: 10 15px;
+    height: 50px;
+}
+
+.additional_content .row .col-sm-6 {
+    color: rgb(255, 255, 255);
+    margin: 10 15px;
+    height: 50px;
+}
+
+.additional_content .row {
+    text-align: center;
+    cursor: pointer;
+}
