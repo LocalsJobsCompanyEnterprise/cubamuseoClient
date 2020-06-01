@@ -3,7 +3,12 @@
     <div class="row d-flex flex-row align-items-end">
         <!-- Similar Post -->
         <!-- Hay que poner la img  -->
-        <div *ngIf="category === 'collection'; then collection else otherSection"></div>
+        <div *ngIf="category === 'collection'; then collection"></div>
+        <div *ngIf="category === 'vpost'; then vpost"></div>
+        <div *ngIf="category === 'store'; then store"></div>
+        <div *ngIf="category === 'samples' ; then otherSection"></div>
+        <div *ngIf="category === 'tales' ; then otherSection"></div>
+        
         <ng-template #collection>
             <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
                 <div class="similar_post trans_200">
@@ -13,10 +18,30 @@
                 </div>
             </div>
         </ng-template>
+        
         <ng-template #otherSection>
             <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
                 <div class="similar_post trans_200">
-                    <a [routerLink]="['/gallery',item.id,sonLevel,category]">
+                    <a [routerLink]="['/gallery',item.idCategoriaEstampa,sonLevel,category]">
+                        <p [innerHTML]="item.nombre"></p>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+        
+        <ng-template #vpost>
+            <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
+                <div class="similar_post trans_200">
+                    <a [routerLink]="['/text',item.CategoriaPostal,sonLevel,category]">
+                        <p [innerHTML]="item.nombre"></p>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #store>
+            <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
+                <div class="similar_post trans_200">
+                    <a [routerLink]="['/gallery',item.idTematica,sonLevel,category]">
                         <p [innerHTML]="item.nombre"></p>
                     </a>
                 </div>

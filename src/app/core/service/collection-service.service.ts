@@ -39,7 +39,7 @@ export class CollectionServiceService {
 
 
    getCollections(id) {
-     return this.http.get(this.config.serverNodeLocation + 'category-item/' + id);
+     return this.http.get(this.config.serverNodeLocation + 'category-item/byCategory/' + id);
    }
 
    getCollectionPageById(id) {

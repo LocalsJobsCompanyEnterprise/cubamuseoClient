@@ -210,7 +210,7 @@ export class GalleryListComponent implements OnInit {
   }
 
   getCollectionsGallery() {
-    this.collection.getCollections( this.itemId).subscribe(
+    this.collection.getCollections(this.itemId).subscribe(
       data => {
         let result: any = data;
         this.gallerylist = [];
