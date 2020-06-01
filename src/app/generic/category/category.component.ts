@@ -183,36 +183,20 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let cat = this.categoryType;
-    if(cat){
-      this.categoryType.subscribe(
-          data => {
-            if (data)
-              this.category = data;
-            this.initCategories();
-            this.getLevel();
-            this.setSonLevel();
-            this.getSonLevel();
-          }
-        );
-
-    }else{
-      this.initCategories();
+    this.categoryType.subscribe(
+      data => {
+        if (data)
+          this.category = data;
+        this.initCategories();
+        this.getLevel();
+        this.setSonLevel();
+        this.getSonLevel();
+      }
+    );
+    this.initCategories();
     this.getLevel();
     this.setSonLevel();
     this.getSonLevel();
-    }
-    // this.categoryType.subscribe(
-    //   data => {
-    //     if (data)
-    //       this.category = data;
-    //     this.initCategories();
-    //     this.getLevel();
-    //     this.setSonLevel();
-    //     this.getSonLevel();
-    //   }
-    // );
-    
 
   }
 
