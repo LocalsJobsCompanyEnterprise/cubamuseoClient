@@ -38,8 +38,8 @@ export class CollectionServiceService {
    }
 
 
-   getCollections(offset, id) {
-     return this.http.post(this.config.serverNodeLocation + 'api/collection/getWith', {id, offset});
+   getCollections(id) {
+     return this.http.get(this.config.serverNodeLocation + 'category-item/' + id);
    }
 
    getCollectionPageById(id) {

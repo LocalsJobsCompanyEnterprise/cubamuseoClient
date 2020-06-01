@@ -1,7 +1,7 @@
 <div class="grid clearfix">
     <div *ngIf="section=== 'tales'; then tale"> </div>
     <div *ngIf="section=== 'store'; then store"> </div>
-    <div *ngIf="section=== 'vpost'; then item"> </div>
+    <div *ngIf="section=== 'vpost'; then vpost"> </div>
     <div *ngIf="level===3 && section === 'collection'; then text"> </div>
     <div *ngIf="level===2 && section === 'collection'; then item"> </div>
     <div *ngIf="level===3 && section === 'samples'; then text"> </div>
@@ -13,7 +13,21 @@
         <img class="card-img-top" src="{{config.serverNodeLocation}}" alt="">
         <div class="card-body">
             <div class="card-title card-title-small">
-                <a [routerLink]="['/item', item.idCategoria, section]">
+                <a [routerLink]="['/item', item.idItem, section]">
+                    <p [innerHTML]="item.nombre"></p>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</ng-template>
+
+<ng-template #vpost>
+    <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
+        <img class="card-img-top" src="{{config.serverNodeLocation}}" alt="">
+        <div class="card-body">
+            <div class="card-title card-title-small">
+                <a [routerLink]="['/item', item.idPostal, section]">
                     <p [innerHTML]="item.nombre"></p>
                 </a>
             </div>
@@ -36,12 +50,13 @@
     </div>
 </ng-template>
 
+
 <ng-template #tale>
     <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
         <img class="card-img-top" src="{{config.serverNodeLocation}}" alt="">
         <div class="card-body">
             <div class="card-title card-title-small">
-                <a [routerLink]="['/tale', item.idCategoria]">
+                <a [routerLink]="['/tale', item.idEstampa]">
                     <p [innerHTML]="item.nombre"></p>
                 </a>
             </div>
@@ -55,7 +70,7 @@
         <img class="card-img-top" src="{{config.serverNodeLocation}}" alt="">
         <div class="card-body">
             <div class="card-title card-title-small">
-                <a [routerLink]="['/store', item.idCategoria]">
+                <a [routerLink]="['/store', item.idItem]">
                     <p [innerHTML]="item.nombre"></p>
                 </a>
             </div>
