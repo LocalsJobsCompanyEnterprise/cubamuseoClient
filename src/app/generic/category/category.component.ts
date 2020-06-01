@@ -15,6 +15,7 @@ import { Subject } from 'rxjs';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
+
 export class CategoryComponent implements OnInit {
 
   categoryList: any[];
@@ -67,7 +68,7 @@ export class CategoryComponent implements OnInit {
         return this.getCategoryListSamples();
       }
       case "tales": {
-        return this.getCategoryListTales();
+        return this.getCategoryListSamples();
       }
       case "vpost": {
         return this.getCategoryListVpost();
@@ -106,7 +107,7 @@ export class CategoryComponent implements OnInit {
 
         result.forEach(element => {
           this.categoryList.push(element);
-          this.samples.samplesCategoryList.push(element);
+          //this.samples.samplesCategoryList.push(element);
         });
 
       }, error => {
@@ -114,6 +115,7 @@ export class CategoryComponent implements OnInit {
       }
     );
   }
+
   getCategoryListTales() {
     this.tales.getTalesCategories().subscribe(
       data => {
@@ -123,7 +125,7 @@ export class CategoryComponent implements OnInit {
 
         result.forEach(element => {
           this.categoryList.push(element);
-          this.tales.taleCategoryList.push(element);
+          //this.tales.taleCategoryList.push(element);
         });
 
       }, error => {
@@ -131,6 +133,7 @@ export class CategoryComponent implements OnInit {
       }
     );
   }
+
   getCategoryListVpost() {
     this.vPost.getVpostCategories().subscribe(
       data => {
@@ -181,20 +184,37 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.categoryType.subscribe(
-      data => {
-        this.category = data;
-        this.initCategories();
-        this.getLevel();
-        this.setSonLevel();
-        this.getSonLevel();
-      }
-    );
+    let cat = this.categoryType;
+    if(cat){
+      this.categoryType.subscribe(
+          data => {
+            if (data)
+              this.category = data;
+            this.initCategories();
+            this.getLevel();
+            this.setSonLevel();
+            this.getSonLevel();
+          }
+        );
 
-    this.initCategories();
+    }else{
+      this.initCategories();
     this.getLevel();
     this.setSonLevel();
     this.getSonLevel();
+    }
+    // this.categoryType.subscribe(
+    //   data => {
+    //     if (data)
+    //       this.category = data;
+    //     this.initCategories();
+    //     this.getLevel();
+    //     this.setSonLevel();
+    //     this.getSonLevel();
+    //   }
+    // );
+    
+
   }
 
 }

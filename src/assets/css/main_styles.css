@@ -949,7 +949,7 @@ a:hover {
 *********************************/
 
 .page_content {
-    background: #f7f7f7;
+    background: #ffffff;
     margin-bottom: 15px;
 }
 
@@ -1854,8 +1854,8 @@ a:hover {
 
 .subscribe_content {
     width: 100%;
-    padding-left: 30px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 45px;
 }
 
