@@ -30,8 +30,8 @@ export class SamplesServiceService {
     return this.http.get(this.config.serverNodeLocation + 'api/sample/getItemImage/' + id);
    }
 
-  getSamples(offset, id) {
-    return this.http.post(this.config.serverNodeLocation + 'api/sample/getWith', {id, offset});
+  getSamples(id) {
+    return this.http.get(this.config.serverNodeLocation + 'category-item/byCategory/' + id);
   }
 
   getSamplesGalleryById(id) {

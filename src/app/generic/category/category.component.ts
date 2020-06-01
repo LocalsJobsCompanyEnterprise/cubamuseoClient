@@ -66,7 +66,7 @@ export class CategoryComponent implements OnInit {
       case "samples": {
         return this.getCategoryListSamples();
       }
-      case "tale": {
+      case "tales": {
         return this.getCategoryListTales();
       }
       case "vpost": {
@@ -148,6 +148,7 @@ export class CategoryComponent implements OnInit {
       }
     );
   }
+
   getCategoryListStore() {
     this.store.getAdsCategories().subscribe(
       data => {

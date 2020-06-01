@@ -15,7 +15,7 @@
                 {{item.nombre}}
             </h2>
         </div>
-        <a href="">
+        <a [routerLink]="['/item', item.idItem, section]">
             <img class="card-img-top" src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/{{baseFolder}}" alt="">
         </a>
 
@@ -78,7 +78,7 @@
         <img class="card-img-top" src="{{config.serverNodeLocation}}" alt="">
         <div class="card-body">
             <div class="card-title card-title-small">
-                <a [routerLink]="['/tale', item.idEstampa]">
+                <a [routerLink]="['/tales', item.idEstampa]">
                     <p [innerHTML]="item.nombre"></p>
                 </a>
             </div>

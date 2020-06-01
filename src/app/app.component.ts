@@ -60,11 +60,11 @@ export class AppComponent {
           },
           {
             label: 'Estampa {{id}}',
-            url: 'tale/:id'
+            url: 'tales/:id'
           }, 
           {
             label: 'Articulo {{id}}',
-            url: 'tale/:id'
+            url: 'tales/:id'
           },
           {
             label: 'Inicio ',

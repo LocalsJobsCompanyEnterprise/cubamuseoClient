@@ -97,7 +97,7 @@ export class GalleryListComponent implements OnInit {
         return this.getOneSampleGallery();
       }
     }
-    else if (this.level === 3) {
+    else if (this.level === "3") {
       if (this.section === 'collection') {
         return this.getPagesGallery();
       }
@@ -190,18 +190,20 @@ export class GalleryListComponent implements OnInit {
   }
 
   getSamplesGallery() {
-    this.samples.getSamples(this.bottomTop, this.itemId).subscribe(
-      data => {
-        let result: any = data;
+    this.samples.getSamples(this.itemId).subscribe(
+      (data: any[]) => {
         this.gallerylist = [];
-        this.samples.samplesList = [];
-        result.forEach(element => {
-          if (result.length < 10) {
-            this.isScrollable = false;
+        data.forEach(element => {
+          this.samples.getSamplesGalleryById(element.idCategoriaEstampa).subscribe(
+            data => {
+              this.gallerylist.push(data);
+              this.samples.samplesGalleryList.push(data);
+            }
+          ), error => {
+            this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
           }
-          this.gallerylist.push(element);
-          this.samples.samplesList.push(element);
         });
+
 
       }, error => {
         this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
