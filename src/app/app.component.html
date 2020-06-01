@@ -1,82 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="super_container">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="header_content justify-content-lg-center align-content-lg-center">
+                        <div class="row scrolled-logo">
+                            <div class="col-12">
+                                <div class="site-branding flex flex-column align-items-center">
+                                    <h1 class="site-title" (click)="categoryType.next('collection')">
+                                        <a [routerLink]="['/collection', '1' ]">Cuba Museo</a>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
 
-<head>
-    <title>Cuba Museo</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Demo project">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <div class="logo" (click)="categoryType.next('collection')">
+                            <h2 class="site-title">
+                                <a [routerLink]="['/collection', '1' ]">Cuba Museo</a>
+                            </h2>
 
-
-</head>
-
-<body>
-
-    <div class="super_container">
-
-        <!-- Header -->
-
-        <header class="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="logo" (click)="categoryType.next('collection')"><a
-                                    [routerLink]="['/collection', '1' ]">Cuba Museo</a></div>
-                            <nav class="main_nav">
-                                <ul>
-                                    <li (click)="categoryType.next('collection')" class="active"><a
-                                            [routerLink]="['/collection', '1']">Inicio</a></li>
-                                    <li (click)="categoryType.next('samples')"><a
-                                            [routerLink]="['/samples', '2']">Estampas</a></li>
-                                    <li (click)="categoryType.next('tale')"><a
-                                            [routerLink]="['/tales', '3']">Muestras</a></li>
-                                    <li (click)="categoryType.next('vpost')"><a
-                                            [routerLink]="['/vpost', '6']">V-Post</a></li>
-                                    <li (click)="categoryType.next('store')"><a
-                                            [routerLink]="['/store', '7']">Tienda</a></li>
-                                </ul>
-                            </nav>
-                            <!-- <div >
+                        </div>
+                        <nav class="main_nav" style="margin-left: auto;">
+                            <ul>
+                                <li (click)="categoryType.next('collection')" class="active"><a [routerLink]="['/collection', '1']">Inicio</a></li>
+                                <li (click)="categoryType.next('samples')"><a [routerLink]="['/samples', '2']">Estampas</a></li>
+                                <li (click)="categoryType.next('tale')"><a [routerLink]="['/tales', '3']">Muestras</a></li>
+                                <li (click)="categoryType.next('vpost')"><a [routerLink]="['/vpost', '6']">V-Post</a></li>
+                                <li (click)="categoryType.next('store')"><a [routerLink]="['/store', '7']">Tienda</a></li>
+                            </ul>
+                        </nav>
+                        <!-- <div >
                                 <select #langselect (change)="translate.use(langselect.value)">
                                     <option *ngFor="let lang of translate.getLangs()" value="lang"></option>
                                 </select>
                             </div> -->
-                            <div class="search_container ml-auto">
-                                <form action="#">
-                                    <input type="search" class="header_search_input" required="required"
-                                        placeholder="Type to Search...">
-                                    <img class="header_search_icon" src="../assets/images/search.png" alt="">
-                                </form>
+                        <!-- <div class="search_container ml-auto">
+                            <form action="#">
+                                <input type="search" class="header_search_input" required="required" placeholder="Escriba para buscar...">
+                                <img class="header_search_icon" src="../assets/images/search.png" alt="">
+                            </form>
 
-                            </div>
-                            <div class="hamburger ml-auto menu_mm">
-                                <i class="fa fa-bars trans_200 menu_mm" aria-hidden="true"></i>
-                            </div>
+                        </div> -->
+                        <div class="hamburger ml-auto menu_mm" style="float: right;">
+                            <i class="fa fa-bars trans_200 menu_mm" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
+    <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+        <div class="menu_close_container">
+            <div class="menu_close">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="logo menu_mm"><a href="#">Cuba Museo</a></div>
+        <div class="search">
+            <form action="#">
+                <input type="search" class="header_search_input menu_mm" required="required" placeholder="Escriba para buscar...">
+                <img class="header_search_icon menu_mm" src="images/search_2.png" alt="">
+            </form>
+        </div>
+        <nav class="menu_nav">
+            <ul class="menu_mm">
+                <li (click)="categoryType.next('collection')" class="menu_mm"><a [routerLink]="['/collection', '1']">Inicio</a></li>
+                <li (click)="categoryType.next('samples')" class="menu_mm"><a [routerLink]="['/samples', '2']">Estampas</a></li>
+                <li (click)="categoryType.next('tale')" class="menu_mm"><a [routerLink]="['/tales', '3']">Muestras</a></li>
+                <li (click)="categoryType.next('vpost')" class="menu_mm"><a [routerLink]="['/vpost', '6']">V-Post</a></li>
+                <li (click)="categoryType.next('store')" class="menu_mm"><a [routerLink]="['/store', '7']">Tienda</a></li>
 
+            </ul>
+        </nav>
+    </div>
 
-        <!-- Home -->
+    <!-- Home -->
 
-        <div class="home">
-
-
-
-            <!-- Home Slider -->
-
+    <!-- <div class="home">
+            
             <div class="home_slider_container">
                 <div class="owl-carousel owl-theme home_slider">
 
-                    <!-- Slider Item -->
                     <div class="owl-item">
-                        <div class="home_slider_background"
-                            style="background-image:url(../assets/images/home_slider.jpg)"></div>
+                        <div class="home_slider_background" style="background-image:url(../assets/images/home_slider.jpg)"></div>
                         <div class="home_slider_content_container">
                             <div class="container">
                                 <div class="row">
@@ -93,19 +102,13 @@
                             </div>
                         </div>
 
-                        <!-- Similar Posts -->
-                        <div class="similar_posts_container">
-                            <app-category [categoryType]="categoryType.asObservable()"></app-category>
-                        </div>
                     </div>
 
                 </div>
 
                 <div class="custom_nav_container home_slider_nav_container">
                     <div class="custom_prev custom_prev_home_slider">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            x="0px" y="0px" width="7px" height="12px" viewBox="0 0 7 12"
-                            enable-background="new 0 0 7 12" xml:space="preserve">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                             <polyline fill="#FFFFFF"
                                 points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 " />
                         </svg>
@@ -116,9 +119,7 @@
                         <li class="custom_dot custom_dot_home_slider"><span></span></li>
                     </ul>
                     <div class="custom_next custom_next_home_slider">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            x="0px" y="0px" width="7px" height="12px" viewBox="0 0 7 12"
-                            enable-background="new 0 0 7 12" xml:space="preserve">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" xml:space="preserve">
                             <polyline fill="#FFFFFF"
                                 points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 " />
                         </svg>
@@ -126,194 +127,163 @@
 
                 </div>
             </div>
+        </div> -->
 
-        </div>
-
-
-        <div class="page_content">
-            <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
-            <div class="container">
-                <router-outlet></router-outlet>
+    <div class="container">
+        <div class="row">
+            <div class="similar_posts_container">
+                <app-category [categoryType]="categoryType.asObservable()"></app-category>
             </div>
         </div>
+    </div>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row row-lg-eq-height">
-                    <div class="col-lg-9 order-lg-1 order-2">
-                        <div class="footer_content">
-                            <div class="footer_logo"><a href="#">Cuba Museo</a></div>
-                            <div class="footer_social">
-                                <ul>
-                                    <li class="footer_social_facebook"><a href="#"><i class="fa fa-facebook"
+
+    <div class="page_content">
+        <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row row-lg-eq-height">
+                <div class="col-lg-9 order-lg-1 order-2">
+                    <div class="footer_content">
+                        <div class="footer_logo"><a href="#">Cuba Museo</a></div>
+                        <div class="footer_social">
+                            <ul>
+                                <li class="footer_social_facebook"><a href="#"><i class="fa fa-facebook"
                                                 aria-hidden="true"></i></a>
-                                    </li>
-                                    <li class="footer_social_twitter"><a href="#"><i class="fa fa-twitter"
+                                </li>
+                                <li class="footer_social_twitter"><a href="#"><i class="fa fa-twitter"
                                                 aria-hidden="true"></i></a>
-                                    </li>
-                                    <li class="footer_social_pinterest"><a href="#"><i class="fa fa-pinterest"
+                                </li>
+                                <li class="footer_social_pinterest"><a href="#"><i class="fa fa-pinterest"
                                                 aria-hidden="true"></i></a>
-                                    </li>
-                                    <li class="footer_social_vimeo"><a href="#"><i class="fa fa-vimeo"
+                                </li>
+                                <li class="footer_social_vimeo"><a href="#"><i class="fa fa-vimeo"
                                                 aria-hidden="true"></i></a></li>
-                                    <li class="footer_social_instagram"><a href="#"><i class="fa fa-instagram"
+                                <li class="footer_social_instagram"><a href="#"><i class="fa fa-instagram"
                                                 aria-hidden="true"></i></a>
-                                    </li>
-                                    <li class="footer_social_google"><a href="#"><i class="fa fa-google"
+                                </li>
+                                <li class="footer_social_google"><a href="#"><i class="fa fa-google"
                                                 aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="copyright">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                    aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                    target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </div>
+                            </ul>
+                        </div>
+                        <div class="copyright">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>
                     </div>
-                    <div class="col-lg-3 order-lg-2 order-1">
-                        <div class="subscribe">
-                            <div class="subscribe_background"></div>
-                            <div class="subscribe_content">
-                                <div class="additional_content">
-                                    <ul>
-                                        <li><a style="font-family: 'Ubuntu', sans-serif;font-size: 14px;font-weight: 700; color: rgba(255,255,255,0.5);"
-                                                (click)="open(contact)">Contacto</a></li>
-                                        <li><a style="font-family: 'Ubuntu', sans-serif;font-size: 14px;font-weight: 700; color: rgba(255,255,255,0.5);"
-                                                (click)="open(aboutUs)">Quienes
+                </div>
+                <div class="col-lg-3 order-lg-2 order-1">
+                    <div class="subscribe">
+                        <div class="subscribe_background"></div>
+                        <div class="subscribe_content">
+                            <div class="additional_content">
+                                <ul>
+                                    <li><a style="font-family: 'Ubuntu', sans-serif;font-size: 14px;font-weight: 700; color: rgba(255,255,255,0.5);" (click)="open(contact)">Contacto</a></li>
+                                    <li><a style="font-family: 'Ubuntu', sans-serif;font-size: 14px;font-weight: 700; color: rgba(255,255,255,0.5);" (click)="open(aboutUs)">Quienes
                                                 Somos</a></li>
-                                        <li><a style="font-family: 'Ubuntu', sans-serif;font-size: 14px;font-weight: 700; color: rgba(255,255,255,0.5);"
-                                                (click)="open(news)">Noticias</a>
-                                        </li>
-                                        <li><a style="font-family: 'Ubuntu', sans-serif;font-size: 14px;font-weight: 700; color: rgba(255,255,255,0.5);"
-                                                (click)="open(relatedSites)">Sitios
+                                    <li><a style="font-family: 'Ubuntu', sans-serif;font-size: 14px;font-weight: 700; color: rgba(255,255,255,0.5);" (click)="open(news)">Noticias</a>
+                                    </li>
+                                    <li><a style="font-family: 'Ubuntu', sans-serif;font-size: 14px;font-weight: 700; color: rgba(255,255,255,0.5);" (click)="open(relatedSites)">Sitios
                                                 Relacionados</a></li>
-                                    </ul>
+                                </ul>
 
-                                    <ng-template #contact let-modal>
-                                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                <ng-template #contact let-modal>
+                                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                                             <span aria-hidden="true" style="float:right;">&times;</span>
                                           </button>
-                                          <div class=""
-                                          style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
-                                          <span> Contactenos</span>
-                                      </div>
-                                        <!-- Post Comment -->
-                                        <div class="post_comment">
-                                            <div class="contact_form_container">
-                                                <form action="#">
-                                                    <input type="text" class="contact_input contact_input_name"
-                                                        placeholder="Your Name" required="required">
-                                                    <input type="email" class="contact_input contact_input_email"
-                                                        placeholder="Your Email" required="required">
-                                                    <textarea class="contact_text" placeholder="Your Message"
-                                                        required="required"></textarea>
-                                                    <button type="submit" class="contact_button">Send Message</button>
-                                                </form>
-                                            </div>
+                                    <div class="" style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
+                                        <span> Contactenos</span>
+                                    </div>
+                                    <!-- Post Comment -->
+                                    <div class="post_comment">
+                                        <div class="contact_form_container">
+                                            <form action="#">
+                                                <input type="text" class="contact_input contact_input_name" placeholder="Your Name" required="required">
+                                                <input type="email" class="contact_input contact_input_email" placeholder="Your Email" required="required">
+                                                <textarea class="contact_text" placeholder="Your Message" required="required"></textarea>
+                                                <button type="submit" class="contact_button">Send Message</button>
+                                            </form>
                                         </div>
-                                    </ng-template>
+                                    </div>
+                                </ng-template>
 
-                                    <ng-template #aboutUs let-modal>
-                                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                <ng-template #aboutUs let-modal>
+                                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                                             <span aria-hidden="true" style="float:right;">&times;</span>
                                           </button>
-                                           
-                                            
-                                        <!-- Post Comment -->
-                                        <div class="cui_row">
-                                            <div class="cui_row"
-                                                style="background-color: #ffffff; padding: 20px; padding-bottom: 40px; border-radius: 5px;">
-                                                <div class=""
-                                                    style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
-                                                    <span> Quienes Somos</span>
-                                                </div>
-                                                <p style="text-align:left; line-height:1.6em;">
-                                                    Este espacio ha sido concebido por un coleccionista cubano, el Ing.
-                                                    Luis Díaz Mijares, que ha dedicado décadas a reunir las piezas que
-                                                    se muestran en sus diferentes secciones temáticas y a confeccionar
-                                                    las páginas correspondientes. La totalidad de su contenido es de su
-                                                    entera responsabilidad y autoría.
-                                                    La parte de programación (arquitectura y diseño del sitio) esta a
-                                                    cargo del Lic. Ulises Ortega Camero y la Lic. Maricarla Esquivel
-                                                    Sobrado.
-                                                    Si con nuestro trabajo llegamos a contribuir en algo a la difusión y
-                                                    conocimiento de la cultura e identidad cubana nos sentiremos
-                                                    satisfechos.
-                                                    <br> Traducción Español/Inglés: Lic. en Lengua Inglesa Mayen
-                                                    Vincench Pereira
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </ng-template>
 
-                                    <ng-template #news let-modal>
-                                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+
+                                    <!-- Post Comment -->
+                                    <div class="cui_row">
+                                        <div class="cui_row" style="background-color: #ffffff; padding: 20px; padding-bottom: 40px; border-radius: 5px;">
+                                            <div class="" style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
+                                                <span> Quienes Somos</span>
+                                            </div>
+                                            <p style="text-align:left; line-height:1.6em;">
+                                                Este espacio ha sido concebido por un coleccionista cubano, el Ing. Luis Díaz Mijares, que ha dedicado décadas a reunir las piezas que se muestran en sus diferentes secciones temáticas y a confeccionar las páginas correspondientes. La totalidad de su
+                                                contenido es de su entera responsabilidad y autoría. La parte de programación (arquitectura y diseño del sitio) esta a cargo del Lic. Ulises Ortega Camero y la Lic. Maricarla Esquivel Sobrado. Si con nuestro
+                                                trabajo llegamos a contribuir en algo a la difusión y conocimiento de la cultura e identidad cubana nos sentiremos satisfechos.
+                                                <br> Traducción Español/Inglés: Lic. en Lengua Inglesa Mayen Vincench Pereira
+                                            </p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+
+                                <ng-template #news let-modal>
+                                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                                             <span aria-hidden="true" style="float:right;">&times;</span>
                                           </button>
-                                           
-                                        <!-- Post Comment -->
-                                        <div class="cui_row">
-                                            <div class="cui_row"
-                                                style="background-color: #ffffff; padding: 20px; padding-bottom: 40px; border-radius: 5px;">
-                                                <div class=""
-                                                    style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
-                                                    <span> Noticias</span>
-                                                </div>
-                                                <p style="text-align:left; line-height:1.6em;">
-                                                    Donde usted podrá conocer de las últimas informaciones de interés
-                                                    relativas al contenido de nuestro sitio, a las nuevas secciones que
-                                                    se le irán incorporando, a las adiciones que recibirán sus páginas,
-                                                    etc. También noticias relativas al mundo del coleccionismo cubano
-                                                    donde referiremos nuevos hallazgos, eventos, publicaciones, etc.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </ng-template>
 
-                                    <ng-template #relatedSites let-modal>
-                                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                    <!-- Post Comment -->
+                                    <div class="cui_row">
+                                        <div class="cui_row" style="background-color: #ffffff; padding: 20px; padding-bottom: 40px; border-radius: 5px;">
+                                            <div class="" style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
+                                                <span> Noticias</span>
+                                            </div>
+                                            <p style="text-align:left; line-height:1.6em;">
+                                                Donde usted podrá conocer de las últimas informaciones de interés relativas al contenido de nuestro sitio, a las nuevas secciones que se le irán incorporando, a las adiciones que recibirán sus páginas, etc. También noticias relativas al mundo del coleccionismo
+                                                cubano donde referiremos nuevos hallazgos, eventos, publicaciones, etc.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+
+                                <ng-template #relatedSites let-modal>
+                                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                                             <span aria-hidden="true" style="float:right;">&times;</span>
                                           </button>
-                                        <!-- Post Comment -->
-                                        <div class="cui_row">
-                                            <div class="cui_row"
-                                                style="background-color: #ffffff; padding: 20px; padding-bottom: 40px; border-radius: 5px;">
-                                                <div class=""
-                                                    style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
-                                                    <span style="text-align: center;"> Sitios Relacionados</span>
-                                                </div>
-                                                <p style="text-align:left; line-height:1.6em;">
-                                                    "Memorias" es una tienda de antigüedades localizada en el corazón de
-                                                    la ciudad de la Habana, a una cuadra del Museo Nacional de Bellas
-                                                    Artes y colindante con el conocido bar Sloppy Joe's. Su principal
-                                                    objetivo es, además de comercializar una amplia gama de artículos
-                                                    destinados a los amantes de lo antiguo, crear un espacio que resulte
-                                                    agradable al visitante mediante la recreación del pasado cubano. En
-                                                    sus paredes además de viejas fotos, pinturas, carteles, grabados,
-                                                    etc., se mantienen generalmente exposiciones temporales relativas a
-                                                    nuestro patrimonio cultural en las cuales se muestran pequeñas
-                                                    colecciones acompañadas por sus correspondientes reseñas.
-                                                </p>
+                                    <!-- Post Comment -->
+                                    <div class="cui_row">
+                                        <div class="cui_row" style="background-color: #ffffff; padding: 20px; padding-bottom: 40px; border-radius: 5px;">
+                                            <div class="" style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
+                                                <span style="text-align: center;"> Sitios Relacionados</span>
                                             </div>
+                                            <p style="text-align:left; line-height:1.6em;">
+                                                "Memorias" es una tienda de antigüedades localizada en el corazón de la ciudad de la Habana, a una cuadra del Museo Nacional de Bellas Artes y colindante con el conocido bar Sloppy Joe's. Su principal objetivo es, además de comercializar una amplia gama
+                                                de artículos destinados a los amantes de lo antiguo, crear un espacio que resulte agradable al visitante mediante la recreación del pasado cubano. En sus paredes además de viejas fotos, pinturas, carteles,
+                                                grabados, etc., se mantienen generalmente exposiciones temporales relativas a nuestro patrimonio cultural en las cuales se muestran pequeñas colecciones acompañadas por sus correspondientes reseñas.
+                                            </p>
                                         </div>
-                                    </ng-template>
+                                    </div>
+                                </ng-template>
 
-
-                                </div>
 
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-    </div>
-</body>
-
-</html>
+        </div>
+    </footer>
+</div>

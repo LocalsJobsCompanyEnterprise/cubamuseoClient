@@ -30,7 +30,7 @@ export class CollectionServiceService {
 
 
    getItem(id){
-    return this.http.get(this.config.serverNodeLocation + 'api/collection/getItem/' + id);
+    return this.http.get(this.config.serverNodeLocation + 'item/' + id);
    }
 
    getImage(id){
@@ -41,6 +41,7 @@ export class CollectionServiceService {
    getCollections(id) {
      return this.http.get(this.config.serverNodeLocation + 'category-item/byCategory/' + id);
    }
+
 
    getCollectionPageById(id) {
     return this.http.get(this.config.serverNodeLocation + 'api/collection/getOnePage/' + id);

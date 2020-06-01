@@ -74,7 +74,7 @@ export class GalleryListComponent implements OnInit {
     this.bottomTop = 0;
     this.isScrollable = true;
     let folder:any = JSON.parse(window.localStorage.getItem('folderByLevel'));
-    this.baseFolder = folder.level_2;
+    this.baseFolder = folder.level_3;
   }
 
 
@@ -216,11 +216,20 @@ export class GalleryListComponent implements OnInit {
         this.gallerylist = [];
         this.collection.collectionList = [];
         result.forEach(element => {
-          if (result.length < 10) {
-            this.isScrollable = false;
-          }
-          this.gallerylist.push(element);
-          this.collection.collectionList.push(element);
+
+          this.collection.getItem(element.idItem).subscribe(
+            data=>{
+              this.gallerylist.push(data);
+              this.collection.collectionList.push(data);
+              if (result.length < 10) {
+                this.isScrollable = false;
+              }
+            },error=>{
+
+            }
+          )
+
+
         });
 
       }, error => {

@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: 'HelveticaNeueLTPro-Md';
+    src: url('assets/fonts/HelveticaNeueLTPro-Md.eot?#iefix') format('embedded-opentype'), url('assets/fonts/HelveticaNeueLTPro-Md.otf') format('opentype'), url('assets/fonts/HelveticaNeueLTPro-Md.woff') format('woff'), url('assets/fonts/HelveticaNeueLTPro-Md.ttf') format('truetype'), url('assets/fonts/HelveticaNeueLTPro-Md.svg#HelveticaNeueLTPro-Md') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BeyondTheMountains';
+    src: url('assets/fonts/BeyondTheMountains.eot?#iefix') format('embedded-opentype'), url('assets/fonts/BeyondTheMountains.otf') format('opentype'), url('assets/fonts/BeyondTheMountains.woff') format('woff'), url('assets/fonts/BeyondTheMountains.ttf') format('truetype'), url('assets/fonts/BeyondTheMountains.svg#BeyondTheMountains') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

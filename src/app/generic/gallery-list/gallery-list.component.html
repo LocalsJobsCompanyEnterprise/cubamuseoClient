@@ -1,4 +1,4 @@
-<div class="grid clearfix">
+<div class="galeria">
     <div *ngIf="section=== 'tales'; then tale"> </div>
     <div *ngIf="section=== 'store'; then store"> </div>
     <div *ngIf="section=== 'vpost'; then vpost"> </div>
@@ -9,15 +9,23 @@
 </div>
 
 <ng-template #item>
-    <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
-        <img class="card-img-top" src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item.carpeta}}/{{item.imagen}}/{{section}}/{{foldername}}" alt="">
-        <div class="card-body">
+    <div class="galeria_item" *ngFor="let item of gallerylist">
+        <div class="vtn_info_item">
+            <h2>
+                {{item.nombre}}
+            </h2>
+        </div>
+        <a href="">
+            <img class="card-img-top" src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/{{baseFolder}}" alt="">
+        </a>
+
+        <!-- <div class="card-body">
             <div class="card-title card-title-small">
                 <a [routerLink]="['/text', item.idItem,sonLevel,section]">
                     <p [innerHTML]="item.nombre"></p>
                 </a>
             </div>
-        </div>
+        </div> -->
 
     </div>
 </ng-template>

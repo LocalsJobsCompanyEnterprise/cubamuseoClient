@@ -9,3 +9,55 @@
     text-align: center;
     height: 60px;
 }
+
+.galeria {
+    text-align: center;
+    width: 100%;
+    float: left;
+    position: relative;
+    /* overflow: hidden; */
+    font-size: 0;
+    min-height: 10px;
+}
+
+.galeria_item {
+    display: inline-table;
+    width: 14%;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    line-height: 1em;
+    overflow: hidden;
+}
+
+.vtn_info_item {
+    z-index: 100000;
+    position: absolute;
+    width: 120%;
+    border: 1px #e4e6e8;
+    top: 70%;
+    margin-left: -17%;
+    color: #fff;
+    cursor: default;
+    display: none;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.vtn_info_item h2 {
+    padding: 10px 0;
+    background-color: #e4e6e8;
+    font-size: .8em;
+    line-height: 1.1em;
+    color: #2b2b2b;
+    border-radius: 9px;
+    width: auto;
+}
+
+.cui_gal_image {
+    vertical-align: bottom;
+}
