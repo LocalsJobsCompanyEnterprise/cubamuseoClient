@@ -65,7 +65,7 @@ export class CategoryComponent implements OnInit {
         loop: true,
         autoplayHoverPause: true,
       },
-      1024:{
+      1024: {
         items: 4,
         nav: true,
         loop: true,
@@ -86,8 +86,10 @@ export class CategoryComponent implements OnInit {
     }
   }
 
+
   constructor(
-    private collection: CollectionServiceService, 
+    private route: Router, 
+    private collection: CollectionServiceService,
     private samples: SamplesServiceService,
     private tales: TalesServiceService, 
     private vPost: VpostServiceService,
@@ -99,23 +101,64 @@ export class CategoryComponent implements OnInit {
 
     this.component = 'category'
     this.categoryList = [];
-    this.category = 'collection';
 
   }
 
 
   getLevel() {
     if (this.categoryType)
-
       if (this.category === "collection" || this.category === "samples") {
         this.level = 3;
       }
       else {
         this.level = 2;
       }
+  }
+
+  changeCategoryStorage(category: string) {    
+      if (category)
+        this.enviromentVariables.setCategory(category);
+      else {
+        let actual = window.localStorage['category'];
+        if (actual)
+          this.enviromentVariables.setCategory(actual);
+      }
+    
+  }
+
+  // setCategory() {
+
+  //   let cat = window.localStorage.getItem('category');
+  //   if (cat) {
+
+  //   }
+  //   if (this.route.url === '/') {
+  //     this.enviromentVariables.setCategory('null');
+  //   }
+  //   else {
+  //     this.enviromentVariables.setCategory(this.category);
+  //   }
+
+  // }
+
+  getCategory() {
+    let data = window.localStorage['category'];
+    if (data) {
+      this.category = data;
+    }
 
   }
 
+  setCategory() {
+    if (window.location.href === 'http://localhost:4200/') {
+      this.enviromentVariables.setCategory('collection');
+    }else{
+      let actual = window.localStorage['category'];
+      if (!actual){
+        this.enviromentVariables.setCategory('collection');
+      }       
+    }     
+  }
 
 
   initCategories() {
@@ -247,12 +290,17 @@ export class CategoryComponent implements OnInit {
       data => {
         if (data)
           this.category = data;
+        this.setCategory();
+        this.changeCategoryStorage(this.category);
+        this.getCategory();
         this.initCategories();
         this.getLevel();
         this.setSonLevel();
         this.getSonLevel();
       }
     );
+    this.setCategory();
+    this.getCategory();
     this.initCategories();
     this.getLevel();
     this.setSonLevel();

@@ -1,35 +1,33 @@
+import { ConfigServiceService } from 'src/app/core/service/config-service.service';
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { Component, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { TranslateService } from '@ngx-translate/core';
+import { EnviromentVariableServiceService } from './core/service/enviroment-variable-service.service';
 
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'CubamuseoClientV1';
   categoryType: Subject<string>;
-
-
   closeResult = '';
-
-  constructor(public translate: TranslateService,
-    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService) {
-
+  url: any;
+  constructor(private route: Router, 
+    public translate: TranslateService, 
+    private enviromentVariables: EnviromentVariableServiceService,
+    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
+    
+    ) {
     this.categoryType = new Subject<string>();
-    this.categoryType.next('collection');
+    // this.setCategory();
+    // this.getCategory(); 
     translate.addLangs(['en', 'es']);
     translate.setDefaultLang('es');
     const browserLang = translate.getBrowserLang();
@@ -37,12 +35,35 @@ export class AppComponent {
 
   }
 
+  // setCategory() {
+   
+  //   let data = window.localStorage['category'];
+  //   if (data === undefined) {
+  //     console.log('funciona');
+  //     this.categoryType.next('collection');
+  //     this.enviromentVariables.setCategory('collection');
+  //   }
+  //   else {
+  //     let data = window.localStorage['category'];
+  //     if (data) {
+  //       this.enviromentVariables.setCategory(data);
+  //     }
+  //   }
+  // }
+
+  // getCategory() {
+  //   let data = window.localStorage['category'];
+  //   if (data) {
+  //     this.categoryType.next(data);
+  //   }
+  // }
+
   open(content) {
-    //     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    //       this.closeResult = `Closed with: ${result}`;
-    //     }, (reason) => {
-    //       this.closeResult = `Dismissed`;
-    //     });
+    // this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+    //   this.closeResult = `Closed with: ${result}`;
+    // }, (reason) => {
+    //   this.closeResult = `Dismissed`;
+    // });
   }
 
   // updateBreadcrumb(): void {
