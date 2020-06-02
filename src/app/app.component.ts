@@ -1,42 +1,60 @@
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
+import { Router, Navigation } from '@angular/router';
 import { Subject } from 'rxjs';
-import { Component, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { TranslateService } from '@ngx-translate/core';
+import { EnviromentVariableServiceService } from './core/service/enviroment-variable-service.service';
 
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'CubamuseoClientV1';
-  categoryType: Subject <string>;
- 
-  
-  closeResult = '';
+export class AppComponent implements OnInit {
 
-  constructor(public translate: TranslateService,private modalService: NgbModal,
-    private router: Router, 
+  title = 'CubamuseoClientV1';
+  categoryType: Subject<string>;
+  closeResult = '';
+  url: any;
+  constructor(private route: Router, public translate: TranslateService, private modalService: NgbModal, private enviromentVariables: EnviromentVariableServiceService,
     private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService) {
-    this.categoryType = new Subject <string>();
-    this.categoryType.next('collection');
-    translate.addLangs(['en','es']);
+    this.categoryType = new Subject<string>();
+    this.setCategory();
+    this.getCategory(); 
+    translate.addLangs(['en', 'es']);
     translate.setDefaultLang('es');
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|es/) ? browserLang:'es');
-    
+    translate.use(browserLang.match(/en|es/) ? browserLang : 'es');
+
   }
 
- open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  setCategory() {
+   
+    let data = window.localStorage['category'];
+    if (data === "null") {
+      console.log('funciona');
+      this.categoryType.next('collection');
+      this.enviromentVariables.setCategory('collection');
+    }
+    else {
+      let data = window.localStorage['category'];
+      if (data) {
+        this.enviromentVariables.setCategory(data);
+      }
+    }
+  }
+
+  getCategory() {
+    let data = window.localStorage['category'];
+    if (data) {
+      this.categoryType.next(data);
+    }
+  }
+
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed`;
@@ -45,61 +63,61 @@ export class AppComponent {
 
   updateBreadcrumb(): void {
     const breadcrumb = [
-      
-          {
-            label: 'Galeria {{section, id}} ',
-            url: 'gallery/:id/:level/:component/:section'
-          },
-          {
-            label: 'Galeria estampas {{id}}',
-            url: 'samples-gallery/:id'
-          }, 
-          {
-            label: '{{section,id}}',
-            url: 'text/:id/:level/:component/:section'
-          },
-          {
-            label: 'Estampa {{id}}',
-            url: 'tales/:id'
-          }, 
-          {
-            label: 'Articulo {{id}}',
-            url: 'tales/:id'
-          },
-          {
-            label: 'Inicio ',
-            url: 'section-start'
-          },
-          {
-            label: 'Muestras',
-            url: 'samples/:id'
-          },
-          {
-            label: 'Estampas',
-            url: 'tales/:id'
-          },
-          {
-            label: 'V-Post',
-            url: 'vpost/:id'
-          },
-          {
-            label: 'Colecciones',
-            url: 'collection/:id'
-          },
-          {
-            label: 'Tienda',
-            url: 'store/:id'
-          },
-          {
-            label: 'Colecciones',
-            url: 'collection/:id'
-          }
+
+      {
+        label: 'Galeria {{section, id}} ',
+        url: 'gallery/:id/:level/:component/:section'
+      },
+      {
+        label: 'Galeria estampas {{id}}',
+        url: 'samples-gallery/:id'
+      },
+      {
+        label: '{{section,id}}',
+        url: 'text/:id/:level/:component/:section'
+      },
+      {
+        label: 'Estampa {{id}}',
+        url: 'tale/:id'
+      },
+      {
+        label: 'Articulo {{id}}',
+        url: 'tale/:id'
+      },
+      {
+        label: 'Inicio ',
+        url: 'section-start'
+      },
+      {
+        label: 'Muestras',
+        url: 'samples/:id'
+      },
+      {
+        label: 'Estampas',
+        url: 'tales/:id'
+      },
+      {
+        label: 'V-Post',
+        url: 'vpost/:id'
+      },
+      {
+        label: 'Colecciones',
+        url: 'collection/:id'
+      },
+      {
+        label: 'Tienda',
+        url: 'store/:id'
+      },
+      {
+        label: 'Colecciones',
+        url: 'collection/:id'
+      }
     ];
     this.ngDynamicBreadcrumbService.updateBreadcrumb(breadcrumb);
   }
 
-  ngOnInit(){
-   this.updateBreadcrumb();
+  ngOnInit() {
+    this.updateBreadcrumb();
   }
 
 }
