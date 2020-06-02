@@ -19,7 +19,7 @@ export class SamplesServiceService {
     return this.http.get(this.config.serverNodeLocation + 'api/sample/getHome/' + id);
   }
    getSampleById(id) {
-    return this.http.get(this.config.serverNodeLocation + 'api/sample/getOne/' + id);
+    return this.http.get(this.config.serverNodeLocation + 'model/' + id);
   }
 
   getItem(id){
@@ -30,8 +30,8 @@ export class SamplesServiceService {
     return this.http.get(this.config.serverNodeLocation + 'api/sample/getItemImage/' + id);
    }
 
-  getSamples(offset, id) {
-    return this.http.post(this.config.serverNodeLocation + 'api/sample/getWith', {id, offset});
+  getSamplesCategory(offset, id) {
+    return this.http.get(this.config.serverNodeLocation + 'clasification-model/byCategory/'+id);
   }
 
   getSamplesGalleryById(id) {
@@ -39,7 +39,7 @@ export class SamplesServiceService {
  }
 
  getSamplesGalleries(id) {
-   return this.http.get(this.config.serverNodeLocation + 'api/sample/getGalleries' + id);
+   return this.http.get(this.config.serverNodeLocation + 'model-item/byModelId/' + id);
  }
 
  getSamplesCategoryById(id) {

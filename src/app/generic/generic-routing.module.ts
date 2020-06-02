@@ -12,152 +12,189 @@ import { ItemComponent } from './item/item.component';
 import { GalleryListComponent } from './gallery-list/gallery-list.component';
 
 const routes: Routes = [
-  { path: 'gallery/:id/:sonLevel/:section', 
-  data:{ 
-    title: 'gallery',
-    breadcrumb:[
-      {
-        label: 'Galeria {{section, id}} ',
-        url: 'gallery/:id/:sonLevel/:section'
-      }
-    ]
-  }, 
-  component: GalleryListComponent },
-  { path: 'samples-gallery/:id', 
-  data:{
-    title: 'Galeria Estampas',
-    breadcrumb: [
-      {
-        label: 'Galeria estampas {{id}}',
-        url: 'samples-gallery/:id'
-      }
-    ]
-
+  {
+    path: 'gallery/:id/:sonLevel/:section',
+    data: {
+      title: 'gallery',
+      breadcrumb: [
+        {
+          label: 'Galeria {{section, id}} ',
+          url: 'gallery/:id/:sonLevel/:section'
+        }
+      ]
+    },
+    component: GalleryListComponent
   },
-  component: SamplesGalleryComponent },
+  {
+    path: 'gallery/:id/:sonLevel/:section/:foldername',
+    data: {
+      title: 'gallery',
+      breadcrumb: [
+        {
+          label: 'Galeria {{section, id}} ',
+          url: 'gallery/:id/:sonLevel/:section'
+        }
+      ]
+    },
+    component: GalleryListComponent
+  },
+  {
+    path: 'samples-gallery/:id',
+    data: {
+      title: 'Galeria Estampas',
+      breadcrumb: [
+        {
+          label: 'Galeria estampas {{id}}',
+          url: 'samples-gallery/:id'
+        }
+      ]
+
+    },
+    component: SamplesGalleryComponent
+  },
 
   { path: 'zoom/:id', component: ZoomComponent },
   { path: 'item/:id/:section', component: ItemComponent },
 
-  { path: 'text/:id/:sonLevel/:section', 
-  data:{
-    title: 'Text',
-    breadcrumb:[
-      {
-        label: '{{section,id}}',
-        url: 'text/:id/:sonLevel/:section'
-      
-      }
-    ]
-  },
-  component: TextComponent },
+  {
+    path: 'text/:id/:sonLevel/:section',
+    data: {
+      title: 'Text',
+      breadcrumb: [
+        {
+          label: '{{section,id}}',
+          url: 'text/:id/:sonLevel/:section'
 
-  { path: 'tale/:id', 
-  data:{
-    title:'Estampa',
-    breadcrumb: [
-      {
-        label: 'Estampa {{id}}',
-        url: 'tale/:id'
-      }
-    ]
+        }
+      ]
+    },
+    component: TextComponent
   },
-  component: TalesComponent },
 
-  { path: 'ad-purchase/:id',
-  data:{
-    title:'Articulo',
-    breadcrumb: [
-      {
-        label: 'Articulo {{id}}',
-        url: 'tale/:id'
-      }
-    ]
+  {
+    path: 'tale/:id',
+    data: {
+      title: 'Estampa',
+      breadcrumb: [
+        {
+          label: 'Estampa {{id}}',
+          url: 'tale/:id'
+        }
+      ]
+    },
+    component: TalesComponent
   },
-   component: AdPurchaseComponent },
- 
-   { path: 'section-start', 
-  data:{
-    title:'Inicio',
-    breadcrumb: [
-      {
-        label: 'Inicio ',
-        url: 'section-start'
-      }
-    ]
-  },
-  component: SectionStartComponent },
-  
-  { path: 'samples/:id',
-  data:{
-    title:'Inicio',
-    breadcrumb: [
-      {
-        label: 'Muestras',
-        url: 'samples/:id'
-      }
-    ]
-  },
-   component: SectionStartComponent },
 
-  { path: 'tales/:id', 
-  data:{
-    title:'Inicio',
-    breadcrumb: [
-      {
-        label: 'Estampas',
-        url: 'tales/:id'
-      }
-    ]
+  {
+    path: 'ad-purchase/:id',
+    data: {
+      title: 'Articulo',
+      breadcrumb: [
+        {
+          label: 'Articulo {{id}}',
+          url: 'tale/:id'
+        }
+      ]
+    },
+    component: AdPurchaseComponent
   },
-  component: SectionStartComponent },
 
-  { path: 'vpost/:id',
-  data:{
-    title:'Inicio',
-    breadcrumb: [
-      {
-        label: 'V-Post',
-        url: 'vpost/:id'
-      }
-    ]
+  {
+    path: 'section-start',
+    data: {
+      title: 'Inicio',
+      breadcrumb: [
+        {
+          label: 'Inicio ',
+          url: 'section-start'
+        }
+      ]
+    },
+    component: SectionStartComponent
   },
-   component: SectionStartComponent },
-  { path: 'collection/:id',
-  data:{
-    title:'Inicio',
-    breadcrumb: [
-      {
-        label: 'Colecciones',
-        url: 'collection/:id'
-      }
-    ]
-  },
-   component: SectionStartComponent },
 
-  { path: 'store/:id',
-  data:{
-    title:'Inicio',
-    breadcrumb: [
-      {
-        label: 'Tienda',
-        url: 'store/:id'
-      }
-    ]
+  {
+    path: 'samples/:id',
+    data: {
+      title: 'Inicio',
+      breadcrumb: [
+        {
+          label: 'Muestras',
+          url: 'samples/:id'
+        }
+      ]
+    },
+    component: SectionStartComponent
   },
-  component: SectionStartComponent },
 
-  { path: '**',
-  data:{
-    title:'Inicio',
-    breadcrumb: [
-      {
-        label: 'Colecciones',
-        url: 'collection/:id'
-      }
-    ]
+  {
+    path: 'tales/:id',
+    data: {
+      title: 'Inicio',
+      breadcrumb: [
+        {
+          label: 'Estampas',
+          url: 'tales/:id'
+        }
+      ]
+    },
+    component: SectionStartComponent
   },
-   component: SectionStartComponent},
+
+  {
+    path: 'vpost/:id',
+    data: {
+      title: 'Inicio',
+      breadcrumb: [
+        {
+          label: 'V-Post',
+          url: 'vpost/:id'
+        }
+      ]
+    },
+    component: SectionStartComponent
+  },
+  {
+    path: 'collection/:id',
+    data: {
+      title: 'Inicio',
+      breadcrumb: [
+        {
+          label: 'Colecciones',
+          url: 'collection/:id'
+        }
+      ]
+    },
+    component: SectionStartComponent
+  },
+
+  {
+    path: 'store/:id',
+    data: {
+      title: 'Inicio',
+      breadcrumb: [
+        {
+          label: 'Tienda',
+          url: 'store/:id'
+        }
+      ]
+    },
+    component: SectionStartComponent
+  },
+
+  {
+    path: '**',
+    data: {
+      title: 'Inicio',
+      breadcrumb: [
+        {
+          label: 'Colecciones',
+          url: 'collection/:id'
+        }
+      ]
+    },
+    component: SectionStartComponent
+  },
 ];
 
 

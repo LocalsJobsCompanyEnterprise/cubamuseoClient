@@ -9,6 +9,7 @@ import { ItemComponent } from './item/item.component';
 import { GalleryListComponent } from './gallery-list/gallery-list.component';
 import { SectionStartComponent } from './section-start/section-start.component';
 import { ZoomComponent } from './zoom/zoom.component';
+<<<<<<< HEAD
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -45,5 +46,23 @@ exports: [
 entryComponents : [
   ItemComponent
 ]
+=======
+import { OwlModule } from 'ngx-owl-carousel'
+
+@NgModule({
+  declarations: [TextComponent, CategoryComponent, BreadcrumbComponent, ItemComponent, GalleryListComponent, SectionStartComponent, ZoomComponent],
+  imports: [
+    CommonModule,
+    GenericRoutingModule,
+    OwlModule
+  ],
+  exports: [
+    TextComponent,
+    CategoryComponent,
+    BreadcrumbComponent,
+    ItemComponent,
+    GalleryListComponent
+  ]
+>>>>>>> 6ff11724a7738202d8073f08a1161bace8424d04
 })
 export class GenericModule { }

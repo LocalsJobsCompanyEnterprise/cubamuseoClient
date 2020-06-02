@@ -19,18 +19,18 @@ export class StoreServiceService {
   }
 
    getAdById(id) {
-    return this.http.get(this.config.serverNodeLocation + 'api/store/getOne/' + id);
+    return this.http.get(this.config.serverNodeLocation + 'shop-item/' + id);
   }
 
-  getAds(offset, id) {
-    return this.http.post(this.config.serverNodeLocation + 'api/store/getWith' , {id, offset});
+  getAdsByTematic(id) {
+    return this.http.get(this.config.serverNodeLocation + 'shop-tematics-item/byTematic/'+ id );
   }
 
    getAdCategoryById(id) {
     return this.http.get(this.config.serverNodeLocation + 'api/store/getOneCategory/' + id);
   }
 
-  getAdsCategories() {
+  getStoreCategories() {
     return this.http.get(this.config.serverNodeLocation + 'shop-tematics');
   }
 }

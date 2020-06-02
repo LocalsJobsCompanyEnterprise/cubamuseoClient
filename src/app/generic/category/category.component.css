@@ -1,0 +1,16 @@
+.item {
+    text-align: center;
+}
+
+img {
+    max-width: 120px;
+    align-self: center;
+}
+
+.owl-stage-outer {
+    left: 15px;
+}
+
+.card-category {
+    max-width: 180px;
+}

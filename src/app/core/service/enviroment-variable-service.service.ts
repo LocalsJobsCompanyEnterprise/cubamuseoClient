@@ -8,7 +8,7 @@ export class EnviromentVariableServiceService {
   constructor() {
   }
 
-  setCategory(category) {
+  setCategory(category:string) {
     window.localStorage.setItem('category', category);
   }
 

@@ -85,6 +85,11 @@ p:last-of-type {
     margin-bottom: 0;
 }
 
+.owl-theme .owl-nav {
+    margin-top: 10px !important;
+    display: none !important;
+}
+
 p a {
     display: inline;
     position: relative;
@@ -244,6 +249,7 @@ section {
 .super_container {
     width: 100%;
     overflow: hidden;
+    background-color: #FFFFFF;
 }
 
 .prlx_parent {

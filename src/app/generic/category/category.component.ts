@@ -1,3 +1,4 @@
+import { ConfigServiceService } from 'src/app/core/service/config-service.service';
 import { EnviromentVariableServiceService } from './../../core/service/enviroment-variable-service.service';
 import { AlertService } from './../../alert/alert.service';
 import { StoreServiceService } from './../../core/service/store-service.service';
@@ -31,11 +32,72 @@ export class CategoryComponent implements OnInit {
 
   @Input() categoryType: Subject<string>;
 
+  carouselOptions = {
+    loop: true,
+    margin: 10,
+    navSpeed: 1000,
+    responsiveClass: true,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 2,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      500: {
+        items: 3,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      600: {
+        items: 4,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      800: {
+        items: 4,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      1024: {
+        items: 4,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      1200: {
+        items: 5,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      1920: {
+        items: 6,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      }
+    }
+  }
 
 
-  constructor(private route: Router, private collection: CollectionServiceService, private samples: SamplesServiceService,
-    private tales: TalesServiceService, private vPost: VpostServiceService,
-    private store: StoreServiceService, private alerts: AlertService, private enviromentVariables: EnviromentVariableServiceService) {
+  constructor(
+    private route: Router, 
+    private collection: CollectionServiceService,
+    private samples: SamplesServiceService,
+    private tales: TalesServiceService, 
+    private vPost: VpostServiceService,
+    private store: StoreServiceService, 
+    private alerts: AlertService, 
+    private enviromentVariables: EnviromentVariableServiceService,
+    public config: ConfigServiceService
+    ) {
 
     this.component = 'category'
     this.categoryList = [];
@@ -53,21 +115,49 @@ export class CategoryComponent implements OnInit {
       }
   }
 
-  setCategory() {
-    if(this.route.url === '/'){
-      this.enviromentVariables.setCategory('null');
-    }
-    else{
-      this.enviromentVariables.setCategory(this.category);
-    }
-      
+  changeCategoryStorage(category: string) {    
+      if (category)
+        this.enviromentVariables.setCategory(category);
+      else {
+        let actual = window.localStorage['category'];
+        if (actual)
+          this.enviromentVariables.setCategory(actual);
+      }
+    
   }
+
+  // setCategory() {
+
+  //   let cat = window.localStorage.getItem('category');
+  //   if (cat) {
+
+  //   }
+  //   if (this.route.url === '/') {
+  //     this.enviromentVariables.setCategory('null');
+  //   }
+  //   else {
+  //     this.enviromentVariables.setCategory(this.category);
+  //   }
+
+  // }
 
   getCategory() {
     let data = window.localStorage['category'];
     if (data) {
       this.category = data;
     }
+
+  }
+
+  setCategory() {
+    if (window.location.href === 'http://localhost:4200/') {
+      this.enviromentVariables.setCategory('collection');
+    }else{
+      let actual = window.localStorage['category'];
+      if (!actual){
+        this.enviromentVariables.setCategory('collection');
+      }       
+    }     
   }
 
 
@@ -165,7 +255,7 @@ export class CategoryComponent implements OnInit {
     );
   }
   getCategoryListStore() {
-    this.store.getAdsCategories().subscribe(
+    this.store.getStoreCategories().subscribe(
       data => {
         let result: any = data;
         this.categoryList = [];
@@ -201,6 +291,7 @@ export class CategoryComponent implements OnInit {
         if (data)
           this.category = data;
         this.setCategory();
+        this.changeCategoryStorage(this.category);
         this.getCategory();
         this.initCategories();
         this.getLevel();
@@ -208,6 +299,7 @@ export class CategoryComponent implements OnInit {
         this.getSonLevel();
       }
     );
+    this.setCategory();
     this.getCategory();
     this.initCategories();
     this.getLevel();

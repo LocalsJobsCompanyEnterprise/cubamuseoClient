@@ -29,37 +29,44 @@ export class GalleryListComponent implements OnInit {
   limit = 10;
   isScrollable: boolean = true;
   component: string;
-  foldername:any;
-  sonLevel:number;
-  baseFolder:string;
+  foldername: any;
+  sonLevel: number;
+  baseFolder: string;
 
   @Input() tagSection: Subject<string>;
   @Input() tagLevel: Subject<number>;
   @Input() tagItemId: Subject<number>;
   @Input() folder: Subject<string>;
 
+  
+  
   constructor(private activatedRoute: ActivatedRoute,
-    private collection: CollectionServiceService, 
+    private collection: CollectionServiceService,
     private samples: SamplesServiceService,
-    private tales: TalesServiceService, 
+    private tales: TalesServiceService,
     private vPost: VpostServiceService,
-    private store: StoreServiceService, 
-    private alerts: AlertService, 
-    private router: Router, 
+    private store: StoreServiceService,
+    private alerts: AlertService,
+    private router: Router,
     private enviromentVariables: EnviromentVariableServiceService,
     public config: ConfigServiceService,
     public dialog: MatDialog
-    ) {
+  ) {
 
     this.gallerylist = [];
     this.component = 'gallery'
     this.activatedRoute.params.subscribe(val => {
       if (val) {
         this.itemId = val.id;
-        this.level = val.sonLevel;
+        this.level = parseInt(val.sonLevel);
         this.section = val.section;
-        console.log(this.itemId);
+        if(val.foldername){
+          this.foldername = val.foldername;
+        }
+
         this.initGallery();
+        this.setSonLevel();
+        this.getSonLevel();
       }
 
     });
@@ -77,13 +84,13 @@ export class GalleryListComponent implements OnInit {
 
     this.bottomTop = 0;
     this.isScrollable = true;
-    let folder:any = JSON.parse(window.localStorage.getItem('folderByLevel'));
+    let folder: any = JSON.parse(window.localStorage.getItem('folderByLevel'));
     this.baseFolder = folder.level_3;
   }
 
 
   initGallery() {
-   
+
     if (this.level === 2) {
       if (this.section === 'vpost') {
         return this.getVpostGallery();
@@ -112,7 +119,7 @@ export class GalleryListComponent implements OnInit {
   }
 
   getVpostGallery() {
-    this.vPost.getVposts(this.bottomTop, this.itemId).subscribe(
+    this.vPost.getVposts(this.itemId).subscribe(
       data => {
         let result: any = data;
         this.gallerylist = [];
@@ -121,6 +128,7 @@ export class GalleryListComponent implements OnInit {
           if (result.length < 10) {
             this.isScrollable = false;
           }
+
           this.gallerylist.push(element);
           this.vPost.vpostList.push(element);
         });
@@ -132,17 +140,24 @@ export class GalleryListComponent implements OnInit {
   }
 
   getTalesGallery() {
-    this.tales.getTales(this.bottomTop, this.itemId).subscribe(
+    this.tales.getTalesByCategory(this.itemId).subscribe(
       data => {
         let result: any = data;
         this.gallerylist = [];
         this.tales.taleList = [];
         result.forEach(element => {
+          this.tales.getTaleById(element.idEstampa).subscribe(
+            data=>{
+              this.gallerylist.push(data);
+              this.tales.taleList.push(data);
+            },error=>{
+
+            }
+          )
           if (result.length < 10) {
             this.isScrollable = false;
           }
-          this.gallerylist.push(element);
-          this.tales.taleList.push(element);
+          
         });
 
       }, error => {
@@ -152,17 +167,24 @@ export class GalleryListComponent implements OnInit {
   }
 
   getStoreGallery() {
-    this.store.getAds(this.bottomTop, this.itemId).subscribe(
+    this.store.getAdsByTematic(this.itemId).subscribe(
       data => {
         let result: any = data;
         this.gallerylist = [];
         this.store.adList = [];
         result.forEach(element => {
+          this.store.getAdById(element.idItem).subscribe(
+            data=>{
+              this.gallerylist.push(data);
+              this.store.adList.push(data);
+            }, error=>{
+
+            }
+          )
           if (result.length < 10) {
             this.isScrollable = false;
           }
-          this.gallerylist.push(element);
-          this.store.adList.push(element);
+
         });
 
       }, error => {
@@ -194,17 +216,24 @@ export class GalleryListComponent implements OnInit {
   }
 
   getSamplesGallery() {
-    this.samples.getSamples(this.bottomTop, this.itemId).subscribe(
+    this.samples.getSamplesCategory(this.bottomTop, this.itemId).subscribe(
       data => {
         let result: any = data;
         this.gallerylist = [];
         this.samples.samplesList = [];
         result.forEach(element => {
+          this.samples.getSampleById(element.idMuestra).subscribe(
+            data => {
+              this.gallerylist.push(data);
+              this.samples.samplesList.push(data);
+            }, error => {
+
+            }
+          )
           if (result.length < 10) {
             this.isScrollable = false;
           }
-          this.gallerylist.push(element);
-          this.samples.samplesList.push(element);
+
         });
 
       }, error => {
@@ -222,13 +251,13 @@ export class GalleryListComponent implements OnInit {
         result.forEach(element => {
 
           this.collection.getItem(element.idItem).subscribe(
-            data=>{
+            data => {
               this.gallerylist.push(data);
               this.collection.collectionList.push(data);
               if (result.length < 10) {
                 this.isScrollable = false;
               }
-            },error=>{
+            }, error => {
 
             }
           )
@@ -249,11 +278,18 @@ export class GalleryListComponent implements OnInit {
         this.gallerylist = [];
         this.samples.samplesGalleryList = [];
         result.forEach(element => {
+          this.collection.getItem(element.idItem).subscribe(
+            data=>{
+              this.gallerylist.push(data);
+              this.samples.samplesGalleryList.push(data);
+            },error=>{
+              
+            }
+          )
           if (result.length < 10) {
             this.isScrollable = false;
           }
-          this.gallerylist.push(element);
-          this.samples.samplesGalleryList.push(element);
+          
         });
 
       }, error => {
@@ -304,13 +340,21 @@ export class GalleryListComponent implements OnInit {
 
   ngOnInit(): void {
     this.bottomTop = 0;
-    this.section = this.tagSection;
-    this.level = this.tagLevel;
-    this.itemId = this.tagItemId;
-    this.foldername = this.folder;
-    this.setSonLevel();
-    this.getSonLevel();
-    this.initGallery();
+    if (this.tagSection)
+      this.section = this.tagSection;
+    if (this.tagLevel)
+      this.level = this.tagLevel;
+    if (this.tagItemId)
+      this.itemId = this.tagItemId;
+    if (this.folder)
+      this.foldername = this.folder;
+
+      if(this.tagSection){
+        this.setSonLevel();
+        this.getSonLevel();
+        this.initGallery();
+      }
+
 
   }
 

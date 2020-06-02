@@ -18,3 +18,7 @@ span {
     text-align: center;
     cursor: pointer;
 }
+
+.main_nav ul li a:hover {
+    color: #8fd0a6 !important;
+}

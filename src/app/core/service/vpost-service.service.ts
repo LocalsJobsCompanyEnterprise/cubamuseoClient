@@ -29,8 +29,8 @@ export class VpostServiceService {
     return this.http.get(this.config.serverNodeLocation + 'api/vpost/getItemImage/' + id);
    }
 
-  getVposts(offset, id) {
-    return this.http.post(this.config.serverNodeLocation + 'api/vpost/getWith' , {id, offset});
+  getVposts(id) {
+    return this.http.get(this.config.serverNodeLocation + 'postal/byCategory/'+id);
   }
 
    getVpostCategoryById(id) {
