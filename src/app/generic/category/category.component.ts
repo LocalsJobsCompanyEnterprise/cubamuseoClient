@@ -152,7 +152,7 @@ export class CategoryComponent implements OnInit {
     );
   }
   getCategoryListStore() {
-    this.store.getAdsCategories().subscribe(
+    this.store.getStoreCategories().subscribe(
       data => {
         let result: any = data;
         this.categoryList = [];

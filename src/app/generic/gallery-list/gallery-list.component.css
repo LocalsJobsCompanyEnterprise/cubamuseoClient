@@ -61,3 +61,8 @@
 .cui_gal_image {
     vertical-align: bottom;
 }
+
+.container {
+    display: inline-block;
+    min-height: 300px;
+}

@@ -1,12 +1,15 @@
-<div class="galeria">
-    <div *ngIf="section=== 'tales'; then tale"> </div>
-    <div *ngIf="section=== 'store'; then store"> </div>
-    <div *ngIf="section=== 'vpost'; then vpost"> </div>
-    <div *ngIf="level===3 && section === 'collection'; then textCollection"> </div>
-    <div *ngIf="level===2 && section === 'collection'; then item"> </div>
-    <div *ngIf="level===3 && section === 'samples'; then textSamples"> </div>
-    <div *ngIf="level===2 && section === 'samples'; then item"> </div>
+<div class="container">
+    <div class="galeria">
+        <div *ngIf="section=== 'tales'; then tale"> </div>
+        <div *ngIf="section=== 'store'; then store"> </div>
+        <div *ngIf="section=== 'vpost'; then vpost"> </div>
+        <div *ngIf="level===3 && section === 'collection'; then textCollection"> </div>
+        <div *ngIf="level===2 && section === 'collection'; then item"> </div>
+        <div *ngIf="section === 'samples' && level===3 ; then textSamples"> </div>
+        <div *ngIf="level===2 && section === 'samples'; then item"> </div>
+    </div>
 </div>
+
 
 <ng-template #item>
     <div class="galeria_item" *ngFor="let item of gallerylist">
@@ -18,43 +21,32 @@
         <a href="">
             <img class="card-img-top" src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/{{baseFolder}}" alt="">
         </a>
-
-        <!-- <div class="card-body">
-            <div class="card-title card-title-small">
-                <a [routerLink]="['/text', item.idItem,sonLevel,section]">
-                    <p [innerHTML]="item.nombre"></p>
-                </a>
-            </div>
-        </div> -->
-
     </div>
 </ng-template>
 
 <ng-template #vpost>
-    <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
-        <img class="card-img-top" src="{{config.serverNodeLocation}}" alt="">
-        <div class="card-body">
-            <div class="card-title card-title-small">
-                <a [routerLink]="['/item', item.idPostal, section]">
-                    <p [innerHTML]="item.nombre"></p>
-                </a>
-            </div>
+    <div class="galeria_item" *ngFor="let item of gallerylist">
+        <div class="vtn_info_item">
+            <h2>
+                {{item.nombre}}
+            </h2>
         </div>
-
+        <a [routerLink]="['/item', item.idPostal, section]">
+            <img class="card-img-top" src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/none" alt="">
+        </a>
     </div>
 </ng-template>
 
 <ng-template #textSamples>
-    <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
-        <img class="card-img-top" src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/{{foldername}}" alt="">
-        <div class="card-body">
-            <div class="card-title card-title-small">
-                <a [routerLink]="['/text', item.idMuestra,sonLevel,section]">
-                    <p [innerHTML]="item.nombre"></p>
-                </a>
-            </div>
+    <div class="galeria_item" *ngFor="let item of gallerylist">
+        <div class="vtn_info_item">
+            <h2>
+                {{item.nombre}}
+            </h2>
         </div>
-
+        <a [routerLink]="['/text', item.idMuestra,sonLevel,section]">
+            <img class="card-img-top" src="{{config.serverNodeLocation}}images/none/{{item.carpeta}}/{{item.imagen}}/{{section}}/none" alt="">
+        </a>
     </div>
 </ng-template>
 
@@ -68,35 +60,32 @@
                 </a>
             </div>
         </div>
-
     </div>
 </ng-template>
 
 
 <ng-template #tale>
-    <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
-        <img class="card-img-top" src="{{config.serverNodeLocation}}" alt="">
-        <div class="card-body">
-            <div class="card-title card-title-small">
-                <a [routerLink]="['/tale', item.idEstampa]">
-                    <p [innerHTML]="item.nombre"></p>
-                </a>
-            </div>
+    <div class="galeria_item" *ngFor="let item of gallerylist">
+        <div class="vtn_info_item">
+            <h2>
+                {{item.nombre}}
+            </h2>
         </div>
-
+        <a [routerLink]="['/tale', item.idEstampa]">
+            <img class="card-img-top" src="{{config.serverNodeLocation}}images/none/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/none" alt="">
+        </a>
     </div>
 </ng-template>
 
 <ng-template #store>
-    <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
-        <img class="card-img-top" src="{{config.serverNodeLocation}}" alt="">
-        <div class="card-body">
-            <div class="card-title card-title-small">
-                <a [routerLink]="['/store', item.idItem]">
-                    <p [innerHTML]="item.nombre"></p>
-                </a>
-            </div>
+    <div class="galeria_item" *ngFor="let item of gallerylist">
+        <div class="vtn_info_item">
+            <h2>
+                {{item.nombre}}
+            </h2>
         </div>
-
+        <a [routerLink]="['/store', item.idItem]">
+            <img class="card-img-top" src="{{config.serverNodeLocation}}images/none/{{foldername}}/{{item.imagen}}/{{section}}/none" alt="">
+        </a>
     </div>
 </ng-template>

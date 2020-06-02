@@ -12,26 +12,30 @@ export class TalesServiceService {
   constructor(public http: HttpClient, private config: ConfigServiceService) {
     this.taleCategoryList = [];
     this.taleList = [];
-   }
+  }
 
-   getTalesHome(id) {
+  getTalesHome(id) {
     return this.http.get(this.config.serverNodeLocation + 'api/tale/getHome/' + id);
   }
 
-   getTaleById(id) {
-    return this.http.get(this.config.serverNodeLocation + 'api/tale/getOne/' + id);
+  getTaleById(id) {
+    return this.http.get(this.config.serverNodeLocation + 'stamp/' + id);
   }
 
   getTales(offset, id) {
-    return this.http.post(this.config.serverNodeLocation + 'api/tale/getWith' , {id, offset});
+    return this.http.post(this.config.serverNodeLocation + 'api/tale/getWith', { id, offset });
   }
 
-   getTaleCategoryById(id) {
+  getTaleCategoryById(id) {
     return this.http.get(this.config.serverNodeLocation + 'api/tale/getOneCategory/' + id);
   }
 
   getTalesCategories() {
     return this.http.get(this.config.serverNodeLocation + 'category-stamp');
+  }
+
+  getTalesByCategory(id) {
+    return this.http.get(this.config.serverNodeLocation + 'clasification-stamp/byCategory/' + id);
   }
 
 }
