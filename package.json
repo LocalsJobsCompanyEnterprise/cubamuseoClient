@@ -21,13 +21,7 @@
     "@angular/router": "~8.2.3",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
-<<<<<<< HEAD
-    "bootstrap": "^4.4.0",
-    "ng-bootstrap": "^1.6.3",
-    "ng-dynamic-breadcrumb": "^3.0.1",
-=======
     "ng-dynamic-breadcrumb": "^2.0.2",
->>>>>>> 6ff11724a7738202d8073f08a1161bace8424d04
     "ngx-owl-carousel": "^2.0.7",
     "ngx-scroll-event": "^1.0.8",
     "rxjs": "^6.4.0",
