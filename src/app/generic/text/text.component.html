@@ -3,7 +3,7 @@
         <img *ngIf="baseFolder" class="card-img-top" src="{{configService.serverNodeLocation}}images/{{level}}/{{section.carpeta}}/{{section.imagen}}/{{category}}/{{baseFolder}}">
         <img *ngIf="!baseFolder" class="card-img-top" src="{{configService.serverNodeLocation}}images/{{level}}/{{section.nombre}}/{{section.imagen}}/{{category}}/none">
         <div class="card-body">
-            <div class="card-title"><span style="color: rgba(0,0,0,1);"><h3 [innerHTML]="section.titulo"></h3></span></div>
+            <div class="card-title"><span style="color: #8fd0a6"><h3 [innerHTML]="section.titulo"></h3></span></div>
 
 
             <div class="card-nav">
@@ -21,13 +21,13 @@
                 <div class="container tab-pane active" id="text">
                     <p class="card-text " [innerHTML]="section.descripcion"></p>
                 </div>
-                <div  *ngIf="level === 3 && category ==='collection'" class="container tab-pane fade" id="gallery">
+                <div *ngIf="level === 3 && category ==='collection'" class="container tab-pane fade" id="gallery">
                     <app-gallery-list [folder]="section.nombre" [tagSection]="category" [tagLevel]="level" [tagItemId]="section.idSeccion"></app-gallery-list>
                 </div>
                 <div *ngIf="level === 2 && category ==='collection'" class="container tab-pane fade" id="gallery">
-                    <app-gallery-list [folder]="section.nombre" [tagSection]="category" [tagLevel]="level" [tagItemId]="section.idCategoria"></app-gallery-list>
+                    <app-gallery-list [folder]="section.carpeta" [tagSection]="category" [tagLevel]="level" [tagItemId]="section.idCategoria"></app-gallery-list>
                 </div>
-                <div *ngIf="level === 2 && category ==='samples'"class="container tab-pane fade" id="gallery">
+                <div *ngIf="level === 2 && category ==='samples'" class="container tab-pane fade" id="gallery">
                     <app-gallery-list [folder]="section.nombre" [tagSection]="category" [tagLevel]="level" [tagItemId]="section.idMuestra"></app-gallery-list>
                 </div>
             </div>

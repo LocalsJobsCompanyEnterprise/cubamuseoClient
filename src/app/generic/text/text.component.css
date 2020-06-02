@@ -5,3 +5,7 @@ h3 {
 img {
     width: 100%;
 }
+
+.nav-item .active {
+    color: #8fd0a6 !important;
+}

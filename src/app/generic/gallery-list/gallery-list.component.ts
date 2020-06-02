@@ -35,6 +35,8 @@ export class GalleryListComponent implements OnInit {
   @Input() tagItemId: Subject<number>;
   @Input() folder: Subject<string>;
 
+  
+  
   constructor(private activatedRoute: ActivatedRoute,
     private collection: CollectionServiceService,
     private samples: SamplesServiceService,

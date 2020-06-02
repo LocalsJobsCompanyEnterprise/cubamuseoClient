@@ -11,12 +11,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import {NgDynamicBreadcrumbModule} from "ng-dynamic-breadcrumb";
+import { OwlModule } from 'ngx-owl-carousel';
 
-
-export function HttpLoaderFactory(http:HttpClient){
+export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
@@ -27,6 +27,7 @@ export function HttpLoaderFactory(http:HttpClient){
   imports: [
     BrowserModule,
     AppRoutingModule,
+    OwlModule,
     GenericModule,
     CoreModule,
     AlertModule,
@@ -37,17 +38,17 @@ export function HttpLoaderFactory(http:HttpClient){
     CollectionModule,
     SamplesModule,
     TalesModule,
+    NgDynamicBreadcrumbModule,
     TranslateModule.forRoot({
-      loader:{
+      loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps:[
+        deps: [
           HttpClient
         ]
       }
 
     }),
-    NgDynamicBreadcrumbModule
 
   ],
   exports: [

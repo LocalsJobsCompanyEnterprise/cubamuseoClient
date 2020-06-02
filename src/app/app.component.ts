@@ -1,4 +1,4 @@
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Component, ViewChild, Inject } from '@angular/core';
@@ -16,90 +16,92 @@ export interface DialogData {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+
   title = 'CubamuseoClientV1';
-  categoryType: Subject <string>;
- 
-  
+  categoryType: Subject<string>;
+
+
   closeResult = '';
 
-  constructor(public translate: TranslateService,private modalService: NgbModal,
-    private router: Router, 
+  constructor(public translate: TranslateService,
     private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService) {
-    this.categoryType = new Subject <string>();
+
+    this.categoryType = new Subject<string>();
     this.categoryType.next('collection');
-    translate.addLangs(['en','es']);
+    translate.addLangs(['en', 'es']);
     translate.setDefaultLang('es');
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|es/) ? browserLang:'es');
-    
+    translate.use(browserLang.match(/en|es/) ? browserLang : 'es');
+
   }
 
- open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed`;
-    });
+  open(content) {
+    //     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    //       this.closeResult = `Closed with: ${result}`;
+    //     }, (reason) => {
+    //       this.closeResult = `Dismissed`;
+    //     });
   }
 
-  updateBreadcrumb(): void {
-    const breadcrumb = [
-      
-          {
-            label: 'Galeria {{section, id}} ',
-            url: 'gallery/:id/:level/:component/:section'
-          },
-          {
-            label: 'Galeria estampas {{id}}',
-            url: 'samples-gallery/:id'
-          }, 
-          {
-            label: '{{section,id}}',
-            url: 'text/:id/:level/:component/:section'
-          },
-          {
-            label: 'Estampa {{id}}',
-            url: 'tale/:id'
-          }, 
-          {
-            label: 'Articulo {{id}}',
-            url: 'tale/:id'
-          },
-          {
-            label: 'Inicio ',
-            url: 'section-start'
-          },
-          {
-            label: 'Muestras',
-            url: 'samples/:id'
-          },
-          {
-            label: 'Estampas',
-            url: 'tales/:id'
-          },
-          {
-            label: 'V-Post',
-            url: 'vpost/:id'
-          },
-          {
-            label: 'Colecciones',
-            url: 'collection/:id'
-          },
-          {
-            label: 'Tienda',
-            url: 'store/:id'
-          },
-          {
-            label: 'Colecciones',
-            url: 'collection/:id'
-          }
-    ];
-    this.ngDynamicBreadcrumbService.updateBreadcrumb(breadcrumb);
-  }
+  // updateBreadcrumb(): void {
+  //   const breadcrumb = [
 
-  ngOnInit(){
-   this.updateBreadcrumb();
+  //     {
+  //       label: 'Galeria {{section, id}} ',
+  //       url: 'gallery/:id/:level/:component/:section'
+  //     },
+  //     {
+  //       label: 'Galeria estampas {{id}}',
+  //       url: 'samples-gallery/:id'
+  //     },
+  //     {
+  //       label: '{{section,id}}',
+  //       url: 'text/:id/:level/:component/:section'
+  //     },
+  //     {
+  //       label: 'Estampa {{id}}',
+  //       url: 'tale/:id'
+  //     },
+  //     {
+  //       label: 'Articulo {{id}}',
+  //       url: 'tale/:id'
+  //     },
+  //     {
+  //       label: 'Inicio ',
+  //       url: 'section-start'
+  //     },
+  //     {
+  //       label: 'Muestras',
+  //       url: 'samples/:id'
+  //     },
+  //     {
+  //       label: 'Estampas',
+  //       url: 'tales/:id'
+  //     },
+  //     {
+  //       label: 'V-Post',
+  //       url: 'vpost/:id'
+  //     },
+  //     {
+  //       label: 'Colecciones',
+  //       url: 'collection/:id'
+  //     },
+  //     {
+  //       label: 'Tienda',
+  //       url: 'store/:id'
+  //     },
+  //     {
+  //       label: 'Colecciones',
+  //       url: 'collection/:id'
+  //     }
+  //   ];
+  //   this.ngDynamicBreadcrumbService.updateBreadcrumb(breadcrumb);
+  // }
+
+  ngOnInit() {
+    //this.updateBreadcrumb();
   }
 
 }

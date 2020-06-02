@@ -1,3 +1,4 @@
+import { ConfigServiceService } from 'src/app/core/service/config-service.service';
 import { EnviromentVariableServiceService } from './../../core/service/enviroment-variable-service.service';
 import { AlertService } from './../../alert/alert.service';
 import { StoreServiceService } from './../../core/service/store-service.service';
@@ -31,11 +32,70 @@ export class CategoryComponent implements OnInit {
 
   @Input() categoryType: Subject<string>;
 
+  carouselOptions = {
+    loop: true,
+    margin: 10,
+    navSpeed: 1000,
+    responsiveClass: true,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 2,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      500: {
+        items: 3,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      600: {
+        items: 4,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      800: {
+        items: 4,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      1024:{
+        items: 4,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      1200: {
+        items: 5,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      },
+      1920: {
+        items: 6,
+        nav: true,
+        loop: true,
+        autoplayHoverPause: true,
+      }
+    }
+  }
 
-
-  constructor(private collection: CollectionServiceService, private samples: SamplesServiceService,
-    private tales: TalesServiceService, private vPost: VpostServiceService,
-    private store: StoreServiceService, private alerts: AlertService, private enviromentVariables: EnviromentVariableServiceService) {
+  constructor(
+    private collection: CollectionServiceService, 
+    private samples: SamplesServiceService,
+    private tales: TalesServiceService, 
+    private vPost: VpostServiceService,
+    private store: StoreServiceService, 
+    private alerts: AlertService, 
+    private enviromentVariables: EnviromentVariableServiceService,
+    public config: ConfigServiceService
+    ) {
 
     this.component = 'category'
     this.categoryList = [];

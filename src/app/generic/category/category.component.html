@@ -1,51 +1,65 @@
-<!-- Similar Posts -->
-<div class="container">
-    <div class="row d-flex flex-row align-items-end">
-        <!-- Similar Post -->
-        <!-- Hay que poner la img  -->
-        <div *ngIf="category === 'collection'; then collection"></div>
-        <div *ngIf="category === 'vpost'; then vpost"></div>
-        <div *ngIf="category === 'store'; then store"></div>
-        <div *ngIf="category === 'samples' ; then otherSection"></div>
-        <div *ngIf="category === 'tales' ; then otherSection"></div>
+<section class="categories">
+    <div class="container">
 
-        <ng-template #collection>
-            <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
-                <div class="similar_post trans_200">
-                    <a [routerLink]="['/text',item.idSeccion,sonLevel,category]">
-                        <p [innerHTML]="item.nombre"></p>
-                    </a>
-                </div>
-            </div>
-        </ng-template>
+        <owl-carousel [options]="carouselOptions" [items]="categoryList" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+            <div *ngIf="category === 'collection'; then collection"></div>
+            <div *ngIf="category === 'vpost'; then vpost"></div>
+            <div *ngIf="category === 'store'; then store"></div>
+            <div *ngIf="category === 'samples' ; then otherSection"></div>
+            <div *ngIf="category === 'tales' ; then otherSection"></div>
 
-        <ng-template #otherSection>
-            <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
-                <div class="similar_post trans_200">
-                    <a [routerLink]="['/gallery',item.idCategoriaEstampa,sonLevel,category]">
-                        <p [innerHTML]="item.nombre"></p>
-                    </a>
+            <ng-template #collection>
+                <div class="item" *ngFor="let item of categoryList">
+                    <div class="card card-category" style="width: 18rem;">
+                        <img src="{{config.serverNodeLocation}}images/imageForCategory/{{item.imagenMenu}}/{{category}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" [routerLink]="['/text',item.idSeccion,sonLevel,category]">
+                                <p [innerHTML]="item.nombre"></p>
+                            </h5>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </ng-template>
+            </ng-template>
 
-        <ng-template #vpost>
-            <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
-                <div class="similar_post trans_200">
-                    <a [routerLink]="['/gallery',item.idCategoriaPostal,sonLevel,category, item.nombre]">
-                        <p [innerHTML]="item.nombre"></p>
-                    </a>
+            <ng-template #otherSection>
+                <div class="item" *ngFor="let item of categoryList">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{config.serverNodeLocation}}images/imageForCategory/{{item.imagenMenu}}/{{category}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" [routerLink]="['/gallery',item.idCategoriaEstampa,sonLevel,category]">
+                                <p [innerHTML]="item.nombre"></p>
+                            </h5>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </ng-template>
-        <ng-template #store>
-            <div *ngFor="let item of categoryList" class="col-lg-3 col-md-6 similar_post_col">
-                <div class="similar_post trans_200">
-                    <a [routerLink]="['/gallery',item.idTematica,sonLevel,category, item.nombre]">
-                        <p [innerHTML]="item.nombre"></p>
-                    </a>
+            </ng-template>
+
+            <ng-template #vpost>
+                <div class="item" *ngFor="let item of categoryList">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{config.serverNodeLocation}}images/imageForCategory/{{item.imagenMenu}}/{{category}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" [routerLink]="['/gallery',item.idCategoriaPostal,sonLevel,category, item.nombre]">
+                                <p [innerHTML]="item.nombre"></p>
+                            </h5>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </ng-template>
+
+            </ng-template>
+            <ng-template #store>
+                <div class="item" *ngFor="let item of categoryList">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{config.serverNodeLocation}}images/imageForCategory/{{item.imagenMenu}}/{{category}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" [routerLink]="['/gallery',item.idTematica,sonLevel,category, item.nombre]">
+                                <p [innerHTML]="item.nombre"></p>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </owl-carousel>
     </div>
-</div>
+
+</section>
