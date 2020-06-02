@@ -4,7 +4,6 @@ import { SamplesServiceService } from './../../core/service/samples-service.serv
 import { AlertService } from './../../alert/alert.service';
 import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-item',
@@ -20,9 +19,26 @@ export class ItemComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private collection: CollectionServiceService,
      private samples: SamplesServiceService, private vPost: VpostServiceService,  
-    private alerts: AlertService, private router: Router, public dialogRef: MatDialogRef<ItemComponent>) {
+    private alerts: AlertService, private router: Router) {
 
-           }
+      this.activatedRoute.params.subscribe(val => {
+        this.itemId = val.id;
+        this.sectionId = val.section;
+
+      });
+    
+      this.initContent();
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      };
+      
+      this.mySubscription = this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          // Trick the Router into believing it's last link wasn't previously loaded
+          this.router.navigated = false;
+        }
+      });
+     }
 
      initContent(){
       if(this.sectionId === 'vpost'){
@@ -66,11 +82,12 @@ export class ItemComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.dialogRef.updatePosition({top: `30px`,right: `40px`});
   }
 
   ngOnDestroy() {
-    
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
   }
 
 

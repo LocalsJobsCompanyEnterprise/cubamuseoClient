@@ -1,7 +1,3 @@
-import { ItemComponent } from './generic/item/item.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TalesModule } from './tales/tales.module';
 import { SamplesModule } from './samples/samples.module';
 import { CollectionModule } from './collection/collection.module';
@@ -11,15 +7,15 @@ import { AlertModule } from './alert/alert.module';
 import { CoreModule } from './core/core.module';
 import { GenericModule } from './generic/generic.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import {NgDynamicBreadcrumbModule} from "ng-dynamic-breadcrumb";
+import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 import { OwlModule } from 'ngx-owl-carousel';
+import { ModalModule } from './modal/modal.module'
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -28,7 +24,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent
-  
   ],
   imports: [
     BrowserModule,
@@ -44,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CollectionModule,
     SamplesModule,
     TalesModule,
+    ModalModule,
     NgDynamicBreadcrumbModule,
     TranslateModule.forRoot({
       loader: {
@@ -58,6 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
   ],
   exports: [
+
   ],
   providers: [
   ],

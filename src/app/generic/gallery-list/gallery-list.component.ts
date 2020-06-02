@@ -1,4 +1,3 @@
-import { ItemComponent } from './../item/item.component';
 import { ConfigServiceService } from './../../core/service/config-service.service';
 import { Subject } from 'rxjs';
 import { EnviromentVariableServiceService } from './../../core/service/enviroment-variable-service.service';
@@ -11,8 +10,6 @@ import { TalesServiceService } from './../../core/service/tales-service.service'
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { ScrollEvent } from 'ngx-scroll-event';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
-
 
 @Component({
   selector: 'app-gallery-list',
@@ -49,8 +46,7 @@ export class GalleryListComponent implements OnInit {
     private alerts: AlertService,
     private router: Router,
     private enviromentVariables: EnviromentVariableServiceService,
-    public config: ConfigServiceService,
-    public dialog: MatDialog
+    public config: ConfigServiceService
   ) {
 
     this.gallerylist = [];
@@ -326,17 +322,6 @@ export class GalleryListComponent implements OnInit {
     }
   }
 
-  openDialog(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    const dialogRef = this.dialog.open(ItemComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(
-      result =>{
-        console.log(`Dialog result: ${result}`);
-      }
-    );
-  }
 
   ngOnInit(): void {
     this.bottomTop = 0;
