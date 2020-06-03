@@ -86,13 +86,13 @@ const routes: Routes = [
     component: TalesComponent
   },
   {
-    path: 'share-vpost/:id',
+    path: 'share-vpost/:id/:sonLevel/:foldername/:section',
     data: {
       title: 'Postal',
       breadcrumb: [
         {
           label: 'Postal {{id}}',
-          url: 'share-vpost/:id'
+          url: 'share-vpost/:id/:sonLevel/:foldername/:section'
         }
       ]
     },

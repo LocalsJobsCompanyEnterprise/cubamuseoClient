@@ -130,7 +130,7 @@
                         src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/none"
                         alt="">
                     <div class="col text-center">
-                        <a [routerLink]="['/share-vpost', item.idPostal]">
+                        <a [routerLink]="['/share-vpost', item.idPostal,sonLevel,foldername,section]">
                             <button type="button" class="btn btn-info" (click)="modal.dismiss('Cross click')">Seleccionar</button>
                         </a>
 

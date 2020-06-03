@@ -16,7 +16,7 @@ export class AdPurchaseComponent implements OnInit {
   ad: any;
   foldername: any;
   section: any;
-  precio: any;
+ 
   constructor(private activatedRoute: ActivatedRoute, 
     private store: StoreServiceService,  
     private alerts: AlertService, 
