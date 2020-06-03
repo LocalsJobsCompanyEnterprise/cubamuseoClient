@@ -18,7 +18,7 @@ export class VpostServiceService {
     return this.http.get(this.config.serverNodeLocation + 'api/vpost/getHome/' + id);
   }
    getVpostById(id) {
-    return this.http.get(this.config.serverNodeLocation + 'api/vpost/getOne/' + id);
+    return this.http.get(this.config.serverNodeLocation + 'postal/' + id);
   }
 
   getItem(id){
@@ -34,7 +34,7 @@ export class VpostServiceService {
   }
 
    getVpostCategoryById(id) {
-    return this.http.get(this.config.serverNodeLocation + 'api/vpost/getOneCategory/' + id);
+    return this.http.get(this.config.serverNodeLocation + 'category-postal/' + id);
   }
 
   getVpostCategories() {

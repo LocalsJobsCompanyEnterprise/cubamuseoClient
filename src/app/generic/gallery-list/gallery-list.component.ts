@@ -10,6 +10,8 @@ import { TalesServiceService } from './../../core/service/tales-service.service'
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { ScrollEvent } from 'ngx-scroll-event';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { strict } from 'assert';
 
 @Component({
   selector: 'app-gallery-list',
@@ -35,8 +37,8 @@ export class GalleryListComponent implements OnInit {
   @Input() tagItemId: Subject<number>;
   @Input() folder: Subject<string>;
 
-  
-  
+
+
   constructor(private activatedRoute: ActivatedRoute,
     private collection: CollectionServiceService,
     private samples: SamplesServiceService,
@@ -46,7 +48,8 @@ export class GalleryListComponent implements OnInit {
     private alerts: AlertService,
     private router: Router,
     private enviromentVariables: EnviromentVariableServiceService,
-    public config: ConfigServiceService
+    public config: ConfigServiceService,
+    public modalService: NgbModal
   ) {
 
     this.gallerylist = [];
@@ -56,7 +59,7 @@ export class GalleryListComponent implements OnInit {
         this.itemId = val.id;
         this.level = parseInt(val.sonLevel);
         this.section = val.section;
-        if(val.foldername){
+        if (val.foldername) {
           this.foldername = val.foldername;
         }
 
@@ -84,6 +87,10 @@ export class GalleryListComponent implements OnInit {
     this.baseFolder = folder.level_3;
   }
 
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+
+  }
 
   initGallery() {
 
@@ -143,17 +150,17 @@ export class GalleryListComponent implements OnInit {
         this.tales.taleList = [];
         result.forEach(element => {
           this.tales.getTaleById(element.idEstampa).subscribe(
-            data=>{
+            data => {
               this.gallerylist.push(data);
               this.tales.taleList.push(data);
-            },error=>{
+            }, error => {
 
             }
           )
           if (result.length < 10) {
             this.isScrollable = false;
           }
-          
+
         });
 
       }, error => {
@@ -170,10 +177,10 @@ export class GalleryListComponent implements OnInit {
         this.store.adList = [];
         result.forEach(element => {
           this.store.getAdById(element.idItem).subscribe(
-            data=>{
+            data => {
               this.gallerylist.push(data);
               this.store.adList.push(data);
-            }, error=>{
+            }, error => {
 
             }
           )
@@ -257,8 +264,6 @@ export class GalleryListComponent implements OnInit {
 
             }
           )
-
-
         });
 
       }, error => {
@@ -275,17 +280,17 @@ export class GalleryListComponent implements OnInit {
         this.samples.samplesGalleryList = [];
         result.forEach(element => {
           this.collection.getItem(element.idItem).subscribe(
-            data=>{
+            data => {
               this.gallerylist.push(data);
               this.samples.samplesGalleryList.push(data);
-            },error=>{
-              
+            }, error => {
+
             }
           )
           if (result.length < 10) {
             this.isScrollable = false;
           }
-          
+
         });
 
       }, error => {
@@ -294,6 +299,15 @@ export class GalleryListComponent implements OnInit {
     );
   }
 
+  checkIfIsEmpty(elementToCheck:string) {
+    let isEmpty: boolean;
+    isEmpty = false;
+    elementToCheck = elementToCheck.trim()
+    if(elementToCheck.length == 0) {
+      isEmpty = true;
+    }
+    return isEmpty;
+  }
   // getLevel() {
   //   let data = window.localStorage['level'];
   //   if (data) {
@@ -334,11 +348,11 @@ export class GalleryListComponent implements OnInit {
     if (this.folder)
       this.foldername = this.folder;
 
-      if(this.tagSection){
-        this.setSonLevel();
-        this.getSonLevel();
-        this.initGallery();
-      }
+    if (this.tagSection) {
+      this.setSonLevel();
+      this.getSonLevel();
+      this.initGallery();
+    }
 
 
   }

@@ -1,31 +1,34 @@
-import { StoreServiceService } from './../../core/service/store-service.service';
+import { ConfigServiceService } from './../../core/service/config-service.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { AlertService } from './../../alert/alert.service';
+import { VpostServiceService } from './../../core/service/vpost-service.service';
 import { Component, OnInit } from '@angular/core';
-import { ConfigServiceService } from 'src/app/core/service/config-service.service';
 
 @Component({
-  selector: 'app-ad-purchase',
-  templateUrl: './ad-purchase.component.html',
-  styleUrls: ['./ad-purchase.component.css']
+  selector: 'app-share-vpost',
+  templateUrl: './share-vpost.component.html',
+  styleUrls: ['./share-vpost.component.css']
 })
-export class AdPurchaseComponent implements OnInit {
-
+export class ShareVpostComponent implements OnInit {
+  
   mySubscription: any;
   itemId: number;
-  ad: any;
+  vpost: any;
   foldername: any;
   section: any;
- 
+  sonLevel:number;
+  category:any;
+
   constructor(private activatedRoute: ActivatedRoute, 
-    private store: StoreServiceService,  
+    private post: VpostServiceService,  
     private alerts: AlertService, 
     private router: Router, 
-    public config: ConfigServiceService) {
+    public config: ConfigServiceService) { 
 
       this.activatedRoute.params.subscribe(val => {
         this.itemId = val.id;
         this.section = val.section;
+        this.sonLevel = val.sonLevel;
         if (val.foldername) {
           this.foldername = val.foldername;
         }
@@ -43,12 +46,19 @@ export class AdPurchaseComponent implements OnInit {
           this.router.navigated = false;
         }
       });
-     }
+    }
 
-     initContent(){
-      this.store.getAdById(this.itemId).subscribe(
-        data => {
-          this.ad = data;
+    
+
+    initContent(){
+      this.post.getVpostById(this.itemId).subscribe(
+        (data:any) => {
+          this.vpost = data;
+          this.post.getVpostCategoryById(data.idCategoria).subscribe(
+            data => {
+              this.category = data;
+            }         
+          );
         }, error => {
           this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
         }

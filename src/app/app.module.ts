@@ -15,6 +15,7 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 import { OwlModule } from 'ngx-owl-carousel';
+import { ModalModule } from './modal/modal.module'
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CollectionModule,
     SamplesModule,
     TalesModule,
+    ModalModule,
     NgDynamicBreadcrumbModule,
     TranslateModule.forRoot({
       loader: {
