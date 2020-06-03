@@ -1,5 +1,5 @@
 import { ConfigServiceService } from 'src/app/core/service/config-service.service';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     public translate: TranslateService, 
     private enviromentVariables: EnviromentVariableServiceService,
     private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
-    
+    public modalService: NgbModal
     ) {
     this.categoryType = new Subject<string>();
     // this.setCategory();
@@ -59,11 +59,11 @@ export class AppComponent implements OnInit {
   // }
 
   open(content) {
-    // this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-    //   this.closeResult = `Closed with: ${result}`;
-    // }, (reason) => {
-    //   this.closeResult = `Dismissed`;
-    // });
+     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+       this.closeResult = `Closed with: ${result}`;
+     }, (reason) => {
+       this.closeResult = `Dismissed`;
+     });
   }
 
   // updateBreadcrumb(): void {
