@@ -1,3 +1,4 @@
+import { ShareVpostComponent } from './../v-post/share-vpost/share-vpost.component';
 import { ZoomComponent } from './zoom/zoom.component';
 import { SectionStartComponent } from './section-start/section-start.component';
 import { AdPurchaseComponent } from './../store/ad-purchase/ad-purchase.component';
@@ -84,15 +85,27 @@ const routes: Routes = [
     },
     component: TalesComponent
   },
-
   {
-    path: 'ad-purchase/:id',
+    path: 'share-vpost/:id',
+    data: {
+      title: 'Postal',
+      breadcrumb: [
+        {
+          label: 'Postal {{id}}',
+          url: 'share-vpost/:id'
+        }
+      ]
+    },
+    component: ShareVpostComponent
+  },
+  {
+    path: 'store/:id/:foldername/:section',
     data: {
       title: 'Articulo',
       breadcrumb: [
         {
           label: 'Articulo {{id}}',
-          url: 'tale/:id'
+          url: 'store/:id/:foldername/:section'
         }
       ]
     },

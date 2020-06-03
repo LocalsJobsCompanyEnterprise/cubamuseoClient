@@ -8,10 +8,17 @@ import { ItemComponent } from './item/item.component';
 import { GalleryListComponent } from './gallery-list/gallery-list.component';
 import { SectionStartComponent } from './section-start/section-start.component';
 import { ZoomComponent } from './zoom/zoom.component';
-import { OwlModule } from 'ngx-owl-carousel'
+import { OwlModule } from 'ngx-owl-carousel';
 
 @NgModule({
-  declarations: [TextComponent, CategoryComponent, BreadcrumbComponent, ItemComponent, GalleryListComponent, SectionStartComponent, ZoomComponent],
+  declarations: [TextComponent, 
+    CategoryComponent, 
+    BreadcrumbComponent, 
+    ItemComponent, 
+    GalleryListComponent, 
+    SectionStartComponent, 
+    ZoomComponent
+  ],
   imports: [
     CommonModule,
     GenericRoutingModule,

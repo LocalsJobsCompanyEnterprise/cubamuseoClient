@@ -130,7 +130,10 @@
                         src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/none"
                         alt="">
                     <div class="col text-center">
-                        <button type="button" class="btn btn-info">Seleccionar</button>
+                        <a [routerLink]="['/share-vpost', item.idPostal]">
+                            <button type="button" class="btn btn-info" (click)="modal.dismiss('Cross click')">Seleccionar</button>
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -190,7 +193,7 @@
                 {{item.nombre}}
             </h2>
         </div>
-        <a [routerLink]="['/store', item.idItem]">
+        <a [routerLink]="['/store', item.idItem,foldername,section]">
             <img class="card-img-top"
                 src="{{config.serverNodeLocation}}images/none/{{foldername}}/{{item.imagen}}/{{section}}/none" alt="">
         </a>

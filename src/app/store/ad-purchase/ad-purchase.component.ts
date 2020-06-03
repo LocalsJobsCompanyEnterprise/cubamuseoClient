@@ -2,6 +2,7 @@ import { StoreServiceService } from './../../core/service/store-service.service'
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { AlertService } from './../../alert/alert.service';
 import { Component, OnInit } from '@angular/core';
+import { ConfigServiceService } from 'src/app/core/service/config-service.service';
 
 @Component({
   selector: 'app-ad-purchase',
@@ -13,12 +14,21 @@ export class AdPurchaseComponent implements OnInit {
   mySubscription: any;
   itemId: number;
   ad: any;
-
-  constructor(private activatedRoute: ActivatedRoute, private store: StoreServiceService,  
-    private alerts: AlertService, private router: Router) {
+  foldername: any;
+  section: any;
+  precio: any;
+  constructor(private activatedRoute: ActivatedRoute, 
+    private store: StoreServiceService,  
+    private alerts: AlertService, 
+    private router: Router, 
+    public config: ConfigServiceService) {
 
       this.activatedRoute.params.subscribe(val => {
         this.itemId = val.id;
+        this.section = val.section;
+        if (val.foldername) {
+          this.foldername = val.foldername;
+        }
       });
     
       this.initContent();
