@@ -1,11 +1,8 @@
-import { ConfigServiceService } from 'src/app/core/service/config-service.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 import { TranslateService } from '@ngx-translate/core';
-import { EnviromentVariableServiceService } from './core/service/enviroment-variable-service.service';
 
 
 @Component({
@@ -19,13 +16,15 @@ export class AppComponent implements OnInit {
   categoryType: Subject<string>;
   closeResult = '';
   url: any;
-  constructor(private route: Router, 
-    public translate: TranslateService, 
-    private enviromentVariables: EnviromentVariableServiceService,
-    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
-    public modalService: NgbModal
-    ) {
+  query:string;
+
+  constructor(
+    public translate: TranslateService,
+    public modalService: NgbModal,
+    private router: Router
+  ) {
     this.categoryType = new Subject<string>();
+    this.query = '';
     // this.setCategory();
     // this.getCategory(); 
     translate.addLangs(['en', 'es']);
@@ -35,8 +34,12 @@ export class AppComponent implements OnInit {
 
   }
 
+  search(){
+    this.router.navigate(['search',this.query])
+  }
+
   // setCategory() {
-   
+
   //   let data = window.localStorage['category'];
   //   if (data === undefined) {
   //     console.log('funciona');
@@ -59,11 +62,11 @@ export class AppComponent implements OnInit {
   // }
 
   open(content) {
-     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-       this.closeResult = `Closed with: ${result}`;
-     }, (reason) => {
-       this.closeResult = `Dismissed`;
-     });
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed`;
+    });
   }
 
   // updateBreadcrumb(): void {

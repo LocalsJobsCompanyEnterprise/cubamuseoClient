@@ -11,7 +11,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { ScrollEvent } from 'ngx-scroll-event';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { strict } from 'assert';
+
 
 @Component({
   selector: 'app-gallery-list',
@@ -31,6 +31,9 @@ export class GalleryListComponent implements OnInit {
   foldername: any;
   sonLevel: number;
   baseFolder: string;
+  actualItem: any;
+  $: any;
+  isParams: boolean;
 
   @Input() tagSection: Subject<string>;
   @Input() tagLevel: Subject<number>;
@@ -54,6 +57,7 @@ export class GalleryListComponent implements OnInit {
 
     this.gallerylist = [];
     this.component = 'gallery'
+    this.isParams = false;
     this.activatedRoute.params.subscribe(val => {
       if (val) {
         this.itemId = val.id;
@@ -66,6 +70,7 @@ export class GalleryListComponent implements OnInit {
         this.initGallery();
         this.setSonLevel();
         this.getSonLevel();
+        this.isParams = true;
       }
 
     });
@@ -87,10 +92,84 @@ export class GalleryListComponent implements OnInit {
     this.baseFolder = folder.level_3;
   }
 
-  open(content) {
+  open(content,item) {
+    this.actualItem = item;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
-
   }
+
+  next(content) {
+    for (let index = 0; index < this.gallerylist.length; index++) {
+      const element = this.gallerylist[index];
+      if (element.idItem === this.actualItem.idItem) 
+      {
+        if (index === this.gallerylist.length - 1){
+          this.actualItem = this.gallerylist[0];
+          this.$('#itemModal').modal('hide');
+          this.open(content,this.actualItem);
+        }
+        else{
+          this.actualItem = this.gallerylist[index + 1];
+          this.$('#itemModal').modal('hide');
+          this.open(content,this.actualItem);
+        }
+        
+      }
+    }
+  }
+
+  preview(content) {
+    for (let index = 0; index < this.gallerylist.length; index++) {
+      const element = this.gallerylist[index];
+      if (element.idItem === this.actualItem.idItem) {
+        if(index === 0){
+          this.actualItem = this.gallerylist[this.gallerylist.length-1];
+          this.$('#itemModal').modal('hide');
+          this.open(content,this.actualItem);
+        }else{
+          this.actualItem = this.gallerylist[index - 1];
+          this.$('#itemModal').modal('hide');
+          this.open(content,this.actualItem);
+        }
+        
+      }
+    }
+  }
+
+  nextVpost(content) {
+    for (let index = 0; index < this.gallerylist.length; index++) {
+      const element = this.gallerylist[index];
+      if (element.idPostal === this.actualItem.idPostal) {
+        if (index === this.gallerylist.length - 1){
+          this.actualItem = this.gallerylist[0];
+          this.$('#vpostModal').modal('hide');
+          this.open(content,this.actualItem);
+        }
+        else{
+          this.actualItem = this.gallerylist[index + 1];
+          this.$('#vpostModal').modal('hide');
+          this.open(content,this.actualItem);
+        }
+      }
+    }
+  }
+
+  previewVpost(content) {
+    for (let index = 0; index < this.gallerylist.length; index++) {
+      const element = this.gallerylist[index];
+      if (element.idPostal === this.actualItem.idPostal) {
+        if(index === 0){
+          this.actualItem = this.gallerylist[this.gallerylist.length-1];
+          this.$('#vpostModal').modal('hide');
+          this.open(content,this.actualItem);
+        }else{
+          this.actualItem = this.gallerylist[index - 1];
+          this.$('#vpostModal').modal('hide');
+          this.open(content,this.actualItem);
+        }
+      }
+    }
+  }
+
 
   initGallery() {
 
@@ -348,7 +427,7 @@ export class GalleryListComponent implements OnInit {
     if (this.folder)
       this.foldername = this.folder;
 
-    if (this.tagSection) {
+    if (this.tagSection && !this.isParams) {
       this.setSonLevel();
       this.getSonLevel();
       this.initGallery();

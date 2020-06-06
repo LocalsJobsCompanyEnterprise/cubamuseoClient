@@ -47,6 +47,10 @@ export class CollectionServiceService {
     return this.http.get(this.config.serverNodeLocation + 'api/collection/getOnePage/' + id);
   }
 
+  getSectionByCategory(id){
+    return this.http.get(this.config.serverNodeLocation + 'section-category/byCategory/' + id);
+   }
+
   getCollectionPages(offset, id) {
     return this.http.post(this.config.serverNodeLocation + 'api/collection/getPagesWith', {id, offset});
   }
