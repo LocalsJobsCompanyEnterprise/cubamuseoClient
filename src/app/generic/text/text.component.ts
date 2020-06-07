@@ -1,7 +1,6 @@
 import { ConfigServiceService } from './../../core/service/config-service.service';
 import { EnviromentVariableServiceService } from './../../core/service/enviroment-variable-service.service';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { SamplesServiceService } from './../../core/service/samples-service.service';
 import { CollectionServiceService } from './../../core/service/collection-service.service';
@@ -9,6 +8,7 @@ import { TalesServiceService } from './../../core/service/tales-service.service'
 import { StoreServiceService } from './../../core/service/store-service.service';
 import { AlertService } from './../../alert/alert.service';
 import { VpostServiceService } from './../../core/service/vpost-service.service';
+import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
 
 
 @Component({
@@ -29,6 +29,8 @@ export class TextComponent implements OnInit {
   baseFolder: string;
   component: string;
   sonLevel: number;
+  previousSection: any;
+
 
   constructor(private activatedRoute: ActivatedRoute,
     private collection: CollectionServiceService,
@@ -39,7 +41,8 @@ export class TextComponent implements OnInit {
     private alerts: AlertService,
     private router: Router,
     private enviromentVariables: EnviromentVariableServiceService,
-    public configService: ConfigServiceService) {
+    public configService: ConfigServiceService,
+    private breadcrumbService: NgDynamicBreadcrumbService) {
     this.level = -1;
 
     this.component = 'text';
@@ -78,22 +81,68 @@ export class TextComponent implements OnInit {
     if (this.category === 'collection') {
       if (this.level === 3) {
         this.getSectionById();
+
+        const breadcrumb = [
+          {
+            label: 'Inicio',
+            url: 'collection/:id'
+          },
+          {
+            label: '{{this.section.nombre}}',
+            url: '/text/:this.idSeccion/:this.sonLevel/:this.category'
+          }
+        ];
+        this.updateBreadcrumb(breadcrumb);
       }
       else if (this.level === 2) {
         this.getCategoryById();
+        const breadcrumb = [
+          {
+            label: 'Inicio',
+            url: 'collection/:id'
+          },
+          {
+            label: '{{this.previousSection.nombre}}',
+            url: '/text/:this.previousSection.idSeccion/:this.level/:this.category'
+          },
+          {
+            label: '{{this.section.nombre}}',
+            url: '/text/:this.idSeccion/:this.sonLevel/:this.category'
+          },
+
+        ];
+        this.updateBreadcrumb(breadcrumb);
       }
     }
     else if (this.category === 'samples') {
       if (this.level === 2) {
         this.getSampleById();
+        this.getSectionByCategory();
+
+        const breadcrumb = [
+          {
+            label: 'Estampas',
+            url: 'samples/:id'
+          },
+          {
+            label: '{{this.section.nombre}}',
+            url: '/text/:this.idSeccion/:this.sonLevel/:this.category'
+          }
+        ];
+        this.updateBreadcrumb(breadcrumb);
+
       }
     }
+  }
+
+  updateBreadcrumb(breadcrumb): void {
+    this.breadcrumbService.updateBreadcrumb(breadcrumb);
   }
 
   setSonLevel() {
     this.enviromentVariables.setLevel(this.level, this.component, this.category);
   }
-  
+
   getSonLevel() {
     let data = window.localStorage['level'];
     if (data) {
@@ -118,16 +167,30 @@ export class TextComponent implements OnInit {
     );
   }
 
+  getSectionByCategory() {
+    this.collection.getSectionByCategory(this.sectionId).subscribe(
+      (data: any) => {
+        this.collection.getSectionById(data.idSeccion).subscribe(
+          data => {
+            this.previousSection = data;
+          }
+        )
+      }, error => {
+        this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
+      }
+    );
+  }
+
   getCategoryById() {
     this.collection.getCategoryById(this.sectionId).subscribe(
       data => {
         this.section = data;
         let folderByLevel = JSON.parse(window.localStorage.getItem('folderByLevel'));
-        if (folderByLevel.level_2 != this.section.carpeta)          
+        if (folderByLevel.level_2 != this.section.carpeta)
           folderByLevel.level_2 = this.section.carpeta
-        
-          this.baseFolder = folderByLevel.level_3;
-        window.localStorage.setItem('folderByLevel',JSON.stringify(folderByLevel)) ;
+
+        this.baseFolder = folderByLevel.level_3;
+        window.localStorage.setItem('folderByLevel', JSON.stringify(folderByLevel));
       }, error => {
         this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
       }

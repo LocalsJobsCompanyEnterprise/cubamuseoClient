@@ -1,15 +1,11 @@
 import { SearchComponent } from './../search/search/search.component';
 import { ShareVpostComponent } from './../v-post/share-vpost/share-vpost.component';
-import { ZoomComponent } from './zoom/zoom.component';
 import { SectionStartComponent } from './section-start/section-start.component';
 import { AdPurchaseComponent } from './../store/ad-purchase/ad-purchase.component';
 import { TalesComponent } from './../tales/tales/tales.component';
-import { SamplesGalleryComponent } from './../samples/samples-gallery/samples-gallery.component';
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TextComponent } from './text/text.component';
-import { ItemComponent } from './item/item.component';
 import { GalleryListComponent } from './gallery-list/gallery-list.component';
 
 const routes: Routes = [
@@ -40,24 +36,6 @@ const routes: Routes = [
     component: GalleryListComponent
   },
   {
-    path: 'samples-gallery/:id',
-    data: {
-      title: 'Galeria Estampas',
-      breadcrumb: [
-        {
-          label: 'Galeria estampas {{id}}',
-          url: 'samples-gallery/:id'
-        }
-      ]
-
-    },
-    component: SamplesGalleryComponent
-  },
-
-  { path: 'zoom/:id', component: ZoomComponent },
-  { path: 'item/:id/:section', component: ItemComponent },
-
-  {
     path: 'text/:id/:sonLevel/:section',
     data: {
       title: 'Text',
@@ -71,7 +49,6 @@ const routes: Routes = [
     },
     component: TextComponent
   },
-
   {
     path: 'tale/:id',
     data: {
@@ -118,8 +95,8 @@ const routes: Routes = [
       title: 'Inicio',
       breadcrumb: [
         {
-          label: 'Inicio ',
-          url: 'section-start'
+          label: 'Inicio',
+          url: ''
         }
       ]
     },
@@ -129,11 +106,15 @@ const routes: Routes = [
   {
     path: 'samples/:id',
     data: {
-      title: 'Inicio',
+      title: 'Muestras',
       breadcrumb: [
         {
+          label: 'Inicio',
+          url: 'collection/:1'
+        },
+        {
           label: 'Muestras',
-          url: 'samples/:id'
+          url: ''
         }
       ]
     },
@@ -143,11 +124,15 @@ const routes: Routes = [
   {
     path: 'tales/:id',
     data: {
-      title: 'Inicio',
+      title: 'Estampas',
       breadcrumb: [
         {
+          label: 'Inicio',
+          url: 'collection/:1'
+        },
+        {
           label: 'Estampas',
-          url: 'tales/:id'
+          url: ''
         }
       ]
     },
@@ -157,11 +142,15 @@ const routes: Routes = [
   {
     path: 'vpost/:id',
     data: {
-      title: 'Inicio',
+      title: 'V-Post',
       breadcrumb: [
         {
+          label: 'Inicio',
+          url: ''
+        },
+        {
           label: 'V-Post',
-          url: 'vpost/:id'
+          url: ''
         }
       ]
     },
@@ -173,8 +162,8 @@ const routes: Routes = [
       title: 'Inicio',
       breadcrumb: [
         {
-          label: 'Colecciones',
-          url: 'collection/:id'
+          label: 'Inicio',
+          url: ''
         }
       ]
     },
@@ -184,11 +173,15 @@ const routes: Routes = [
   {
     path: 'store/:id',
     data: {
-      title: 'Inicio',
+      title: 'Tienda',
       breadcrumb: [
         {
+          label: 'Inicio',
+          url: 'collection/:1'
+        },
+        {
           label: 'Tienda',
-          url: 'store/:id'
+          url: ''
         }
       ]
     },
@@ -201,20 +194,19 @@ const routes: Routes = [
     },
     component: SearchComponent
   },
-
   {
     path: '**',
     data: {
       title: 'Inicio',
       breadcrumb: [
         {
-          label: 'Colecciones',
-          url: 'collection/:id'
+          label: 'Inicio',
+          url: ''
         }
       ]
     },
     component: SectionStartComponent
-  },
+  }
 ];
 
 

@@ -121,3 +121,13 @@
         right: -10px;
     }
 }
+
+.carousel-control-prev{
+    background-image: none;
+}
+
+
+.carousel-control-next{
+    background-image: none;
+}
+

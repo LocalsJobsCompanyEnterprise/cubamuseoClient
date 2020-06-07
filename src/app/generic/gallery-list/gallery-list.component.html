@@ -20,11 +20,13 @@
                 {{item.nombre}}
             </h2>
         </div>
-        <a (click)="open(itemModal)">
+        <a (click)="open(itemModal,item)">
             <img class="card-img-top"
                 src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/{{baseFolder}}"
                 alt="">
         </a>
+
+        <!-- Icons made by <a href="https://roundicons.com/" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
         <ng-template #itemModal let-modal>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true" style="float:right;">&times;</span>
@@ -36,66 +38,98 @@
                     <div class="col text-center"
                         style="background-size: 60%; width: 100%; height: 50px; margin: 0 auto; background-color: #fff; ">
                         <span style="text-align: center; color: black;font-weight: bold;"
-                            [innerHTML]="item.nombre">:</span><span
+                            [innerHTML]="actualItem.nombre">:</span><span
                             style="text-align: center; color: black;font-weight: bold;"
-                            [innerHTML]="item.titulo"></span>
+                            [innerHTML]="actualItem.titulo"></span>
                     </div>
-                    <img (click)="open(zoom)" class="col text-center"
-                        style="bottom: 10px; max-width: 500px; max-height: 500px;"
-                        src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/{{baseFolder}}"
-                        alt="">
-                    <p style="text-align:left; line-height:1.6em; color: black; " [innerHTML]="item.descripcion">
+                    <div>
+                        <a class="carousel-control-prev" (click)="preview()" role="button" data-slide="prev"
+                            style="z-index: 1; ">
+                            <img style="cursor: pointer;
+                            margin-right: 60px;" src="../../../assets/images/left-arrow.png"
+                                class="carousel-control-prev-icon" aria-hidden="true">
+                        </a>
+
+                        <img (click)="open(zoom,actualItem)" class="col text-center"
+                            style="bottom: 10px; max-width: 500px; max-height: 500px;"
+                            src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{actualItem.imagen}}/{{section}}/{{baseFolder}}"
+                            alt="">
+
+                        <a class="carousel-control-next" (click)="next()" role="button" style="z-index: 1;"
+                            data-slide="next">
+                            <img style="cursor: pointer;
+                            margin-left: 60px;" src="../../../assets/images/right-arrow.png"
+                                class="carousel-control-next-icon" aria-hidden="true">
+                        </a>
+                    </div>
+                    <p style="text-align:left; line-height:1.6em; color: black; " [innerHTML]="actualItem.descripcion">
                     </p>
-                    <div *ngIf="!checkIfIsEmpty(item.emision)">
+                    <div *ngIf="!checkIfIsEmpty(actualItem.emision)">
                         <span style="text-align:left; line-height:1.6em; color: black; font-weight: bold;">Emisión:
                         </span><span style="text-align:left; line-height:1.6em; color: black;"
-                            [innerHTML]="item.emision"></span>
+                            [innerHTML]="actualItem.emision"></span>
                     </div>
-                    <div *ngIf="!checkIfIsEmpty(item.color)">
+                    <div *ngIf="!checkIfIsEmpty(actualItem.color)">
                         <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">Color:
                         </span><span style="text-align:left; line-height:1.6em; color: black;"
-                            [innerHTML]="item.color"></span>
+                            [innerHTML]="actualItem.color"></span>
                     </div>
-                    <div *ngIf="!checkIfIsEmpty(item.material)">
+                    <div *ngIf="!checkIfIsEmpty(actualItem.material)">
                         <span
                             style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">Material:</span><span
                             style="text-align:left; line-height:1.6em; color: black;"
-                            [innerHTML]="item.material"></span>
+                            [innerHTML]="actualItem.material"></span>
                     </div>
-                    <div *ngIf="!checkIfIsEmpty(item.impresion)">
+                    <div *ngIf="!checkIfIsEmpty(actualItem.impresion)">
                         <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">Impresión:
                         </span><span style="text-align:left; line-height:1.6em;  color: black;"
-                            [innerHTML]="item.impresion"></span>
+                            [innerHTML]="actualItem.impresion"></span>
                     </div>
-                    <div *ngIf="!checkIfIsEmpty(item.dimension)">
+                    <div *ngIf="!checkIfIsEmpty(actualItem.dimension)">
                         <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">Dimensión:
                         </span><span style="text-align:left; line-height:1.6em;  color: black;"
-                            [innerHTML]="item.dimension"></span>
+                            [innerHTML]="actualItem.dimension"></span>
                     </div>
-                    <div *ngIf="!checkIfIsEmpty(item.procedencia)">
+                    <div *ngIf="!checkIfIsEmpty(actualItem.procedencia)">
                         <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">Procedencia:
                         </span><span style="text-align:left; line-height:1.6em;  color: black;"
-                            [innerHTML]="item.procedencia"></span>
+                            [innerHTML]="actualItem.procedencia"></span>
                     </div>
-                    <div *ngIf="!checkIfIsEmpty(item.precio)">
+                    <div *ngIf="!checkIfIsEmpty(actualItem.precio)">
                         <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold; ">Precio:
                         </span><span style="text-align:left; line-height:1.6em;  color: black;"
-                            [innerHTML]="item.precio"></span>
+                            [innerHTML]="actualItem.precio"></span>
                     </div>
                 </div>
             </div>
-            <ng-template #zoom let-modal>
-                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <span aria-hidden="true" style="float:right;">&times;</span>
-                </button>
-                <div class="cui_row">
-                    <div class="cui_row"
-                        style="background-color: #ffffff; padding: 20px; padding-bottom: 20px; border-radius: 5px;">
-                        <img class="col text-center" style="bottom: 10px; max-width: 100%; max-height: 100%;"
-                            src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/{{baseFolder}}"
-                            alt="">
+            <ng-template #zoom let-modal >
+                
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true" style="float:right;">&times;</span>
+                    </button>
+                    <div class="cui_row">
+                        <div class="cui_row"
+                            style="background-color: #ffffff; padding: 20px; padding-bottom: 20px; border-radius: 5px;">
+
+                            <a class="carousel-control-prev" (click)="preview()" role="button" data-slide="prev"
+                                style="z-index: 1; ">
+                                <img style="cursor: pointer;
+                            margin-right: 60px;" src="../../../assets/images/left-arrow.png"
+                                    class="carousel-control-prev-icon" aria-hidden="true">
+                            </a>
+
+                            <img class="col text-center" style="bottom: 10px; max-width: 100%; max-height: 100%;"
+                                src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{actualItem.imagen}}/{{section}}/{{baseFolder}}"
+                                alt="">
+                            <a class="carousel-control-next" (click)="next()" role="button" style="z-index: 1;"
+                                data-slide="next">
+                                <img style="cursor: pointer;
+                                margin-left: 60px;" src="../../../assets/images/right-arrow.png"
+                                    class="carousel-control-next-icon" aria-hidden="true">
+                            </a>
+                        </div>
                     </div>
-                </div>
+                
             </ng-template>
         </ng-template>
     </div>
@@ -108,7 +142,7 @@
                 {{item.nombre}}
             </h2>
         </div>
-        <a (click)="open(vpostModal)">
+        <a (click)="open(vpostModal,item)">
             <img class="card-img-top"
                 src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/none"
                 alt="">
@@ -126,12 +160,26 @@
                         <span style="text-align: center; color: black;font-weight: bold;"
                             [innerHTML]="foldername"></span>
                     </div>
+                    <a class="carousel-control-prev" (click)="previewVpost()" role="button" data-slide="prev"
+                        style="z-index: 1; ">
+                        <img style="cursor: pointer;
+                        margin-right: 60px;" src="../../../assets/images/left-arrow.png"
+                            class="carousel-control-prev-icon" aria-hidden="true">
+                    </a>
+
                     <img class="col text-center" style="bottom: 10px; max-width: 500px; max-height: 500px;"
-                        src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/none"
+                        src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{actualItem.imagen}}/{{section}}/none"
                         alt="">
+                    <a class="carousel-control-next" (click)="nextVpost()" role="button" style="z-index: 1;"
+                        data-slide="next">
+                        <img style="cursor: pointer;
+                            margin-left: 60px;" src="../../../assets/images/right-arrow.png"
+                            class="carousel-control-next-icon" aria-hidden="true">
+                    </a>
                     <div class="col text-center">
-                        <a [routerLink]="['/share-vpost', item.idPostal,sonLevel,foldername,section]">
-                            <button type="button" class="btn btn-info" (click)="modal.dismiss('Cross click')">Seleccionar</button>
+                        <a [routerLink]="['/share-vpost', actualItem.idPostal,sonLevel,foldername,section]">
+                            <button type="button" class="btn btn-info"
+                                (click)="modal.dismiss('Cross click')">Seleccionar</button>
                         </a>
 
                     </div>

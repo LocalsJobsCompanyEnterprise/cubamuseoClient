@@ -1,8 +1,6 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchModule } from './search/search.module';
-
 import { TalesModule } from './tales/tales.module';
-import { SamplesModule } from './samples/samples.module';
-import { CollectionModule } from './collection/collection.module';
 import { VPostModule } from './v-post/v-post.module';
 import { StoreModule } from './store/store.module';
 import { AlertModule } from './alert/alert.module';
@@ -17,7 +15,6 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 import { OwlModule } from 'ngx-owl-carousel';
-import { ModalModule } from './modal/modal.module'
 import { FormsModule } from '@angular/forms';
 
 
@@ -42,11 +39,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     StoreModule,
     VPostModule,
-    CollectionModule,
-    SamplesModule,
     TalesModule,
-    ModalModule,
     SearchModule,
+    SearchModule,
+    NgbModule,
     NgDynamicBreadcrumbModule,
     TranslateModule.forRoot({
       loader: {
