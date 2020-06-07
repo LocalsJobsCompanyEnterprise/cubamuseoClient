@@ -5,12 +5,18 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', component: SearchComponent
-}
+  {
+    path: 'search/:query',
+    data: {
+      title: 'Busqueda'
+    },
+    component: SearchComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+
 export class SearchRoutingModule { }

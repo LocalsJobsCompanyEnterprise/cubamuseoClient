@@ -2,46 +2,69 @@
     <!-- Header -->
     <header class="header">
         <div class="container">
+            <div class="row large">
+                <div class=" col-12 flex justify-content-between justify-content-lg-end align-items-center">
+                    <div _ngcontent-rht-c0="" class="footer_social" style="margin-right: 20px;">
+                        <ul _ngcontent-rht-c0="">
+                            <li _ngcontent-rht-c0="" class="footer_social_facebook"><a _ngcontent-rht-c0="" href="#"><i
+                                        _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-facebook"></i></a></li>
+                            <li _ngcontent-rht-c0="" class="footer_social_twitter"><a _ngcontent-rht-c0="" href="#"><i
+                                        _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-twitter"></i></a></li>
+                            <li _ngcontent-rht-c0="" class="footer_social_pinterest"><a _ngcontent-rht-c0="" href="#"><i
+                                        _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-pinterest"></i></a></li>
+                            <li _ngcontent-rht-c0="" class="footer_social_vimeo"><a _ngcontent-rht-c0="" href="#"><i
+                                        _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-vimeo"></i></a></li>
+                            <li _ngcontent-rht-c0="" class="footer_social_instagram"><a _ngcontent-rht-c0="" href="#"><i
+                                        _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-instagram"></i></a></li>
+                            <li _ngcontent-rht-c0="" class="footer_social_google"><a _ngcontent-rht-c0="" href="#"><i
+                                        _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-google"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="search large">
+
+                        <div class="form">
+                            <input type="search" class="header_search_input menu_mm" [(ngModel)]="query" placeholder="Escriba para buscar..." (keyup.enter)="search()">
+                            <a [routerLink]="[ '/search', query ]">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <div class="row">
                 <div class="col">
+
                     <div class="header_content justify-content-lg-center align-content-lg-center">
                         <div class="row scrolled-logo">
                             <div class="col-12">
                                 <div class="site-branding flex flex-column align-items-center">
-                                    <h1 class="site-title" (click)="categoryType.next('collection')">
-                                        <a [routerLink]="['/collection', '1' ]">Cuba Museo</a>
-                                    </h1>
+                                    <img src="../assets/images/logo-naranja.png" class="image-logo-large" alt="">
                                 </div>
                             </div>
                         </div>
 
                         <div class="logo" (click)="categoryType.next('collection')">
-                            <h2 class="site-title">
+                            <!-- <h1 class="site-title">
                                 <a [routerLink]="['/collection', '1' ]">Cuba Museo</a>
-                            </h2>
-
+                            </h1> -->
+                            <img src="../assets/images/logo-naranja.png" class="image-logo-short" alt="">
                         </div>
                         <nav class="main_nav" style="margin-left: auto;">
                             <ul>
                                 <li (click)="categoryType.next('collection')" class="active"><a [routerLink]="['/collection', '1']">Inicio</a></li>
-                                <li (click)="categoryType.next('tales')"><a [routerLink]="['/tales', '2']">Estampas</a></li>
+                                <li (click)="categoryType.next('tales')"><a [routerLink]="['/tales', '2']">Estampas</a>
+                                </li>
                                 <li (click)="categoryType.next('samples')"><a [routerLink]="['/samples', '3']">Muestras</a></li>
-                                <li (click)="categoryType.next('vpost')"><a [routerLink]="['/vpost', '6']">V-Post</a></li>
-                                <li (click)="categoryType.next('store')"><a [routerLink]="['/store', '7']">Tienda</a></li>
+                                <li (click)="categoryType.next('vpost')"><a [routerLink]="['/vpost', '6']">V-Post</a>
+                                </li>
+                                <li (click)="categoryType.next('store')"><a [routerLink]="['/store', '7']">Tienda</a>
+                                </li>
                             </ul>
                         </nav>
-                        <!-- <div >
-                                <select #langselect (change)="translate.use(langselect.value)">
-                                    <option *ngFor="let lang of translate.getLangs()" value="lang"></option>
-                                </select>
-                            </div> -->
-                        <!-- <div class="search_container ml-auto">
-                            <form action="#">
-                                <input type="search" class="header_search_input" required="required" placeholder="Escriba para buscar...">
-                                <img class="header_search_icon" src="../assets/images/search.png" alt="">
-                            </form>
 
-                        </div> -->
+
+
                         <div class="hamburger ml-auto menu_mm" style="float: right;">
                             <i class="fa fa-bars trans_200 menu_mm" aria-hidden="true"></i>
                         </div>
@@ -60,18 +83,23 @@
         </div>
         <div class="logo menu_mm"><a href="#">Cuba Museo</a></div>
         <div class="search">
-            <form action="#">
-                <input type="search" class="header_search_input menu_mm" required="required" placeholder="Escriba para buscar...">
-                <img class="header_search_icon menu_mm" src="images/search_2.png" alt="">
-            </form>
+            <div class="form" style="display: flex;">
+                <input type="search" class="header_search_input menu_mm" style="background: none;" [(ngModel)]="query" placeholder="Escriba para buscar..." (keyup.enter)="search()">
+                <a [routerLink]="[ '/search', query ]" style="align-self: center;">
+                    <i class="fa fa-search"></i>
+                </a>
+            </div>
         </div>
         <nav class="menu_nav">
             <ul class="menu_mm">
                 <li (click)="categoryType.next('collection')" class="menu_mm"><a [routerLink]="['/collection', '1']">Inicio</a></li>
-                <li (click)="categoryType.next('tale')" class="menu_mm"><a [routerLink]="['/tales', '2']">Estampas</a></li>
+                <li (click)="categoryType.next('tale')" class="menu_mm"><a [routerLink]="['/tales', '2']">Estampas</a>
+                </li>
                 <li (click)="categoryType.next('samples')" class="menu_mm"><a [routerLink]="['/samples', '3']">Muestras</a></li>
-                <li (click)="categoryType.next('vpost')" class="menu_mm"><a [routerLink]="['/vpost', '6']">V-Post</a></li>
-                <li (click)="categoryType.next('store')" class="menu_mm"><a [routerLink]="['/store', '7']">Tienda</a></li>
+                <li (click)="categoryType.next('vpost')" class="menu_mm"><a [routerLink]="['/vpost', '6']">V-Post</a>
+                </li>
+                <li (click)="categoryType.next('store')" class="menu_mm"><a [routerLink]="['/store', '7']">Tienda</a>
+                </li>
 
             </ul>
         </nav>
@@ -157,21 +185,21 @@
                         <div class="footer_social">
                             <ul>
                                 <li class="footer_social_facebook"><a href="#"><i class="fa fa-facebook"
-                                                aria-hidden="true"></i></a>
+                                            aria-hidden="true"></i></a>
                                 </li>
                                 <li class="footer_social_twitter"><a href="#"><i class="fa fa-twitter"
-                                                aria-hidden="true"></i></a>
+                                            aria-hidden="true"></i></a>
                                 </li>
                                 <li class="footer_social_pinterest"><a href="#"><i class="fa fa-pinterest"
-                                                aria-hidden="true"></i></a>
+                                            aria-hidden="true"></i></a>
                                 </li>
                                 <li class="footer_social_vimeo"><a href="#"><i class="fa fa-vimeo"
-                                                aria-hidden="true"></i></a></li>
+                                            aria-hidden="true"></i></a></li>
                                 <li class="footer_social_instagram"><a href="#"><i class="fa fa-instagram"
-                                                aria-hidden="true"></i></a>
+                                            aria-hidden="true"></i></a>
                                 </li>
                                 <li class="footer_social_google"><a href="#"><i class="fa fa-google"
-                                                aria-hidden="true"></i></a></li>
+                                            aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
                         <div class="copyright">
@@ -217,8 +245,8 @@
 
                                 <ng-template #contact let-modal>
                                     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                                            <span aria-hidden="true" style="float:right;">&times;</span>
-                                          </button>
+                                        <span aria-hidden="true" style="float:right;">&times;</span>
+                                    </button>
                                     <div class="" style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
                                         <span> Contactenos</span>
                                     </div>
@@ -237,8 +265,8 @@
 
                                 <ng-template #aboutUs let-modal>
                                     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                                            <span aria-hidden="true" style="float:right;">&times;</span>
-                                          </button>
+                                        <span aria-hidden="true" style="float:right;">&times;</span>
+                                    </button>
 
 
                                     <!-- Post Comment -->
@@ -259,8 +287,8 @@
 
                                 <ng-template #news let-modal>
                                     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                                            <span aria-hidden="true" style="float:right;">&times;</span>
-                                          </button>
+                                        <span aria-hidden="true" style="float:right;">&times;</span>
+                                    </button>
 
                                     <!-- Post Comment -->
                                     <div class="cui_row">
@@ -278,8 +306,8 @@
 
                                 <ng-template #relatedSites let-modal>
                                     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                                            <span aria-hidden="true" style="float:right;">&times;</span>
-                                          </button>
+                                        <span aria-hidden="true" style="float:right;">&times;</span>
+                                    </button>
                                     <!-- Post Comment -->
                                     <div class="cui_row">
                                         <div class="cui_row" style="background-color: #ffffff; padding: 20px; padding-bottom: 40px; border-radius: 5px;">

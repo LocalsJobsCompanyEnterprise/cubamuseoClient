@@ -1,3 +1,4 @@
+import { SearchComponent } from './../search/search/search.component';
 import { ShareVpostComponent } from './../v-post/share-vpost/share-vpost.component';
 import { ZoomComponent } from './zoom/zoom.component';
 import { SectionStartComponent } from './section-start/section-start.component';
@@ -8,7 +9,6 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TextComponent } from './text/text.component';
-import { CategoryComponent } from './category/category.component';
 import { ItemComponent } from './item/item.component';
 import { GalleryListComponent } from './gallery-list/gallery-list.component';
 
@@ -193,6 +193,13 @@ const routes: Routes = [
       ]
     },
     component: SectionStartComponent
+  },
+  {
+    path: 'search/:query',
+    data: {
+      title: 'Busqueda'
+    },
+    component: SearchComponent
   },
 
   {
