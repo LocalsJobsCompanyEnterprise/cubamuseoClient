@@ -43,7 +43,7 @@
                             [innerHTML]="actualItem.titulo"></span>
                     </div>
                     <div>
-                        <a class="carousel-control-prev" (click)="preview()" role="button" data-slide="prev"
+                        <a class="carousel-control-prev" (click)="preview(itemModal)" role="button" data-slide="prev"
                             style="z-index: 1; ">
                             <img style="cursor: pointer;
                             margin-right: 60px;" src="../../../assets/images/left-arrow.png"
@@ -55,7 +55,7 @@
                             src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{actualItem.imagen}}/{{section}}/{{baseFolder}}"
                             alt="">
 
-                        <a class="carousel-control-next" (click)="next()" role="button" style="z-index: 1;"
+                        <a class="carousel-control-next" (click)="next(itemModal)" role="button" style="z-index: 1;"
                             data-slide="next">
                             <img style="cursor: pointer;
                             margin-left: 60px;" src="../../../assets/images/right-arrow.png"
@@ -111,7 +111,7 @@
                         <div class="cui_row"
                             style="background-color: #ffffff; padding: 20px; padding-bottom: 20px; border-radius: 5px;">
 
-                            <a class="carousel-control-prev" (click)="preview()" role="button" data-slide="prev"
+                            <a class="carousel-control-prev" (click)="preview(zoom)" role="button" data-slide="prev"
                                 style="z-index: 1; ">
                                 <img style="cursor: pointer;
                             margin-right: 60px;" src="../../../assets/images/left-arrow.png"
@@ -121,7 +121,7 @@
                             <img class="col text-center" style="bottom: 10px; max-width: 100%; max-height: 100%;"
                                 src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{actualItem.imagen}}/{{section}}/{{baseFolder}}"
                                 alt="">
-                            <a class="carousel-control-next" (click)="next()" role="button" style="z-index: 1;"
+                            <a class="carousel-control-next" (click)="next(zoom)" role="button" style="z-index: 1;"
                                 data-slide="next">
                                 <img style="cursor: pointer;
                                 margin-left: 60px;" src="../../../assets/images/right-arrow.png"
@@ -160,7 +160,7 @@
                         <span style="text-align: center; color: black;font-weight: bold;"
                             [innerHTML]="foldername"></span>
                     </div>
-                    <a class="carousel-control-prev" (click)="previewVpost()" role="button" data-slide="prev"
+                    <a class="carousel-control-prev" (click)="previewVpost(vpostModal)" role="button" data-slide="prev"
                         style="z-index: 1; ">
                         <img style="cursor: pointer;
                         margin-right: 60px;" src="../../../assets/images/left-arrow.png"
@@ -170,7 +170,7 @@
                     <img class="col text-center" style="bottom: 10px; max-width: 500px; max-height: 500px;"
                         src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{actualItem.imagen}}/{{section}}/none"
                         alt="">
-                    <a class="carousel-control-next" (click)="nextVpost()" role="button" style="z-index: 1;"
+                    <a class="carousel-control-next" (click)="nextVpost(vpostModal)" role="button" style="z-index: 1;"
                         data-slide="next">
                         <img style="cursor: pointer;
                             margin-left: 60px;" src="../../../assets/images/right-arrow.png"

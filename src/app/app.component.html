@@ -30,9 +30,11 @@
                             </a>
                         </div>
                     </div>
-                    <div class="language" >
-                        <img lang="es" (click)="change('es')"  src="../assets/images/espana.png" style="max-width: 20px; max-height: 20px;">
-                        <img lang="en" (click)="change('en')"  src="../assets/images/bandera.png" style="max-width: 20px; max-height: 20px;margin-left: 5px;">
+                    <div class="language">
+                        <img lang="es" (click)="change('es')" src="../assets/images/espana.png"
+                            style="max-width: 20px; max-height: 20px;">
+                        <img lang="en" (click)="change('en')" src="../assets/images/bandera.png"
+                            style="max-width: 20px; max-height: 20px;margin-left: 5px;">
                     </div>
                 </div>
 
@@ -98,22 +100,27 @@
                     <i class="fa fa-search"></i>
                 </a>
             </div>
-            <div class="language" >
-                <img lang="es" (click)="change('es')"  src="../assets/images/espana.png" style="max-width: 20px; max-height: 20px;">
-                <img lang="en" (click)="change('en')"  src="../assets/images/bandera.png" style="max-width: 20px; max-height: 20px;margin-left: 5px;">
+            <div class="language">
+                <img lang="es" (click)="change('es')" src="../assets/images/espana.png"
+                    style="max-width: 20px; max-height: 20px;">
+                <img lang="en" (click)="change('en')" src="../assets/images/bandera.png"
+                    style="max-width: 20px; max-height: 20px;margin-left: 5px;">
             </div>
         </div>
         <nav class="menu_nav">
             <ul class="menu_mm">
                 <li (click)="categoryType.next('collection')" class="menu_mm"><a
                         [routerLink]="['/collection', '1']">{{'Menu.Colecciones'|translate}}</a></li>
-                <li (click)="categoryType.next('tale')" class="menu_mm"><a [routerLink]="['/tales', '2']">{{'Menu.Estampas'|translate}}</a>
+                <li (click)="categoryType.next('tale')" class="menu_mm"><a
+                        [routerLink]="['/tales', '2']">{{'Menu.Estampas'|translate}}</a>
                 </li>
                 <li (click)="categoryType.next('samples')" class="menu_mm"><a
                         [routerLink]="['/samples', '3']">{{'Menu.Muestras'|translate}}</a></li>
-                <li (click)="categoryType.next('vpost')" class="menu_mm"><a [routerLink]="['/vpost', '6']">{{'Menu.Postales'|translate}}</a>
+                <li (click)="categoryType.next('vpost')" class="menu_mm"><a
+                        [routerLink]="['/vpost', '6']">{{'Menu.Postales'|translate}}</a>
                 </li>
-                <li (click)="categoryType.next('store')" class="menu_mm"><a [routerLink]="['/store', '7']">{{'Menu.Store'|translate}}</a>
+                <li (click)="categoryType.next('store')" class="menu_mm"><a
+                        [routerLink]="['/store', '7']">{{'Menu.Store'|translate}}</a>
                 </li>
 
             </ul>

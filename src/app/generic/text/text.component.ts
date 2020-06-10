@@ -96,6 +96,7 @@ export class TextComponent implements OnInit {
       }
       else if (this.level === 2) {
         this.getCategoryById();
+        this.getSectionByCategory();
         const breadcrumb = [
           {
             label: 'Inicio',
@@ -117,8 +118,6 @@ export class TextComponent implements OnInit {
     else if (this.category === 'samples') {
       if (this.level === 2) {
         this.getSampleById();
-        this.getSectionByCategory();
-
         const breadcrumb = [
           {
             label: 'Inicio',

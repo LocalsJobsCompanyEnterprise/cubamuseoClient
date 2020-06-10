@@ -45,7 +45,7 @@ const routes: Routes = [
         },
         {
           label: 'Postal {{id}} de {{foldername}}',
-          url: 'share-vpost/:id/:sonLevel/:foldername/:section'
+          url: ''
         }
       ]
     },
@@ -87,10 +87,6 @@ const routes: Routes = [
         {
           label: 'Inicio',
           url: 'collection/1'
-        },
-        {
-          label: 'Muestras',
-          url: ''
         }
       ]
     },
