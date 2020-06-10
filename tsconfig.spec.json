@@ -5,10 +5,10 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "emitDecoratorMetadata": true
   },
   "files": [
-    "src/test.ts",
     "src/polyfills.ts"
   ],
   "include": [

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchRoutingModule } from './search-routing.module';
 import { FormsModule } from '@angular/forms';
-import { MatTabsModule } from '@angular/material/tabs';
+//import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     CommonModule,
     SearchRoutingModule,
     FormsModule,
-    MatTabsModule
+    //MatTabsModule
   ]
 })
 export class SearchModule { }

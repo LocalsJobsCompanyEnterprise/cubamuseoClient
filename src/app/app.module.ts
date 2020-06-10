@@ -17,15 +17,14 @@ import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 import { OwlModule } from 'ngx-owl-carousel';
 import { FormsModule } from '@angular/forms';
 
-
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './../assets/i18n/', '.json');
 }
 
 @NgModule({
   declarations: [
     AppComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -41,16 +40,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     VPostModule,
     TalesModule,
     SearchModule,
-    SearchModule,
     NgbModule,
     NgDynamicBreadcrumbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [
-          HttpClient
-        ]
+        deps: [HttpClient]
+
       }
 
     }),
