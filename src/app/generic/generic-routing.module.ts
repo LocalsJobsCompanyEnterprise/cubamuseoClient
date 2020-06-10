@@ -11,51 +11,23 @@ import { GalleryListComponent } from './gallery-list/gallery-list.component';
 const routes: Routes = [
   {
     path: 'gallery/:id/:sonLevel/:section',
-    data: {
-      title: 'gallery',
-      breadcrumb: [
-        {
-          label: 'Galeria {{section, id}} ',
-          url: 'gallery/:id/:sonLevel/:section'
-        }
-      ]
-    },
     component: GalleryListComponent
   },
   {
     path: 'gallery/:id/:sonLevel/:section/:foldername',
-    data: {
-      title: 'gallery',
-      breadcrumb: [
-        {
-          label: 'Galeria {{section, id}} ',
-          url: 'gallery/:id/:sonLevel/:section'
-        }
-      ]
-    },
     component: GalleryListComponent
   },
   {
     path: 'text/:id/:sonLevel/:section',
-    data: {
-      title: 'Text',
-      breadcrumb: [
-        {
-          label: '{{section,id}}',
-          url: 'text/:id/:sonLevel/:section'
-
-        }
-      ]
-    },
     component: TextComponent
   },
   {
-    path: 'tale/:id',
+    path: 'tale/:id/:nombre',
     data: {
       title: 'Estampa',
       breadcrumb: [
         {
-          label: 'Estampa {{id}}',
+          label: 'Estampa: {{nombre}}',
           url: 'tale/:id'
         }
       ]
@@ -68,8 +40,12 @@ const routes: Routes = [
       title: 'Postal',
       breadcrumb: [
         {
-          label: 'Postal {{id}}',
-          url: 'share-vpost/:id/:sonLevel/:foldername/:section'
+          label:'Inicio',
+          url:'collection/1'
+        },
+        {
+          label: 'Postal {{id}} de {{foldername}}',
+          url: ''
         }
       ]
     },
@@ -81,7 +57,7 @@ const routes: Routes = [
       title: 'Articulo',
       breadcrumb: [
         {
-          label: 'Articulo {{id}}',
+          label: 'Articulo {{id}} de {{foldername}}',
           url: 'store/:id/:foldername/:section'
         }
       ]
@@ -110,11 +86,7 @@ const routes: Routes = [
       breadcrumb: [
         {
           label: 'Inicio',
-          url: 'collection/:1'
-        },
-        {
-          label: 'Muestras',
-          url: ''
+          url: 'collection/1'
         }
       ]
     },
@@ -128,7 +100,7 @@ const routes: Routes = [
       breadcrumb: [
         {
           label: 'Inicio',
-          url: 'collection/:1'
+          url: 'collection/1'
         },
         {
           label: 'Estampas',
@@ -146,7 +118,7 @@ const routes: Routes = [
       breadcrumb: [
         {
           label: 'Inicio',
-          url: ''
+          url: 'collection/1'
         },
         {
           label: 'V-Post',
@@ -177,7 +149,7 @@ const routes: Routes = [
       breadcrumb: [
         {
           label: 'Inicio',
-          url: 'collection/:1'
+          url: 'collection/1'
         },
         {
           label: 'Tienda',

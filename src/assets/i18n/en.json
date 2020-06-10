@@ -1,7 +1,52 @@
 {
-    "HOME":{
-        "TITLE": "Cuba Museo",
-        "TEXT":"",
-        "SELECT":"Language"
+    "HOME": {
+        "TITLE": "Cuba Museo"
+    },
+    "About": {
+        "TITLE": "About Us",
+        "TEXT": " This website has been created by a Cuban collector, Luis Diaz Mijares, who has dedicated decades to gather all the pieces shown in the different sections, as well as to the development of each topic. The whole content is entirely his responsibility and authorship. Lic. Ulises Ortega Camero and Maricarla Esquivel Sobrado, were in charge of the programming part (architecture and design of the website). Translation Spanish to English: Lic. Mayen Vincench Pereira. We will feel satisfied if our work contributes in a way to the spreading and knowledge of the Cuban identity and culture."
+    },
+    "News": {
+        "TITLE": "News",
+        "TEXT": " Here, you will be able to find the most recent information of interest related to our website, the new sections that are included, the additions to existing sections, etc…Also, any news regarding the Cuban collecting world where we will make reference to new findings, events, publications, and so forth."
+    },
+    "Contact": {
+        "TITLE": "Contact Us",
+        "SEND": " Send Message"
+    },
+    "RelatedSites": {
+        "TITLE": "Related Sites",
+        "TEXT": " Memorias is a small bookstore and memorabilia store. It is located close to Central Park in Old Havana and one block away from the Fine Arts Museum, more specifically next to the famous bar Sloppy Joe’s. Besides commercializing a wide variety of articles destined for lovers of antiques, they also offer a nice space for visitors by recreating the Cuban past.  On the walls you can enjoy vintage posters, photos and advertisements which portray the value of the Cuban culture."
+    },
+    "Menu":{
+        "Collecciones":"Home",
+        "Estampas":"Tales",
+        "Muestras":"Samples",
+        "Postales":"V-Post",
+        "Tienda":"Store"
+    },
+    "Derechos":{
+        "Derechos":"All right reserved | Development and Design"
+    },
+    "AD":{
+        "Item":"Item",
+        "Precio":"Price",
+        "Envio":"Shipping inside US (Free) ",
+        "EnvioPrecio":"Shipping inside US ",
+        "EnvioFuera":"Shipping outside US "
+    },
+    "TextComponent":{
+        "Texto":"Text",
+        "Galeria":"Gallery"
+    },
+    "GalleryComponent":{
+        "Emision":"Emission",
+        "Color":"Color",
+        "Material":"Material",
+        "Impresion":"Impression",
+        "Dimension":"Dimension",
+        "Procedencia":"Source",
+        "Precio":"Price",
+        "Seleccionar":"Select"
     }
  }

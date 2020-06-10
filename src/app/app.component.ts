@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   categoryType: Subject<string>;
   closeResult = '';
   url: any;
-  query:string;
+  query: string;
 
   constructor(
     public translate: TranslateService,
@@ -34,8 +34,14 @@ export class AppComponent implements OnInit {
 
   }
 
-  search(){
-    this.router.navigate(['search',this.query])
+  
+
+  search() {
+    this.router.navigate(['search', this.query])
+  }
+
+  change(language) {
+    this.translate.use(language);
   }
 
   // setCategory() {
@@ -69,63 +75,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // updateBreadcrumb(): void {
-  //   const breadcrumb = [
-
-  //     {
-  //       label: 'Galeria {{section, id}} ',
-  //       url: 'gallery/:id/:level/:component/:section'
-  //     },
-  //     {
-  //       label: 'Galeria estampas {{id}}',
-  //       url: 'samples-gallery/:id'
-  //     },
-  //     {
-  //       label: '{{section,id}}',
-  //       url: 'text/:id/:level/:component/:section'
-  //     },
-  //     {
-  //       label: 'Estampa {{id}}',
-  //       url: 'tale/:id'
-  //     },
-  //     {
-  //       label: 'Articulo {{id}}',
-  //       url: 'tale/:id'
-  //     },
-  //     {
-  //       label: 'Inicio ',
-  //       url: 'section-start'
-  //     },
-  //     {
-  //       label: 'Muestras',
-  //       url: 'samples/:id'
-  //     },
-  //     {
-  //       label: 'Estampas',
-  //       url: 'tales/:id'
-  //     },
-  //     {
-  //       label: 'V-Post',
-  //       url: 'vpost/:id'
-  //     },
-  //     {
-  //       label: 'Colecciones',
-  //       url: 'collection/:id'
-  //     },
-  //     {
-  //       label: 'Tienda',
-  //       url: 'store/:id'
-  //     },
-  //     {
-  //       label: 'Colecciones',
-  //       url: 'collection/:id'
-  //     }
-  //   ];
-  //   this.ngDynamicBreadcrumbService.updateBreadcrumb(breadcrumb);
-  // }
-
   ngOnInit() {
-    //this.updateBreadcrumb();
+
   }
 
 }
