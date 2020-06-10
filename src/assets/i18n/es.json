@@ -1,7 +1,53 @@
 {
-   "HOME":{
-       "TITLE": "Cuba Museo",
-       "TEXT":"",
-       "SELECT":"Idioma"
-   }
+    "HOME": {
+        "TITLE": "Cuba Museo"
+    },
+    "About": {
+        "TITLE": "Quienes Somos",
+        "TEXT": " Este espacio ha sido concebido por un coleccionista cubano, el Ing. Luis Díaz Mijares, que ha dedicado décadas a reunir las piezas que se muestran en sus diferentes secciones temáticas y a confeccionar las páginas correspondientes. La totalidad de su contenido es de su entera responsabilidad y autoría. La parte de programación (arquitectura y diseño del sitio) esta a cargo del Lic. Ulises Ortega Camero y la Lic. Maricarla Esquivel Sobrado. Si con nuestro trabajo llegamos a contribuir en algo a la difusión y conocimiento de la cultura e identidad cubana nos sentiremos satisfechos. Traducción Español/Inglés: Lic. en Lengua Inglesa Mayen Vincench Pereira "
+    },
+    
+    "Contact": {
+        "TITLE": "Contáctenos",
+        "SEND": " Enviar Mensaje"
+    },
+    "News": {
+        "TITLE": "Noticias",
+        "TEXT": " Donde usted podrá conocer de las últimas informaciones de interés relativas al contenido de nuestro sitio, a las nuevas secciones que se le irán incorporando, a las adiciones que recibirán sus páginas, etc. También noticias relativas al mundo del coleccionismo cubano donde referiremos nuevos hallazgos, eventos, publicaciones, etc."
+    },
+    "RelatedSites": {
+        "TITLE": "Sitios Relacionados",
+        "TEXT": " Memorias es una tienda de antigüedades localizada en el corazón de la ciudad de la Habana, a una cuadra del Museo Nacional de Bellas Artes y colindante con el conocido bar Sloppy Joe's. Su principal objetivo es, además de comercializar una amplia gama de artículos destinados a los amantes de lo antiguo, crear un espacio que resulte agradable al visitante mediante la recreación del pasado cubano. En sus paredes además de viejas fotos, pinturas, carteles, grabados, etc., se mantienen generalmente exposiciones temporales relativas a nuestro patrimonio cultural en las cuales se muestran pequeñas colecciones acompañadas por sus correspondientes reseñas."
+    },
+    "Menu":{
+        "Colecciones":"Inicio",
+        "Estampas":"Estampas",
+        "Muestras":"Muestras",
+        "Postales":"V-Post",
+        "Tienda":"Tienda"
+    },
+    "Derechos":{
+        "Derechos":"Todos los derechos reservados | Diseño y desarrollo"
+    },
+    "AD":{
+        "Item":"Artículo",
+        "Precio":"Precio",
+        "Envio":"Envio dentro de EEUU (Gratis) ",
+        "EnvioPrecio":"Envio dentro de EEUU ",
+        "EnvioFuera":"Envio dentro de EEUU "
+    },
+    "TextComponent":{
+        "Texto":"Texto",
+        "Galeria":"Galería"
+    },
+    "GalleryComponent":{
+        "Emision":"Emisión",
+        "Color":"Color",
+        "Material":"Material",
+        "Impresion":"Impresión",
+        "Dimension":"Dimensión",
+        "Procedencia":"Procedencia",
+        "Precio":"Precio",
+        "Seleccionar":"Seleccionar"
+    }
 }

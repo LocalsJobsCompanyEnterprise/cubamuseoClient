@@ -121,8 +121,12 @@ export class TextComponent implements OnInit {
 
         const breadcrumb = [
           {
+            label: 'Inicio',
+            url: 'collection/1'
+          },
+          {
             label: 'Estampas',
-            url: 'samples/:id'
+            url: 'samples/3'
           },
           {
             label: '{{this.section.nombre}}',

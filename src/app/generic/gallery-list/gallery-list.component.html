@@ -65,38 +65,38 @@
                     <p style="text-align:left; line-height:1.6em; color: black; " [innerHTML]="actualItem.descripcion">
                     </p>
                     <div *ngIf="!checkIfIsEmpty(actualItem.emision)">
-                        <span style="text-align:left; line-height:1.6em; color: black; font-weight: bold;">Emisión:
+                        <span style="text-align:left; line-height:1.6em; color: black; font-weight: bold;">{{'GalleryComponent.Emision'|translate}}:
                         </span><span style="text-align:left; line-height:1.6em; color: black;"
                             [innerHTML]="actualItem.emision"></span>
                     </div>
                     <div *ngIf="!checkIfIsEmpty(actualItem.color)">
-                        <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">Color:
+                        <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">{{'GalleryComponent.Color'|translate}}:
                         </span><span style="text-align:left; line-height:1.6em; color: black;"
                             [innerHTML]="actualItem.color"></span>
                     </div>
                     <div *ngIf="!checkIfIsEmpty(actualItem.material)">
                         <span
-                            style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">Material:</span><span
+                            style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">{{'GalleryComponent.Material'|translate}}:</span><span
                             style="text-align:left; line-height:1.6em; color: black;"
                             [innerHTML]="actualItem.material"></span>
                     </div>
                     <div *ngIf="!checkIfIsEmpty(actualItem.impresion)">
-                        <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">Impresión:
+                        <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">{{'GalleryComponent.Impresion'|translate}}:
                         </span><span style="text-align:left; line-height:1.6em;  color: black;"
                             [innerHTML]="actualItem.impresion"></span>
                     </div>
                     <div *ngIf="!checkIfIsEmpty(actualItem.dimension)">
-                        <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">Dimensión:
+                        <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">{{'GalleryComponent.Dimension'|translate}}:
                         </span><span style="text-align:left; line-height:1.6em;  color: black;"
                             [innerHTML]="actualItem.dimension"></span>
                     </div>
                     <div *ngIf="!checkIfIsEmpty(actualItem.procedencia)">
-                        <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">Procedencia:
+                        <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold;">{{'GalleryComponent.Procedencia'|translate}}:
                         </span><span style="text-align:left; line-height:1.6em;  color: black;"
                             [innerHTML]="actualItem.procedencia"></span>
                     </div>
                     <div *ngIf="!checkIfIsEmpty(actualItem.precio)">
-                        <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold; ">Precio:
+                        <span style="text-align:left; line-height:1.6em; color: black;font-weight: bold; ">{{'GalleryComponent.Precio'|translate}}:
                         </span><span style="text-align:left; line-height:1.6em;  color: black;"
                             [innerHTML]="actualItem.precio"></span>
                     </div>
@@ -179,7 +179,7 @@
                     <div class="col text-center">
                         <a [routerLink]="['/share-vpost', actualItem.idPostal,sonLevel,foldername,section]">
                             <button type="button" class="btn btn-info"
-                                (click)="modal.dismiss('Cross click')">Seleccionar</button>
+                                (click)="modal.dismiss('Cross click')">{{'GalleryComponent.Seleccionar'|translate}}</button>
                         </a>
 
                     </div>

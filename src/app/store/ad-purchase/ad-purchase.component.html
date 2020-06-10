@@ -21,23 +21,23 @@
     <div class="col-md-6" style="margin: auto;">
 
       <div>
-        <span style="text-align:left; line-height:1.6em; font-weight: bold; ">Item:
+        <span style="text-align:left; line-height:1.6em; font-weight: bold; ">{{'AD.Item'|translate}}:
         </span><span style="text-align:left; line-height:1.6em;" [innerHTML]="ad.idItem"></span>
       </div>
 
       <div>
-        <span style="text-align:left; line-height:1.6em; font-weight: bold; ">Precio: $
+        <span style="text-align:left; line-height:1.6em; font-weight: bold; ">{{'AD.Precio'|translate}}: $
         </span><span style="text-align:left; line-height:1.6em;  " [innerHTML]="ad.precio"></span>
       </div>
       <div >
         <div class="radio" *ngIf="ad.precio_envio == 0">
-          <label><input type="radio" name="optradio" checked> Envio dentro de EEUU (Gratis)</label>
+          <label><input type="radio" name="optradio" checked> {{'AD.Envio'|translate}}</label>
         </div>
         <div class="radio" *ngIf="ad.precio_envio > 0">
-          <label><input type="radio" name="optradio" checked> Envio dentro de EEUU (${{ad.precio_envio}})</label>
+          <label><input type="radio" name="optradio" checked> {{'AD.EnvioPrecio'|translate}} (${{ad.precio_envio}})</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="optradio"> Envio fuera de EEUU (${{ad.precio_envio_fuera}})</label>
+          <label><input type="radio" name="optradio"> {{'AD.EnvioFuera'|translate}}(${{ad.precio_envio_fuera}})</label>
         </div>
         <span></span>
       </div>

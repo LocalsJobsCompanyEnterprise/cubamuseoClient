@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { StoreServiceService } from './../../core/service/store-service.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { AlertService } from './../../alert/alert.service';
@@ -21,7 +22,8 @@ export class AdPurchaseComponent implements OnInit {
     private store: StoreServiceService,  
     private alerts: AlertService, 
     private router: Router, 
-    public config: ConfigServiceService) {
+    public config: ConfigServiceService,
+    public translate: TranslateService) {
 
       this.activatedRoute.params.subscribe(val => {
         this.itemId = val.id;

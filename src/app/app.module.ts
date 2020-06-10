@@ -56,7 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
   ],
   exports: [
-
+    TranslateModule
   ],
   providers: [
 
