@@ -16,6 +16,7 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 import { OwlModule } from 'ngx-owl-carousel';
 import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './../assets/i18n/', '.json');
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TalesModule,
     SearchModule,
     NgbModule,
+    MatTabsModule,
     NgDynamicBreadcrumbModule,
     TranslateModule.forRoot({
       loader: {
