@@ -181,7 +181,7 @@
                 {{item.nombre}}
             </h2>
         </div>
-        <a [routerLink]="['/tale', item.idEstampa]">
+        <a [routerLink]="['/tale', item.idEstampa, item.nombre]">
             <img class="card-img-top" src="{{config.serverNodeLocation}}images/none/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/none" alt="">
         </a>
     </div>

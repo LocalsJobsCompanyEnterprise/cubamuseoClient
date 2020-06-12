@@ -7,7 +7,7 @@ import { CategoryComponent } from './category/category.component';
 import { GalleryListComponent } from './gallery-list/gallery-list.component';
 import { SectionStartComponent } from './section-start/section-start.component';
 import { OwlModule } from 'ngx-owl-carousel';
-
+import { NgxSocialShareModule } from 'ngx-social-share';
 
 
 
@@ -21,6 +21,7 @@ import { OwlModule } from 'ngx-owl-carousel';
     CommonModule,
     GenericRoutingModule,
     OwlModule,
+    NgxSocialShareModule,
     TranslateModule
   ],
   exports: [

@@ -17,6 +17,7 @@ import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 import { OwlModule } from 'ngx-owl-carousel';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
+import { NgxSocialShareModule } from 'ngx-social-share';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './../assets/i18n/', '.json');
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     StoreModule,
     VPostModule,
+    NgxSocialShareModule,
     TalesModule,
     SearchModule,
     NgbModule,

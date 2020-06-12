@@ -1,4 +1,3 @@
-
 <div style="margin-top: 10px;" class="post_content">
 
   <!-- Top Panel -->
@@ -11,12 +10,28 @@
   <div class="post_body row">
     <div class="col-md-6">
       <figure>
-        <img style="max-width: 400px; max-height: 400px;"
-        src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{vpost.imagen}}/{{section}}/none"
-        alt="">
+        <img src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{vpost.imagen}}/{{section}}/none"
+          alt="">
       </figure>
     </div>
-    <div class="col-md-6" style="margin: auto;">
+    <div class="col-md-4" style="margin: auto; margin-top: 0px;">
+      <div _ngcontent-rht-c0="" class="footer_social" style="margin-right: 20px;">
+        <span>
+          {{'V-Post.Share'|translate}}
+        </span>
+        <ul _ngcontent-rht-c0="" style="margin-left: 10px; margin-top: 10px;">
+          <li _ngcontent-rht-c0="" class="footer_social_facebook"><a _ngcontent-rht-c0="" ><i
+                _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-facebook" [socialShare]="'fb'"></i></a></li>
 
+          <li _ngcontent-rht-c0="" class="footer_social_twitter"><a _ngcontent-rht-c0=""><i
+                _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-twitter" [socialShare]="'tw'"></i></a></li>
+
+          <li _ngcontent-rht-c0="" class="footer_social_pinterest"><a _ngcontent-rht-c0="" ><i
+                _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-pinterest" [socialShare]="'pn'"></i></a></li>
+
+          <li _ngcontent-rht-c0="" class="footer_social_linkedin"><a _ngcontent-rht-c0=""><i
+                _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-linkedin" [socialShare]="'in'"></i></a></li>
+        </ul>
+      </div>
     </div>
   </div>

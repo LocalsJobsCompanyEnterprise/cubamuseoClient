@@ -19,6 +19,23 @@ const routes: Routes = [
   },
   {
     path: 'text/:id/:sonLevel/:section',
+    data: {
+      title: '',
+      breadcrumb: [
+        {
+          label: 'Inicio',
+          url: 'collection/1'
+        },
+        {
+          label: '',
+          url: ''
+        },
+        {
+          label: '',
+          url: ''
+        }
+      ]
+    },
     component: TextComponent
   },
   {

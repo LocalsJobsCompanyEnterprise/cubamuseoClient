@@ -6,7 +6,7 @@
                 <div class=" col-12 flex justify-content-between justify-content-lg-end align-items-center">
                     <div _ngcontent-rht-c0="" class="footer_social" style="margin-right: 20px;">
                         <ul _ngcontent-rht-c0="">
-                            <li _ngcontent-rht-c0="" class="footer_social_facebook"><a _ngcontent-rht-c0="" href="#"><i
+                            <li _ngcontent-rht-c0="" class="footer_social_facebook"><a _ngcontent-rht-c0="" href="https://www.facebook.com/pages/category/Reference-Website/Cuba-Museo-130541420455483/"><i
                                         _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-facebook"></i></a></li>
                             <li _ngcontent-rht-c0="" class="footer_social_twitter"><a _ngcontent-rht-c0="" href="#"><i
                                         _ngcontent-rht-c0="" aria-hidden="true" class="fa fa-twitter"></i></a></li>
@@ -23,7 +23,7 @@
                     <div class="search large">
 
                         <div class="form">
-                            <input type="search" class="header_search_input menu_mm" [(ngModel)]="query" placeholder="Escriba para buscar..." (keyup.enter)="search()">
+                            <input type="search" class="header_search_input menu_mm" [(ngModel)]="query" placeholder="{{'Search.Placeholder'| translate}}" (keyup.enter)="search()">
                             <a [routerLink]="[ '/search', query ]">
                                 <i class="fa fa-search"></i>
                             </a>
@@ -86,7 +86,7 @@
         <div class="logo menu_mm"><a href="#">Cuba Museo</a></div>
         <div class="search">
             <div class="form" style="display: flex;">
-                <input type="search" class="header_search_input menu_mm" style="background: none;" [(ngModel)]="query" placeholder="Escriba para buscar..." (keyup.enter)="search()">
+                <input type="search" class="header_search_input menu_mm" style="background: none;" [(ngModel)]="query" placeholder="{{'Search.Placeholder'| translate}}" (keyup.enter)="search()">
                 <a [routerLink]="[ '/search', query ]" style="align-self: center;">
                     <i class="fa fa-search"></i>
                 </a>
@@ -279,8 +279,8 @@
                                             <div class="" style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
                                                 <span> {{'About.TITLE'|translate}}</span>
                                             </div>
-                                            <p style="text-align:left; line-height:1.6em;">
-                                                {{'About.TEXT'|translate}}
+                                            <p style="text-align:left; line-height:1.6em;" [innerHTML]="'About.TEXT'|translate">
+                                                
                                             </p>
                                         </div>
                                     </div>
@@ -297,8 +297,8 @@
                                             <div class="" style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
                                                 <span> {{'News.TITLE'|translate}}</span>
                                             </div>
-                                            <p style="text-align:left; line-height:1.6em;">
-                                                {{'News.TEXT'|translate}}
+                                            <p style="text-align:left; line-height:1.6em;" [innerHTML]="'News.TEXT'|translate">
+                                              
                                             </p>
                                         </div>
                                     </div>
@@ -315,8 +315,8 @@
                                                 <span style="text-align: center;"> {{'RelatedSites.TITLE'|translate}}
                                                 </span>
                                             </div>
-                                            <p style="text-align:left; line-height:1.6em;">
-                                                {{'RelatedSites.TEXT'|translate}} </p>
+                                            <p style="text-align:left; line-height:1.6em;" [innerHTML]="'RelatedSites.TEXT'|translate">
+                                             </p>
                                         </div>
                                     </div>
                                 </ng-template>

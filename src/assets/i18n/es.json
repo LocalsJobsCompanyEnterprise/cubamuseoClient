@@ -4,7 +4,7 @@
     },
     "About": {
         "TITLE": "Quienes Somos",
-        "TEXT": " Este espacio ha sido concebido por un coleccionista cubano, el Ing. Luis Díaz Mijares, que ha dedicado décadas a reunir las piezas que se muestran en sus diferentes secciones temáticas y a confeccionar las páginas correspondientes. La totalidad de su contenido es de su entera responsabilidad y autoría. La parte de programación (arquitectura y diseño del sitio) esta a cargo del Lic. Ulises Ortega Camero y la Lic. Maricarla Esquivel Sobrado. Si con nuestro trabajo llegamos a contribuir en algo a la difusión y conocimiento de la cultura e identidad cubana nos sentiremos satisfechos. Traducción Español/Inglés: Lic. en Lengua Inglesa Mayen Vincench Pereira "
+        "TEXT": " Este espacio ha sido concebido por un coleccionista cubano, el Ing. Luis Díaz Mijares, que ha dedicado décadas a reunir las piezas que se muestran en sus diferentes secciones temáticas y a confeccionar las páginas correspondientes. La totalidad de su contenido es de su entera responsabilidad y autoría.<br>Diseño y desarrollo del sitio: <br>Lic. Yoel de la Noval Denis <br>Lic. Ulises Ortega Camero <br>Lic. Maricarla Esquivel <br>Ing. Sandy Cordoví González <br>Ing. Anabel Andrés Costa <br>Traducción Español/Inglés: Lic. en Lengua Inglesa Mayen Vincench Pereira <br>Si con nuestro trabajo llegamos a contribuir en algo a la difusión y conocimiento de la cultura e identidad cubana nos sentiremos satisfechos. "
     },
     
     "Contact": {
@@ -36,6 +36,9 @@
         "EnvioPrecio":"Envio dentro de EEUU ",
         "EnvioFuera":"Envio dentro de EEUU "
     },
+    "V-Post":{
+        "Share":"Usted puede compartir esta imagen a traves de sus redes sociales libre de costo"
+    },
     "TextComponent":{
         "Texto":"Texto",
         "Galeria":"Galería"
@@ -49,5 +52,8 @@
         "Procedencia":"Procedencia",
         "Precio":"Precio",
         "Seleccionar":"Seleccionar"
+    },
+    "Search":{
+        "Placeholder":"Escriba aquí para buscar..."
     }
 }

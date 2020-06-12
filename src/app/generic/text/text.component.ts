@@ -85,7 +85,7 @@ export class TextComponent implements OnInit {
         const breadcrumb = [
           {
             label: 'Inicio',
-            url: 'collection/:id'
+            url: 'collection/1'
           },
           {
             label: '{{this.section.nombre}}',
@@ -100,7 +100,7 @@ export class TextComponent implements OnInit {
         const breadcrumb = [
           {
             label: 'Inicio',
-            url: 'collection/:id'
+            url: 'collection/1'
           },
           {
             label: '{{this.previousSection.nombre}}',
@@ -124,12 +124,12 @@ export class TextComponent implements OnInit {
             url: 'collection/1'
           },
           {
-            label: 'Estampas',
+            label: 'Muestras',
             url: 'samples/3'
           },
           {
             label: '{{this.section.nombre}}',
-            url: '/text/:this.idSeccion/:this.sonLevel/:this.category'
+            url: ''
           }
         ];
         this.updateBreadcrumb(breadcrumb);
