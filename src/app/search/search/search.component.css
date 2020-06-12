@@ -42,3 +42,7 @@
 .filter__found {
     text-align: center;
 }
+
+.mat-tab-group {
+    margin-bottom: 48px;
+}

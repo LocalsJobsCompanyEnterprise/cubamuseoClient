@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SearchRoutingModule } from './search-routing.module';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [SearchComponent],
@@ -12,7 +12,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     CommonModule,
     SearchRoutingModule,
     FormsModule,
-    MatTabsModule
+    MatTabsModule,
+    BrowserAnimationsModule
   ]
 })
 export class SearchModule { }
