@@ -12,27 +12,27 @@ export class SearchServiceService {
   }
 
   findInText(query) {
-    return this.http.get(this.config.serverNodeLocation + 'inText/' + query)
+    return this.http.get(this.config.serverNodeLocation + 'search/inText/' + query)
   }
 
   findInShop(query) {
-    return this.http.get(this.config.serverNodeLocation + 'inShop/' + query)
+    return this.http.get(this.config.serverNodeLocation + 'search/inShop/' + query)
   }
 
   findInModel(query) {
-    return this.http.get(this.config.serverNodeLocation + 'inStamp/' + query)
+    return this.http.get(this.config.serverNodeLocation + 'search/inStamp/' + query)
   }
 
   findInStamp(query) {
-    return this.http.get(this.config.serverNodeLocation + 'inModel/' + query)
+    return this.http.get(this.config.serverNodeLocation + 'search/inModel/' + query)
   }
 
   findInCollectionsCategory(query) {
-    return this.http.get(this.config.serverNodeLocation + 'inCollectionCategory/' + query)
+    return this.http.get(this.config.serverNodeLocation + 'search/inCollectionCategory/' + query)
   }
 
   findInCollectionsSection(query) {
-    return this.http.get(this.config.serverNodeLocation + 'inCollectionSection/' + query)
+    return this.http.get(this.config.serverNodeLocation + 'search/inCollectionSection/' + query)
   }
   
 }

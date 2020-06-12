@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css', './search.component.scss']
 })
 export class SearchComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
   collectionList: any[];
   modelList: any[];
   stampList: any[];
-
+  vpostList: any[];
   constructor(private activatedRoute: ActivatedRoute,
     private searchService: SearchServiceService) {
 
@@ -34,10 +34,12 @@ export class SearchComponent implements OnInit {
     this.collectionList = [];
     this.modelList = [];
     this.stampList = [];
+    this.vpostList = [];
 
     this.activatedRoute.params.subscribe(val => {
       if (val.query) {
         this.query = val.query;
+        this.search()
       }
     });
   }
@@ -55,7 +57,6 @@ export class SearchComponent implements OnInit {
 
   searchInShop() {
     this.shopList = [];
-    if (this.isShop)
       this.searchService.findInShop(this.query).subscribe(
         (data: any[]) => {
           data.forEach(element => {
@@ -72,7 +73,7 @@ export class SearchComponent implements OnInit {
     this.searchService.findInText(this.query).subscribe(
       (data: any[]) => {
         data.forEach(element => {
-          
+
         });
       }, error => {
 
@@ -133,6 +134,26 @@ export class SearchComponent implements OnInit {
       )
   }
 
-  
+  cleanString(data: string) {
+    let aux = data;
+    let res = aux.replace(this.query, '<span>' + this.query + '</span>');
+
+    for (let i = 0; i < res.length; i++) {
+      const element = res[i];
+      if (element == this.query[0]) {
+        let part = res.slice(i, i+ this.query.length)
+        if ( part == this.query) {
+          if (i > 20)
+            res = res.slice(i - 20, i + 200)
+          else
+            res = res.slice(0, 200)
+        }
+      }
+    }
+
+    return res;
+  }
+
+
 
 }

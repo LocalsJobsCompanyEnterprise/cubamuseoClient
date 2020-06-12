@@ -20,19 +20,81 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="filter__found">
-                                <h6><span>16</span> Products found</h6>
+                                <h6><span>{{collectionList.length + modelList.length + stampList.length + vpostList.length + shopList.length}}</span> Artículos encontrados</h6>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                 </div>
-                <div class="product__pagination">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                </div>
+                <mat-tab-group>
+                    <mat-tab label="Colecciones">
+                        <div class="container">
+                            <div class="card-group vgr-cards">
+                                <div class="card" *ngFor="let item of collectionList">
+                                    <div class="card-img-body">
+                                        <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{item.nombre}}</h4>
+                                        <p class="card-text" [innerHTML]='cleanString(item.descripcion) + "..."'>..</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Muestras">
+                        <div class="container">
+                            <div class="card-group vgr-cards">
+                                <div class="card" *ngFor="let item of modelList">
+                                    <div class="card-img-body">
+                                        <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title" [innerHTML]="item.nombre"></h4>
+                                        <p class="card-text" [innerHTML]="cleanString(item.descripcion)"></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Estampas">
+                        <div class="container">
+                            <div class="card-group vgr-cards">
+                                <div class="card" *ngFor="let item of stampList">
+                                    <div class="card-img-body">
+                                        <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title" [innerHTML]="item.nombre"></h4>
+                                        <p class="card-text" [innerHTML]="cleanString(item.descripcion)"></p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Tienda">
+                        <div class="container">
+                            <div class="card-group vgr-cards">
+                                <div class="card" *ngFor="let item of shopList">
+                                    <div class="card-img-body">
+                                        <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title" [innerHTML]="item.nombre"></h4>
+                                        <p class="card-text" [innerHTML]="item.descripcion"></p>
+                                        <a href="#" class="btn btn-outline-primary">Primary</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
             </div>
         </div>
     </div>
