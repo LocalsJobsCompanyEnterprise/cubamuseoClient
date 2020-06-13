@@ -11,11 +11,12 @@ import { NgxSocialShareModule } from 'ngx-social-share';
 import { Ng7MatBreadcrumbModule } from 'ng7-mat-breadcrumb';
 
 
+
 @NgModule({
   declarations: [TextComponent,
     CategoryComponent,
     GalleryListComponent,
-    SectionStartComponent
+    SectionStartComponent,
   ],
   imports: [
     CommonModule,

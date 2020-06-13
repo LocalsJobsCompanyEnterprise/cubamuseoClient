@@ -3,46 +3,47 @@
 
 <div style="margin-top: 10px;" class="post_content">
 
-  <!-- Top Panel -->
-  <div class="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
-    <h3 [innerHTML]="ad.titulo" class="col text-center"></h3>
-  </div>
-
-  <!-- Post Body -->
-
-  <div class="post_body row">
-    <div class="col-md-6">
-      <figure>
-        <img style="max-width: 400px; max-height: 400px;"
-          src="{{config.serverNodeLocation}}images/none/{{foldername}}/{{ad.imagen}}/{{section}}/none" alt="">
-        <figcaption [innerHTML]="ad.nombre"></figcaption>
-      </figure>
+    <!-- Top Panel -->
+    <div class="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
+        <h3 [innerHTML]="ad.titulo" class="col text-center"></h3>
     </div>
-    <div class="col-md-6" style="margin: auto;">
 
-      <div>
-        <span style="text-align:left; line-height:1.6em; font-weight: bold; ">{{'AD.Item'|translate}}:
+    <!-- Post Body -->
+
+    <div class="post_body row">
+        <div class="col-md-6">
+            <figure>
+                <img *ngIf="foldername != 'none'" style="max-width: 400px; max-height: 400px;" src="{{config.serverNodeLocation}}images/none/{{foldername}}/{{ad.imagen}}/{{section}}/none" alt="">
+
+                <img *ngIf="foldername === 'none'" style="max-width: 400px; max-height: 400px;" src="{{config.serverNodeLocation}}images/imageInAllDirectory/{{ad.imagen}}" alt="">
+                <figcaption [innerHTML]="ad.nombre"></figcaption>
+            </figure>
+        </div>
+        <div class="col-md-6" style="margin: auto;">
+
+            <div>
+                <span style="text-align:left; line-height:1.6em; font-weight: bold; ">{{'AD.Item'|translate}}:
         </span><span style="text-align:left; line-height:1.6em;" [innerHTML]="ad.idItem"></span>
-      </div>
+            </div>
 
-      <div>
-        <span style="text-align:left; line-height:1.6em; font-weight: bold; ">{{'AD.Precio'|translate}}: $
+            <div>
+                <span style="text-align:left; line-height:1.6em; font-weight: bold; ">{{'AD.Precio'|translate}}: $
         </span><span style="text-align:left; line-height:1.6em;  " [innerHTML]="ad.precio"></span>
-      </div>
-      <div >
-        <div class="radio" *ngIf="ad.precio_envio == 0">
-          <label><input type="radio" name="optradio" checked> {{'AD.Envio'|translate}}</label>
+            </div>
+            <div>
+                <div class="radio" *ngIf="ad.precio_envio == 0">
+                    <label><input type="radio" name="optradio" checked> {{'AD.Envio'|translate}}</label>
+                </div>
+                <div class="radio" *ngIf="ad.precio_envio > 0">
+                    <label><input type="radio" name="optradio" checked> {{'AD.EnvioPrecio'|translate}} (${{ad.precio_envio}})</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="optradio"> {{'AD.EnvioFuera'|translate}}(${{ad.precio_envio_fuera}})</label>
+                </div>
+                <span></span>
+            </div>
         </div>
-        <div class="radio" *ngIf="ad.precio_envio > 0">
-          <label><input type="radio" name="optradio" checked> {{'AD.EnvioPrecio'|translate}} (${{ad.precio_envio}})</label>
-        </div>
-        <div class="radio">
-          <label><input type="radio" name="optradio"> {{'AD.EnvioFuera'|translate}}(${{ad.precio_envio_fuera}})</label>
-        </div>
-        <span></span>
-      </div>
+
+
+        <p class="post_p" [innerHTML]="ad.descripcion"></p>
     </div>
-
-
-    <p class="post_p" [innerHTML]="ad.descripcion"></p>
-  </div>

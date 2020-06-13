@@ -1,3 +1,4 @@
+import { ScroollTopComponent } from './generic/scrooll-top/scrooll-top.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchModule } from './search/search.module';
 import { TalesModule } from './tales/tales.module';
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxSocialShareModule } from 'ngx-social-share';
 import { Ng7MatBreadcrumbModule } from 'ng7-mat-breadcrumb';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScrollEventModule } from 'ngx-scroll-event';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './../assets/i18n/', '.json');
@@ -28,10 +30,11 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-
+    ScroollTopComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     OwlModule,
     FormsModule,
@@ -46,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgxSocialShareModule,
     TalesModule,
     SearchModule,
+    ScrollEventModule,
     NgbModule,
     MatTabsModule,
     Ng7MatBreadcrumbModule,
