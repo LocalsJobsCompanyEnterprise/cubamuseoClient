@@ -20,11 +20,11 @@ export class SearchServiceService {
   }
 
   findInModel(query) {
-    return this.http.get(this.config.serverNodeLocation + 'search/inStamp/' + query)
+    return this.http.get(this.config.serverNodeLocation + 'search/inModel/' + query)
   }
 
   findInStamp(query) {
-    return this.http.get(this.config.serverNodeLocation + 'search/inModel/' + query)
+    return this.http.get(this.config.serverNodeLocation + 'search/inStamp/' + query)
   }
 
   findInCollectionsCategory(query) {

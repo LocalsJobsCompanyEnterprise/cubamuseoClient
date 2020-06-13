@@ -11,11 +11,12 @@ import { OwlModule } from 'ngx-owl-carousel';
 
 
 
+
 @NgModule({
   declarations: [TextComponent,
     CategoryComponent,
     GalleryListComponent,
-    SectionStartComponent
+    SectionStartComponent,
   ],
   imports: [
     CommonModule,

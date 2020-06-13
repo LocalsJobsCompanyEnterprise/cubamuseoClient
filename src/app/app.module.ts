@@ -1,3 +1,4 @@
+import { ScroollTopComponent } from './generic/scrooll-top/scrooll-top.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchModule } from './search/search.module';
 import { TalesModule } from './tales/tales.module';
@@ -18,6 +19,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScrollEventModule } from 'ngx-scroll-event';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './../assets/i18n/', '.json');
@@ -26,7 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-
+    ScroollTopComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     VPostModule,
     TalesModule,
     SearchModule,
+    ScrollEventModule,
     NgbModule,
     MatTabsModule,
     NgDynamicBreadcrumbModule,

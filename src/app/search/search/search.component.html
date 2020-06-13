@@ -1,21 +1,13 @@
 <section class="product spad">
-    <div class="container">
+    <div class="container" (window:scroll)="doSomethingOnWindowsScroll($event)">
+        <div class="search-content">
+
+            <input type="search" class="search" [(ngModel)]="query" placeholder="Escriba para buscar..." (keyup.enter)="search()">
+            <i style="font-size: x-large;color: #ff9600;" class="fa fa-search"></i>
+
+        </div>
         <div class="row">
-            <div class="col-lg-3 col-md-5">
-                <div class="sidebar">
-                    <div class="sidebar__item">
-                        <h4>Categorias</h4>
-                        <ul>
-                            <li><input type="checkbox" name="" [(ngModel)]="isCollection"><a>Colecciones</a></li>
-                            <li><input type="checkbox" name="" [(ngModel)]="isModel"><a>Muestras</a></li>
-                            <li><input type="checkbox" name="" [(ngModel)]="isStamp"><a>Estampas</a></li>
-                            <li><input type="checkbox" name="" [(ngModel)]="isVPost"><a>V-Post</a></li>
-                            <li><input type="checkbox" name="" [(ngModel)]="isShop"><a>Tienda</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-9 col-md-7">
+            <div>
                 <div class="filter__item">
                     <div class="row">
                         <div class="col-12">
@@ -27,75 +19,122 @@
                 </div>
                 <div class="row">
                 </div>
-                <mat-tab-group>
-                    <mat-tab label="Colecciones">
-                        <div class="container">
-                            <div class="card-group vgr-cards">
-                                <div class="card" *ngFor="let item of collectionList">
-                                    <div class="card-img-body">
-                                        <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title">{{item.nombre}}</h4>
-                                        <p class="card-text" [innerHTML]='cleanString(item.descripcion) + "..."'>..</p>
-                                    </div>
-                                </div>
+                <div class="card-nav">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a (click)="actualTab = 'collection'" class="nav-link active" data-toggle="tab" style="color: darkgray;">Colecciones</a>
 
-                            </div>
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Muestras">
-                        <div class="container">
-                            <div class="card-group vgr-cards">
-                                <div class="card" *ngFor="let item of modelList">
-                                    <div class="card-img-body">
-                                        <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title" [innerHTML]="item.nombre"></h4>
-                                        <p class="card-text" [innerHTML]="cleanString(item.descripcion)"></p>
-                                    </div>
-                                </div>
+                        </li>
+                        <li class="nav-item">
+                            <a (click)="actualTab = 'model'" class="nav-link" data-toggle="tab" style="color: darkgray;">Muestras</a>
 
-                            </div>
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Estampas">
-                        <div class="container">
-                            <div class="card-group vgr-cards">
-                                <div class="card" *ngFor="let item of stampList">
-                                    <div class="card-img-body">
-                                        <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title" [innerHTML]="item.nombre"></h4>
-                                        <p class="card-text" [innerHTML]="cleanString(item.descripcion)"></p>
+                        </li>
 
-                                    </div>
-                                </div>
+                        <li class="nav-item">
+                            <a (click)="actualTab = 'stamp'" class="nav-link" data-toggle="tab" style="color: darkgray;">Estampas</a>
 
-                            </div>
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Tienda">
-                        <div class="container">
-                            <div class="card-group vgr-cards">
-                                <div class="card" *ngFor="let item of shopList">
-                                    <div class="card-img-body">
-                                        <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title" [innerHTML]="item.nombre"></h4>
-                                        <p class="card-text" [innerHTML]="item.descripcion"></p>
-                                        <a href="#" class="btn btn-outline-primary">Primary</a>
-                                    </div>
-                                </div>
+                        </li>
 
-                            </div>
-                        </div>
-                    </mat-tab>
-                </mat-tab-group>
+                        <li class="nav-item">
+                            <a (click)="actualTab = 'shop'" class="nav-link" data-toggle="tab" style="color: darkgray;">Tienda</a>
+
+                        </li>
+                    </ul>
+                    <div *ngIf="actualTab == 'collection' then collection">
+
+                    </div>
+                    <div *ngIf="actualTab == 'stamp' then stamp">
+
+                    </div>
+                    <div *ngIf="actualTab == 'model' then model">
+
+                    </div>
+                    <div *ngIf="actualTab == 'shop' then shop">
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </section>
+
+<ng-template #collection>
+
+    <div class="container tab-pane active" id="text">
+        <div class="card-group vgr-cards">
+            <div class="card" *ngFor="let item of collectionList | slice:0:limitCollection">
+                <div class="card-img-body">
+                    <img class="card-img" src="{{config.serverNodeLocation}}images/imageInAllDirectory/{{item.imagen}}" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h4 *ngIf="!item.idCategoria" class="card-title" [routerLink]="['/text',item.idSeccion,3,'collection']" [innerHTML]="item.nombre"></h4>
+                    <h4 *ngIf="item.idCategoria" class="card-title" [routerLink]="['/text', item.idCategoria,2,'collection']" [innerHTML]=" item.nombre "></h4>
+                    <p class="card-text " [innerHTML]='cleanString(item.descripcion) + "... "'>..</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #stamp>
+    <div class="tab-content">
+        <div class="container tab-pane active" id="text">
+            <div class="card-group vgr-cards ">
+                <div class="card " *ngFor="let item of stampList | slice:0:limitStamp ">
+                    <div class="card-img-body ">
+                        <img class="card-img " src="{{config.serverNodeLocation}}images/none/{{item.carpeta}}/{{item.imagenGaleria}}/tales/none " alt="Card image cap ">
+                    </div>
+                    <div class="card-body ">
+                        <h4 class="card-title " [routerLink]="['/tale', item.idEstampa]" [innerHTML]="item.nombre ">
+                        </h4>
+                        <p class="card-text " [innerHTML]="cleanString(item.texto) "></p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #model>
+    <div class="tab-content">
+        <div class="container tab-pane active" id="text">
+            <div class="card-group vgr-cards ">
+                <div class="card " *ngFor="let item of modelList | slice:0:limitModel ">
+                    <div class="card-img-body ">
+                        <img class="card-img " src="{{config.serverNodeLocation}}images/none/{{item.carpeta}}/{{item.imagenGaleria}}/samples/none " alt="Card image cap ">
+                    </div>
+                    <div class="card-body ">
+                        <h4 class="card-title " [routerLink]="['/text', item.idMuestra,2,'samples']" [innerHTML]="item.nombre ">
+                        </h4>
+                        <p class="card-text " [innerHTML]='cleanString(item.descripcion) + "... "'></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #shop>
+    <div class="tab-content">
+        <div class="container tab-pane active" id="text">
+            <div class="card-group vgr-cards ">
+                <div class="card " *ngFor="let item of shopList | slice:0:limitShop ">
+                    <div class="card-img-body ">
+                        <img class="card-img " src="{{config.serverNodeLocation}}images/imageInAllDirectory/{{item.imagen}}" alt="Card image cap ">
+                    </div>
+                    <div class="card-body ">
+                        <h4 class="card-title " [routerLink]="['/store', item.idItem,'none','store']" [innerHTML]="item.nombre "></h4>
+                        <p class="card-text " [innerHTML]="cleanString(item.descripcion)"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>

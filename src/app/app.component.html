@@ -164,20 +164,18 @@
         </div> -->
 
 
-    <div class="container">
-        <div class="row">
-            <div class="similar_posts_container">
-                <app-category [categoryType]="categoryType.asObservable()"></app-category>
+    <div class="page_content">
+        <div class="container">
+            <div class="row">
+                <div class="similar_posts_container">
+                    <app-category [categoryType]="categoryType.asObservable()"></app-category>
+                </div>
             </div>
         </div>
-    </div>
-
-
-    <div class="page_content">
-
         <div class="container">
             <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
             <router-outlet></router-outlet>
+            <app-scroll-top></app-scroll-top>
         </div>
     </div>
 

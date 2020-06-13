@@ -1,5 +1,6 @@
 .card {
     border: none;
+    min-height: 150px;
 }
 
 .card-img {
@@ -35,7 +36,7 @@
     }
     .card-img {
         width: 100%;
-        height: auto;
+        height: 100%;
         position: absolute;
         margin-left: 50%;
         transform: translateX(-50%);
@@ -43,7 +44,7 @@
             margin: 0;
             transform: none;
             width: 100%;
-            height: auto;
+            height: 100%;
         }
     }
     .card-body {
