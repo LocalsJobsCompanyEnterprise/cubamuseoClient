@@ -176,7 +176,7 @@
     <div class="page_content">
 
         <div class="container">
-            <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
+            <app-ng7-mat-breadcrumb></app-ng7-mat-breadcrumb>
             <router-outlet></router-outlet>
         </div>
     </div>
@@ -248,8 +248,8 @@
                                 </div>
 
                                 <ng-template #contact let-modal>
-                                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                                        <span aria-hidden="true" style="float:right;">&times;</span>
+                                    <button type="button" style="border: rgb(255, 255, 255);" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true" style="border: rgb(255, 255, 255); float:right;">&times;</span>
                                     </button>
                                     <div class="" style="background-image: url(images/logocm.png); background-repeat: no-repeat; background-position: center center; background-size: 60%; width: 50%; height: 150px; margin: 0 auto; background-color: #fff; ">
                                         <span> {{'Contact.TITLE'|translate}}</span>
@@ -257,11 +257,11 @@
                                     <!-- Post Comment -->
                                     <div class="post_comment">
                                         <div class="contact_form_container">
-                                            <form action="#">
-                                                <input type="text" class="contact_input contact_input_name" placeholder="Your Name" required="required">
-                                                <input type="email" class="contact_input contact_input_email" placeholder="Your Email" required="required">
-                                                <textarea class="contact_text" placeholder="Your Message" required="required"></textarea>
-                                                <button type="submit" class="contact_button">{{'Contact.SEND'|translate}}</button>
+                                            <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)">
+                                                <input id="name" formControlName="name" type="text" class="contact_input contact_input_name" placeholder="{{'Contact.NAME'|translate}}" required="required">
+                                                <input id="email" formControlName="email" type="email" class="contact_input contact_input_email" placeholder="{{'Contact.EMAIL'|translate}}" required="required">
+                                                <textarea id="text" formControlName="text" class="contact_text" placeholder="{{'Contact.TEXT'|translate}}" required="required"></textarea>
+                                                <button type="submit"  class="contact_button">{{'Contact.SEND'|translate}}</button>
                                             </form>
                                         </div>
                                     </div>

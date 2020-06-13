@@ -20,19 +20,11 @@ const routes: Routes = [
   {
     path: 'text/:id/:sonLevel/:section',
     data: {
-      title: '',
+      title: 'Text',
       breadcrumb: [
         {
           label: 'Inicio',
           url: 'collection/1'
-        },
-        {
-          label: '',
-          url: ''
-        },
-        {
-          label: '',
-          url: ''
         }
       ]
     },
@@ -104,6 +96,10 @@ const routes: Routes = [
         {
           label: 'Inicio',
           url: 'collection/1'
+        },
+        {
+          label: 'Muestras',
+          url: ''
         }
       ]
     },
@@ -203,4 +199,13 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class GenericRoutingModule { }
+export class GenericRoutingModule {
+  components =[
+    SectionStartComponent,
+    TextComponent,
+    GalleryListComponent,
+    TalesComponent,
+    AdPurchaseComponent,
+    ShareVpostComponent
+  ];
+ }

@@ -12,6 +12,9 @@
     },
     "Contact": {
         "TITLE": "Contact Us",
+        "NAME":"Name",
+        "EMAIL":"Email",
+        "TEXT":"Message",
         "SEND": " Send Message"
     },
     "RelatedSites": {

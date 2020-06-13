@@ -9,6 +9,9 @@
     
     "Contact": {
         "TITLE": "Contáctenos",
+        "NAME":"Nombre",
+        "EMAIL":"Correo",
+        "TEXT":"Mensaje",
         "SEND": " Enviar Mensaje"
     },
     "News": {
@@ -34,7 +37,7 @@
         "Precio":"Precio",
         "Envio":"Envio dentro de EEUU (Gratis) ",
         "EnvioPrecio":"Envio dentro de EEUU ",
-        "EnvioFuera":"Envio dentro de EEUU "
+        "EnvioFuera":"Envio fuera de EEUU "
     },
     "V-Post":{
         "Share":"Usted puede compartir esta imagen a traves de sus redes sociales libre de costo"

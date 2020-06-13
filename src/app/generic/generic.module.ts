@@ -8,7 +8,7 @@ import { GalleryListComponent } from './gallery-list/gallery-list.component';
 import { SectionStartComponent } from './section-start/section-start.component';
 import { OwlModule } from 'ngx-owl-carousel';
 import { NgxSocialShareModule } from 'ngx-social-share';
-
+import { Ng7MatBreadcrumbModule } from 'ng7-mat-breadcrumb';
 
 
 @NgModule({
@@ -21,6 +21,7 @@ import { NgxSocialShareModule } from 'ngx-social-share';
     CommonModule,
     GenericRoutingModule,
     OwlModule,
+    Ng7MatBreadcrumbModule,
     NgxSocialShareModule,
     TranslateModule
   ],

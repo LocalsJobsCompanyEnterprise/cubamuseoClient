@@ -13,11 +13,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
+//import { NgDynamicBreadcrumbModule } from "ng-dynamic-breadcrumb";
 import { OwlModule } from 'ngx-owl-carousel';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxSocialShareModule } from 'ngx-social-share';
+import { Ng7MatBreadcrumbModule } from 'ng7-mat-breadcrumb';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './../assets/i18n/', '.json');
@@ -33,6 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     OwlModule,
     FormsModule,
+    ReactiveFormsModule,
     GenericModule,
     CoreModule,
     AlertModule,
@@ -45,7 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SearchModule,
     NgbModule,
     MatTabsModule,
-    NgDynamicBreadcrumbModule,
+    Ng7MatBreadcrumbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
