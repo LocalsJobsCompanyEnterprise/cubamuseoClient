@@ -34,6 +34,7 @@ export class GalleryListComponent implements OnInit {
   actualItem: any;
   $: any;
   isParams: boolean;
+  isHide:boolean;
 
   @Input() tagSection: Subject<string>;
   @Input() tagLevel: Subject<number>;
@@ -58,6 +59,7 @@ export class GalleryListComponent implements OnInit {
     this.gallerylist = [];
     this.component = 'gallery'
     this.isParams = false;
+    this.isHide=false;
     this.activatedRoute.params.subscribe(val => {
       if (val) {
         this.itemId = val.id;
@@ -92,7 +94,7 @@ export class GalleryListComponent implements OnInit {
     this.baseFolder = folder.level_3;
   }
 
-  open(content,item) {
+  open(content, item) {
     this.actualItem = item;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
@@ -100,19 +102,18 @@ export class GalleryListComponent implements OnInit {
   next(content) {
     for (let index = 0; index < this.gallerylist.length; index++) {
       const element = this.gallerylist[index];
-      if (element.idItem === this.actualItem.idItem) 
-      {
-        if (index === this.gallerylist.length - 1){
+      if (element.idItem === this.actualItem.idItem) {
+        if (index === this.gallerylist.length - 1) {
           this.actualItem = this.gallerylist[0];
           this.$('#itemModal').modal('hide');
-          this.open(content,this.actualItem);
+          this.open(content, this.actualItem);
         }
-        else{
+        else {
           this.actualItem = this.gallerylist[index + 1];
           this.$('#itemModal').modal('hide');
-          this.open(content,this.actualItem);
+          this.open(content, this.actualItem);
         }
-        
+
       }
     }
   }
@@ -121,16 +122,16 @@ export class GalleryListComponent implements OnInit {
     for (let index = 0; index < this.gallerylist.length; index++) {
       const element = this.gallerylist[index];
       if (element.idItem === this.actualItem.idItem) {
-        if(index === 0){
-          this.actualItem = this.gallerylist[this.gallerylist.length-1];
+        if (index === 0) {
+          this.actualItem = this.gallerylist[this.gallerylist.length - 1];
           this.$('#itemModal').modal('hide');
-          this.open(content,this.actualItem);
-        }else{
+          this.open(content, this.actualItem);
+        } else {
           this.actualItem = this.gallerylist[index - 1];
           this.$('#itemModal').modal('hide');
-          this.open(content,this.actualItem);
+          this.open(content, this.actualItem);
         }
-        
+
       }
     }
   }
@@ -139,15 +140,15 @@ export class GalleryListComponent implements OnInit {
     for (let index = 0; index < this.gallerylist.length; index++) {
       const element = this.gallerylist[index];
       if (element.idPostal === this.actualItem.idPostal) {
-        if (index === this.gallerylist.length - 1){
+        if (index === this.gallerylist.length - 1) {
           this.actualItem = this.gallerylist[0];
           this.$('#vpostModal').modal('hide');
-          this.open(content,this.actualItem);
+          this.open(content, this.actualItem);
         }
-        else{
+        else {
           this.actualItem = this.gallerylist[index + 1];
           this.$('#vpostModal').modal('hide');
-          this.open(content,this.actualItem);
+          this.open(content, this.actualItem);
         }
       }
     }
@@ -157,14 +158,14 @@ export class GalleryListComponent implements OnInit {
     for (let index = 0; index < this.gallerylist.length; index++) {
       const element = this.gallerylist[index];
       if (element.idPostal === this.actualItem.idPostal) {
-        if(index === 0){
-          this.actualItem = this.gallerylist[this.gallerylist.length-1];
+        if (index === 0) {
+          this.actualItem = this.gallerylist[this.gallerylist.length - 1];
           this.$('#vpostModal').modal('hide');
-          this.open(content,this.actualItem);
-        }else{
+          this.open(content, this.actualItem);
+        } else {
           this.actualItem = this.gallerylist[index - 1];
           this.$('#vpostModal').modal('hide');
-          this.open(content,this.actualItem);
+          this.open(content, this.actualItem);
         }
       }
     }
@@ -378,14 +379,34 @@ export class GalleryListComponent implements OnInit {
     );
   }
 
-  checkIfIsEmpty(elementToCheck:string) {
+  checkIfIsEmpty(elementToCheck: string) {
     let isEmpty: boolean;
     isEmpty = false;
     elementToCheck = elementToCheck.trim()
-    if(elementToCheck.length == 0) {
+    if (elementToCheck.length == 0) {
       isEmpty = true;
     }
     return isEmpty;
+  }
+
+  checkLenght(elementToCheck: string) {
+    let isLarge: boolean;
+    isLarge = false;
+    elementToCheck = elementToCheck.trim()
+    if (elementToCheck.length > 500) {
+      isLarge = true;
+    }
+    return isLarge;
+  }
+
+  sliceDescription(description: string) {
+    let res = description.slice(0, 500) + " ...";
+    return res;
+  }
+
+  see_more() {
+    this.isHide = !this.isHide;
+    return this.isHide;
   }
   // getLevel() {
   //   let data = window.localStorage['level'];

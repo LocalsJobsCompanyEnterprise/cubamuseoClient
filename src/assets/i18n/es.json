@@ -56,6 +56,9 @@
         "Precio":"Precio",
         "Seleccionar":"Seleccionar"
     },
+    "Imagen":{
+        "Zoom":"Ver imagen ampliada"
+    },
     "Search":{
         "Placeholder":"Escriba aquí para buscar..."
     }

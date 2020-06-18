@@ -131,3 +131,24 @@
     background-image: none;
 }
 
+.hidden{
+    display: none;
+    visibility: 0;
+}
+
+.cui_descr_nav {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+.cui_div_zoom {
+    max-width: calc(100vw - 210px);
+    overflow-x: auto;
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
+/* .modal-content{
+    background-color: #fff; overflow: hidden; border: 1px solid #203248;  z-index: 1101; position: relative; display: inline-table; font-size: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 50%;
+} */

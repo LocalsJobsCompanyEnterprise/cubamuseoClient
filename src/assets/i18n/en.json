@@ -55,6 +55,9 @@
         "Precio":"Price",
         "Seleccionar":"Select"
     },
+    "Imagen":{
+        "Zoom":"Zoom"
+    },
     "Search": {
         "Placeholder": "Type here to search..."
     }
