@@ -54,7 +54,9 @@
         "Dimension":"Dimensión",
         "Procedencia":"Procedencia",
         "Precio":"Precio",
-        "Seleccionar":"Seleccionar"
+        "Seleccionar":"Seleccionar",
+        "SigloXX":"Siglo XX",
+        "SigloXIX":"Siglo XIX"
     },
     "Imagen":{
         "Zoom":"Ver imagen ampliada"

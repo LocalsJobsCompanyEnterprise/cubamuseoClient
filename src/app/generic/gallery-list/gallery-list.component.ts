@@ -20,6 +20,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class GalleryListComponent implements OnInit {
   gallerylist: any[];
+  gallerylistXX: any[];
   itemId: any;
   section: any;
   mySubscription: any;
@@ -34,7 +35,8 @@ export class GalleryListComponent implements OnInit {
   actualItem: any;
   $: any;
   isParams: boolean;
-  isHide:boolean;
+  isHide: boolean;
+  sectionName:string;
 
   @Input() tagSection: Subject<string>;
   @Input() tagLevel: Subject<number>;
@@ -57,9 +59,11 @@ export class GalleryListComponent implements OnInit {
   ) {
 
     this.gallerylist = [];
+    this.gallerylistXX = [];
+    this.sectionName = '';
     this.component = 'gallery'
     this.isParams = false;
-    this.isHide=false;
+    this.isHide = false;
     this.activatedRoute.params.subscribe(val => {
       if (val) {
         this.itemId = val.id;
@@ -282,16 +286,24 @@ export class GalleryListComponent implements OnInit {
         this.gallerylist = [];
         data.forEach(element => {
           this.collection.getCategoryById(element.idCategoria).subscribe(
-            data => {
-              this.gallerylist.push(data);
-              this.collection.collectionPagesList.push(data);
+            (data: any) => {
+              this.collection.getSectionById(element.idSeccion).subscribe(
+                (sect:any)=>{
+                  this.sectionName=sect.nombre;
+                  if (element.sigloXIX.data[0] == 1) {
+                    this.gallerylist.push(data);
+                    this.collection.collectionPagesList.push(data);
+                  } else if (element.sigloXIX.data[0] == 0) {
+                    this.gallerylistXX.push(data);
+                    this.collection.collectionPagesList.push(data);
+                  }
+                }
+              );
             }
           ), error => {
             this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
           }
         });
-
-
       }, error => {
         this.alerts.error('Ha ocurrido un error verifique la conexion', 'error');
       }

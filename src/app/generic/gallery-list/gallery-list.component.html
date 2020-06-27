@@ -67,7 +67,8 @@
                             [innerHTML]="actualItem.descripcion">
                         </p>
                     </div>
-                    <div class="cui_descr_nav" id="show_div" [class.hidden]="isHide"  *ngIf="checkLenght(actualItem.descripcion)">
+                    <div class="cui_descr_nav" id="show_div" [class.hidden]="isHide"
+                        *ngIf="checkLenght(actualItem.descripcion)">
                         <p style="text-align:left; line-height:1.6em; color: black; "
                             [innerHTML]="sliceDescription(actualItem.descripcion)">
                         </p>
@@ -76,7 +77,8 @@
                             (Ver más)
                         </button>
                     </div>
-                    <div class="cui_descr_nav" id="hidden_div" [class.hidden]="!isHide"   *ngIf="checkLenght(actualItem.descripcion)">
+                    <div class="cui_descr_nav" id="hidden_div" [class.hidden]="!isHide"
+                        *ngIf="checkLenght(actualItem.descripcion)">
                         <p style="text-align:left; line-height:1.6em; color: black; "
                             [innerHTML]="actualItem.descripcion">
                         </p>
@@ -225,18 +227,65 @@
 </ng-template>
 
 <ng-template #textCollection>
-    <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
-        <img class="card-img-top"
-            src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/{{foldername}}"
-            alt="">
-        <div class="card-body">
-            <div class="card-title card-title-small">
-                <a [routerLink]="['/text', item.idCategoria,sonLevel,section]">
-                    <p [innerHTML]="item.nombre"></p>
-                </a>
+    <div *ngIf="sectionName === 'Biblioteca Virtual'; then virtualLibrary else default">
+    </div>
+
+    <ng-template #virtualLibrary>
+        <div>
+            <div style="margin: 20px;">
+                <br>
+                <h4 style="float: left;">{{'GalleryComponent.SigloXIX'|translate}}</h4>
+            </div>
+            <div style="padding-top: 20px; float: left;">
+                <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
+                    <img class="card-img-top"
+                        src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/{{foldername}}"
+                        alt="">
+                    <div class="card-body">
+                        <div class="card-title card-title-small">
+                            <a [routerLink]="['/text', item.idCategoria,sonLevel,section]">
+                                <p [innerHTML]="item.nombre"></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <div>
+            <div>
+                <h4 style="float: left;">{{'GalleryComponent.SigloXX'|translate}}</h4>
+            </div>
+            <div style="padding-top: 20px; float: left;">
+                <div class="card card_small_with_image grid-item" *ngFor="let item2 of gallerylistXX">
+                    <img class="card-img-top"
+                        src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item2.carpeta}}/{{item2.imagenGaleria}}/{{section}}/{{foldername}}"
+                        alt="">
+                    <div class="card-body">
+                        <div class="card-title card-title-small">
+                            <a [routerLink]="['/text', item2.idCategoria,sonLevel,section]">
+                                <p [innerHTML]="item2.nombre"></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #default>
+        <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
+            <img class="card-img-top"
+                src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/{{foldername}}"
+                alt="">
+            <div class="card-body">
+                <div class="card-title card-title-small">
+                    <a [routerLink]="['/text', item.idCategoria,sonLevel,section]">
+                        <p [innerHTML]="item.nombre"></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 </ng-template>
 
 
