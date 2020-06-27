@@ -53,7 +53,12 @@
         "Dimension":"Dimension",
         "Procedencia":"Source",
         "Precio":"Price",
-        "Seleccionar":"Select"
+        "Seleccionar":"Select",
+        "SigloXX":"20th Century",
+        "SigloXIX":"19th Century"
+    },
+    "Imagen":{
+        "Zoom":"Zoom"
     },
     "Search": {
         "Placeholder": "Type here to search..."

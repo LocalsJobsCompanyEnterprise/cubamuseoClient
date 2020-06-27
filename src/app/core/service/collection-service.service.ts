@@ -33,36 +33,20 @@ export class CollectionServiceService {
     return this.http.get(this.config.serverNodeLocation + 'item/' + id);
    }
 
-   getImage(id){
-    return this.http.get(this.config.serverNodeLocation + 'api/collection/getItemImage/' + id);
-   }
-
 
    getCollections(id) {
      return this.http.get(this.config.serverNodeLocation + 'category-item/byCategory/' + id);
    }
 
 
-   getCollectionPageById(id) {
-    return this.http.get(this.config.serverNodeLocation + 'api/collection/getOnePage/' + id);
-  }
-
   getSectionByCategory(id){
     return this.http.get(this.config.serverNodeLocation + 'section-category/byCategory/' + id);
    }
 
-  getCollectionPages(offset, id) {
-    return this.http.post(this.config.serverNodeLocation + 'api/collection/getPagesWith', {id, offset});
-  }
 
   getSectionCategory(id){
     return this.http.get(this.config.serverNodeLocation + 'section-category/bySection/'+ id);
   }
-
-  getCollectionCategoryById(id) {
-    return this.http.get(this.config.serverNodeLocation + 'api/collection/getOneCategory/' + id);
-  }
-
   
   getCollectionsCategories() {
     return this.http.get(this.config.serverNodeLocation + 'section');
