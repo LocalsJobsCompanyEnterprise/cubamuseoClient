@@ -26,7 +26,7 @@
 
         <!-- Icons made by <a href="https://roundicons.com/" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
         <ng-template #itemModal let-modal>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <button type="button" style="width: auto; align-self: flex-end; margin: 10px; cursor: pointer;" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true" style="float:right;">&times;</span>
             </button>
             <!-- Post Comment -->
@@ -48,7 +48,7 @@
                             margin-left: 60px;" src="../../../assets/images/right-arrow.png" class="carousel-control-next-icon" aria-hidden="true">
                         </a>
                     </div>
-                    <p style="text-align:left; line-height:1.6em; color: black; " [innerHTML]="actualItem.descripcion">
+                    <p style="text-align:left; line-height:1.6em; color: black; margin-bottom: 20px;" [innerHTML]="actualItem.descripcion">
                     </p>
                     <div *ngIf="!checkIfIsEmpty(actualItem.emision)">
                         <span style="text-align:left; line-height:1.6em; color: black; font-weight: bold;">Emisión:
@@ -85,7 +85,7 @@
                         <span aria-hidden="true" style="float:right;">&times;</span>
                     </button>
                 <div class="cui_row">
-                    <div class="cui_row" style="background-color: #ffffff; padding: 20px; padding-bottom: 20px; border-radius: 5px;">
+                    <div class="cui_row" style="width: max-content; background-color: #ffffff; padding: 20px; padding-bottom: 20px; border-radius: 5px;">
 
                         <a class="carousel-control-prev" (click)="preview('zoom')" role="button" data-slide="prev" style="z-index: 1; ">
                             <img style="cursor: pointer;
@@ -162,7 +162,7 @@
 
 <ng-template #textCollection>
     <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
-        <img class="card-img-top" src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/{{foldername}}" alt="">
+        <img class="card-img-top" style="height: 102px;" src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/{{foldername}}" alt="">
         <div class="card-body">
             <div class="card-title card-title-small">
                 <a [routerLink]="['/text', item.idCategoria,sonLevel,section]">
@@ -195,7 +195,7 @@
             </h2>
         </div>
         <a [routerLink]="['/store', item.idItem,foldername,section]">
-            <img class="card-img-top" src="{{config.serverNodeLocation}}images/none/{{foldername}}/{{item.imagen}}/{{section}}/none" alt="">
+            <img class="card-img-top"  src="{{config.serverNodeLocation}}images/none/{{foldername}}/{{item.imagen}}/{{section}}/none" alt="">
         </a>
     </div>
 </ng-template>

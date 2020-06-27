@@ -172,6 +172,7 @@ export class SearchComponent implements OnInit {
 
   cleanString(data: string) {
     let res = "";
+    let finded = false;
     if (data) {
       res = data;
 
@@ -181,17 +182,24 @@ export class SearchComponent implements OnInit {
           let part = res.slice(i, i + this.query.length)
           if (part.toLowerCase() == this.query.toLowerCase()) {
             if (i > 20) {
+              finded = true;
               res = res.slice(this.findWhiteSpaceAfter(i, res), i + 200).replace(part, '<span>' + part + '</span>')
               break;
               //res = res.replace(part,'<span>' + part + '</span>')
             }
-            else
-              res = res.slice(i, 200).replace(part, '<span>' + part + '</span>');
-            break;
+            else{
+              finded = true;
+              res = res.slice(i, this.findWhiteSpaceAfter(250, res)).replace(part, '<span>' + part + '</span>');
+              break;
+            }
+              
             //res = res.replace(part,'<span>' + part + '</span>')
           }
         }
       }
+
+      if(!finded)
+        res = res.slice(0, this.findWhiteSpaceAfter(250, res));
 
     }
 

@@ -3,8 +3,9 @@
 }
 
 img {
-    max-width: 120px;
+    max-width: fit-content;
     align-self: center;
+    display: initial !important;
 }
 
 .owl-stage-outer {
@@ -13,4 +14,17 @@ img {
 
 .card-category {
     max-width: 180px;
+}
+
+.card-category a{
+    text-align: center;
+}
+
+.card a{
+    text-align: center;
+}
+
+.colum-list {
+    display: flex;
+    justify-content: center;
 }

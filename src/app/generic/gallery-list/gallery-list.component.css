@@ -122,12 +122,11 @@
     }
 }
 
-.carousel-control-prev{
-    background-image: none;
+.close{
+    width: auto;
+    margin: 20px;
+    cursor: pointer;
+    place-self: flex-end;
 }
 
-
-.carousel-control-next{
-    background-image: none;
-}
 

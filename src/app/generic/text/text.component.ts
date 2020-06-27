@@ -9,7 +9,7 @@ import { StoreServiceService } from './../../core/service/store-service.service'
 import { AlertService } from './../../alert/alert.service';
 import { VpostServiceService } from './../../core/service/vpost-service.service';
 import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
-import { Ng7MatBreadcrumbService} from 'ng7-mat-breadcrumb';
+// import { Ng7MatBreadcrumbService} from 'ng7-mat-breadcrumb';
 
 @Component({
   selector: 'app-text',
@@ -42,7 +42,7 @@ export class TextComponent implements OnInit {
     private router: Router,
     private enviromentVariables: EnviromentVariableServiceService,
     public configService: ConfigServiceService,
-    private breadcrumbService: Ng7MatBreadcrumbService) {
+    ) {
     this.level = -1;
 
     this.component = 'text';
@@ -138,7 +138,7 @@ export class TextComponent implements OnInit {
   }
 
   updateBreadcrumb(breadcrumb): void {
-    this.breadcrumbService.updateBreadcrumb(breadcrumb);
+    // this.breadcrumbService.updateBreadcrumb(breadcrumb);
   }
 
   setSonLevel() {

@@ -28,6 +28,8 @@ export class CategoryComponent implements OnInit {
   component: string;
   sonLevel: number;
 
+  active:boolean;
+
 
 
   @Input() categoryType: Subject<string>;
@@ -101,7 +103,7 @@ export class CategoryComponent implements OnInit {
 
     this.component = 'category'
     this.categoryList = [];
-
+    this.active = false
   }
 
 

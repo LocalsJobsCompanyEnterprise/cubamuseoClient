@@ -382,7 +382,7 @@ export class GalleryListComponent implements OnInit {
     let isEmpty: boolean;
     isEmpty = false;
     elementToCheck = elementToCheck.trim()
-    if(elementToCheck.length == 0) {
+    if(elementToCheck.length == 0 || elementToCheck == '0') {
       isEmpty = true;
     }
     return isEmpty;

@@ -19,7 +19,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxSocialShareModule } from 'ngx-social-share';
-import { Ng7MatBreadcrumbModule } from 'ng7-mat-breadcrumb';
+// import { Ng7MatBreadcrumbModule } from 'ng7-mat-breadcrumb';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollEventModule } from 'ngx-scroll-event';
 
@@ -52,7 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ScrollEventModule,
     NgbModule,
     MatTabsModule,
-    Ng7MatBreadcrumbModule,
+    // Ng7MatBreadcrumbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
