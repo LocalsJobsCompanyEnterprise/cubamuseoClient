@@ -88,6 +88,8 @@ export class CategoryComponent implements OnInit {
     }
   }
 
+  innerWidth:number;
+
 
   constructor(
     private route: Router, 
@@ -104,6 +106,8 @@ export class CategoryComponent implements OnInit {
     this.component = 'category'
     this.categoryList = [];
     this.active = false
+    this.innerWidth = window.innerWidth;
+    console.log(this.innerWidth)
   }
 
 
