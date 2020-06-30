@@ -13,10 +13,10 @@
     <div class="post_body row">
         <div class="col-md-6">
             <figure>
-                <img *ngIf="foldername != 'none'" style="max-width: 400px; max-height: 400px;" src="{{config.serverNodeLocation}}images/none/{{foldername}}/{{ad.imagen}}/{{section}}/none" alt="">
+                <img *ngIf="foldername != 'none'" style="width: 100%;" src="{{config.serverNodeLocation}}images/none/{{foldername}}/{{ad.imagen}}/{{section}}/none" alt="">
 
-                <img *ngIf="foldername === 'none'" style="max-width: 400px; max-height: 400px;" src="{{config.serverNodeLocation}}images/imageInAllDirectory/{{ad.imagen}}" alt="">
-                <figcaption [innerHTML]="ad.nombre"></figcaption>
+                <img *ngIf="foldername === 'none'" style="width: 100%;" src="{{config.serverNodeLocation}}images/imageInAllDirectory/{{ad.imagen}}" alt="">
+                <figcaption style="text-align: center;" [innerHTML]="ad.nombre"></figcaption>
             </figure>
         </div>
         <div class="col-md-6" style="margin: auto;">

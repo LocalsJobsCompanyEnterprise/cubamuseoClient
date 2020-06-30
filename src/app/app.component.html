@@ -24,7 +24,7 @@
 
                         <div class="form">
                             <input type="search" class="header_search_input menu_mm" [(ngModel)]="query" placeholder="{{'Search.Placeholder'| translate}}" (keyup.enter)="search()">
-                            <a [routerLink]="[ '/search', query ]">
+                            <a [routerLink]="[ '/search', query ]" target="_blank">
                                 <i class="fa fa-search"></i>
                             </a>
                         </div>
@@ -87,7 +87,7 @@
         <div class="search">
             <div class="form" style="display: flex;">
                 <input type="search" class="header_search_input menu_mm" style="background: none;" [(ngModel)]="query" placeholder="{{'Search.Placeholder'| translate}}" (keyup.enter)="search()">
-                <a [routerLink]="[ '/search', query ]" style="align-self: center;">
+                <a [routerLink]="[ '/search', query]" style="align-self: center;" [target]="_blank">
                     <i class="fa fa-search"></i>
                 </a>
             </div>
@@ -165,14 +165,14 @@
 
 
     <div class="row page_content">
-        <div class="container col-sm-2">
+        <div class="container col-sm-3 col-lg-2">
             <div class="row">
                 <div class="similar_posts_container">
                     <app-category [categoryType]="categoryType.asObservable()"></app-category>
                 </div>
             </div>
         </div>
-        <div class="container col-sm-9">
+        <div class="container col-sm-9 col-lg-10" style="padding: 40px;">
             <!-- <app-ng7-mat-breadcrumb></app-ng7-mat-breadcrumb> -->
             <router-outlet></router-outlet>
             <app-scroll-top></app-scroll-top>

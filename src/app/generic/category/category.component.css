@@ -28,3 +28,8 @@ img {
     display: flex;
     justify-content: center;
 }
+
+.card-img-top{
+    width: auto;
+    max-width: 100%;
+}

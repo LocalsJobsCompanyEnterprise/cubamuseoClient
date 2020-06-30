@@ -175,7 +175,7 @@ export class SearchComponent implements OnInit {
     let finded = false;
     if (data) {
       res = data;
-
+      console.log('busco');
       for (let i = 0; i < res.length; i++) {
         const element = res[i];
         if (element.toLowerCase() == this.query[0].toLowerCase()) {
@@ -183,13 +183,13 @@ export class SearchComponent implements OnInit {
           if (part.toLowerCase() == this.query.toLowerCase()) {
             if (i > 20) {
               finded = true;
-              res = res.slice(this.findWhiteSpaceAfter(i, res), i + 200).replace(part, '<span>' + part + '</span>')
+              res = res.slice(this.findWhiteSpaceAfter(i, res), i + 200).replace(part, '<span style="color: #ffda43">' + part + '</span>')
               break;
               //res = res.replace(part,'<span>' + part + '</span>')
             }
             else{
               finded = true;
-              res = res.slice(i, this.findWhiteSpaceAfter(250, res)).replace(part, '<span>' + part + '</span>');
+              res = res.slice(i, this.findWhiteSpaceAfter(250, res)).replace(part, '<span style="color: #ffda43">' + part + '</span>');
               break;
             }
               

@@ -36,7 +36,11 @@
 
 .sidebar__item ul li input {
     margin-right: 5px;
-    color: red;
+    color: #ffda43;
+}
+
+.card-text span {
+    color: #ffda43 !important;
 }
 
 .filter__found {
