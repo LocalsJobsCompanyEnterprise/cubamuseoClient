@@ -62,5 +62,8 @@
     },
     "Search": {
         "Placeholder": "Type here to search..."
+    },
+    "Category":{
+        "Tematica":"Thematics"
     }
  }

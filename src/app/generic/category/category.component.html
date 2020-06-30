@@ -3,7 +3,7 @@
 
         <div *ngIf="innerWidth > 500">
             <div class="title" style="text-align: center; color: #6ab183; margin-bottom: 20px;">
-                <h3>Temáticas</h3>
+                <h3>{{'Category.Tematica'|translate}}</h3>
             </div>
             <div *ngIf="category === 'collection'; then collection"></div>
             <div *ngIf="category === 'vpost'; then vpost"></div>

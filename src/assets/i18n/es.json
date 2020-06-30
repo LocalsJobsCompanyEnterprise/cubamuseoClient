@@ -63,5 +63,8 @@
     },
     "Search":{
         "Placeholder":"Escriba aquí para buscar..."
+    },
+    "Category":{
+        "Tematica":"Temáticas"
     }
 }
