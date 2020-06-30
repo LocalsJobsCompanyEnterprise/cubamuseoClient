@@ -21,7 +21,7 @@
             </h2>
         </div>
         <a (click)="open(itemModal,item)">
-            <img class="card-img-top"
+            <img class="card-img-top" [title]="item.titulo"
                 src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{foldername}}/{{item.imagen}}/{{section}}/{{baseFolder}}"
                 alt="">
         </a>
@@ -238,7 +238,7 @@
             </div>
             <div style="padding-top: 20px; float: left;">
                 <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
-                    <img class="card-img-top"
+                    <img class="card-img-top" [title]="item.titulo"
                         src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/{{foldername}}"
                         alt="">
                     <div class="card-body">
@@ -257,7 +257,7 @@
             </div>
             <div style="padding-top: 20px; float: left;">
                 <div class="card card_small_with_image grid-item" *ngFor="let item2 of gallerylistXX">
-                    <img class="card-img-top"
+                    <img class="card-img-top" [title]="item2.titulo"
                         src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item2.carpeta}}/{{item2.imagenGaleria}}/{{section}}/{{foldername}}"
                         alt="">
                     <div class="card-body">
@@ -274,7 +274,7 @@
 
     <ng-template #default>
         <div class="card card_small_with_image grid-item" *ngFor="let item of gallerylist">
-            <img class="card-img-top"
+            <img class="card-img-top" [title]="item.titulo"
                 src="{{config.serverNodeLocation}}images/{{sonLevel}}/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/{{foldername}}"
                 alt="">
             <div class="card-body">
@@ -297,7 +297,7 @@
             </h2>
         </div>
         <a [routerLink]="['/tale', item.idEstampa, item.nombre]">
-            <img class="card-img-top"
+            <img class="card-img-top" [title]="item.titulo"
                 src="{{config.serverNodeLocation}}images/none/{{item.carpeta}}/{{item.imagenGaleria}}/{{section}}/none"
                 alt="">
         </a>
@@ -312,7 +312,7 @@
             </h2>
         </div>
         <a [routerLink]="['/store', item.idItem,foldername,section]">
-            <img class="card-img-top"
+            <img class="card-img-top" [title]="item.titulo"
                 src="{{config.serverNodeLocation}}images/none/{{foldername}}/{{item.imagen}}/{{section}}/none" alt="">
         </a>
     </div>
